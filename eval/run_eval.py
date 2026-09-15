@@ -40,6 +40,15 @@ import sympy as sp
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
+# Windows 默认控制台编码是 GBK,而本脚本要打印 ✅/❌ 这类符号。
+# 一旦把输出重定向到文件或管道(自动化、CI、评审留痕都会这么做),
+# print 就会抛 UnicodeEncodeError 直接中断整轮评估 ——
+# 于是"能不能跑评估"变成了"你在哪个终端里跑",这是评估流程最不该有的
+# 不确定性。统一把标准输出切成 UTF-8,并用 replace 兜底防止再次中断。
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+
 from integral_rag import analyze                                  # noqa: E402
 from integral_rag.parse import SYMBOLS as PARSE_SYMBOLS            # noqa: E402
 from integral_rag.parse import ParseError                          # noqa: E402
@@ -375,7 +384,13 @@ def run_definite(items: list[dict], retriever, args) -> int:
             "top_hits": [h.id for h in report.hits],
             "family_hit": fam_hit, "card_hit_top1": card_hit_top1,
             "card_hit_top3": card_hit_top3,
-            "value_match": None if expect_divergent else record.get("ok", False) and not value_note,
+            # 这里原来写的是 record.get("ok", False)。但 record 是**本次 update
+            # 之前**的字典,"ok" 还没写进去,所以读到的永远是默认值 False ——
+            # 于是 value_match 逐题恒为 False,而 summary 里却是 51/51。
+            # 两个数字直接互相矛盾,下游任何按题分析(配对检验、消融、错误归因)
+            # 读到的都是错的,而且看不出来。用本次要写入的这个值。
+            "value_match": (None if expect_divergent
+                            else (bool(report.ok) and not value_note)),
             "numeric": (report.solution.numeric.describe()
                         if getattr(report.solution, "numeric", None) else ""),
             "seconds": round(elapsed, 2),
@@ -440,9 +455,64 @@ def run_definite(items: list[dict], retriever, args) -> int:
     return 0
 
 
+def _finite_solved(record: dict) -> bool:
+    """这道题算不算"收敛题且通过了验证"。
+
+    定积分里 expect == "divergent" 的题走的是发散判定,不进 solved 计数。
+    """
+    if record.get("kind") == "definite" and record.get("expect") == "divergent":
+        return False
+    return record.get("ok") is True
+
+
+def _audit_summary(stats: dict, records: list[dict]) -> None:
+    """把 summary 和逐题记录对一遍账,不一致就拒绝出报告。
+
+    这两份数据是在同一个循环里**分别**攒出来的:一个累加 `stats`,一个往
+    `records` 里 append。只要有一处写错,就会出现"summary 说 51/51、逐题字段
+    全是 False"这种自相矛盾 —— 而下游按题分析(配对检验、消融、失败归因)
+    读的是逐题字段,于是**结论全错,而且从表面完全看不出来**。
+
+    实测就发生过一次:`value_match` 因为读了 update 之前的字典而恒为 False。
+    summary 是对的,逐题是错的,报告看起来一切正常。
+
+    所以:宁可在生成阶段就报错,也不要产出一份内部矛盾的报告。
+    """
+    checks = {
+        # 定积分里"本该发散的题"不计入 solved(它走的是发散判定那条路),
+        # 所以判据要把 expect == "divergent" 的题排除掉,否则会误报。
+        "solved": _finite_solved,
+        "family_hit": lambda r: r.get("family_hit") is True,
+        "card_hit_top1": lambda r: r.get("card_hit_top1") is True,
+        "card_hit_top3": lambda r: r.get("card_hit_top3") is True,
+        "value_match": lambda r: r.get("value_match") is True,
+        # 发散判定是这套系统里最危险的一类错误(把发散报成有限值),单独对账
+        "expect_divergent": lambda r: r.get("expect") == "divergent",
+        "divergence_ok": lambda r: (r.get("expect") == "divergent"
+                                    and r.get("diverges") is True),
+        "wrongly_divergent": lambda r: (r.get("kind") == "definite"
+                                        and r.get("expect") != "divergent"
+                                        and r.get("diverges") is True),
+    }
+    problems = []
+    for key, predicate in checks.items():
+        if key not in stats:
+            continue
+        recomputed = sum(1 for r in records if predicate(r))
+        if recomputed != stats[key]:
+            problems.append(f"{key}: summary 记的是 {stats[key]},逐题数出来是 {recomputed}")
+    if problems:
+        raise SystemExit(
+            "评估报告自检失败 —— summary 与逐题记录对不上:\n  "
+            + "\n  ".join(problems)
+            + "\n\n逐题记录是下游分析的唯一数据源,这里不一致就意味着报告不可信。"
+        )
+
+
 def _dump(args, stats, total_time, records) -> None:
     if not args.json_out:
         return
+    _audit_summary(stats, records)
     out = Path(args.json_out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps({

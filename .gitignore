@@ -1,4 +1,9 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.pytest-tmp/
+.pytest-work-*/
 .venv/
+# 评估实验的中间产物:由 eval/metric_view.py 一条命令即可从
+# eval/report*.json 重新生成,不留进仓库。
+eval/runs/

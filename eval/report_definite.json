@@ -12,7 +12,7 @@
     "expect_divergent": 5,
     "divergence_ok": 5
   },
-  "seconds_total": 68.06,
+  "seconds_total": 61.49,
   "records": [
     {
       "id": "d01",
@@ -41,7 +41,7 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.3333333333333333(tanh-sinh(分段))",
       "seconds": 0.05
     },
@@ -72,7 +72,7 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 2(tanh-sinh(分段))",
       "seconds": 0.06
     },
@@ -104,7 +104,7 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0(tanh-sinh(分段))",
       "seconds": 0.01
     },
@@ -136,7 +136,7 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "无法判定(symbolic-limits)",
       "seconds": 0.03
     },
@@ -168,7 +168,7 @@
       "family_hit": true,
       "card_hit_top1": false,
       "card_hit_top3": false,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 2.5(tanh-sinh(分段))",
       "seconds": 0.02
     },
@@ -199,9 +199,9 @@
       "family_hit": true,
       "card_hit_top1": false,
       "card_hit_top3": false,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.3465735902799726(tanh-sinh(分段))",
-      "seconds": 0.16
+      "seconds": 0.15
     },
     {
       "id": "d07",
@@ -230,7 +230,7 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 1(tanh-sinh(分段))",
       "seconds": 0.06
     },
@@ -261,7 +261,7 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 2(smooth-endpoint → tanh-sinh(分段))",
       "seconds": 0.05
     },
@@ -292,7 +292,7 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ -1(tanh-sinh(分段))",
       "seconds": 0.06
     },
@@ -323,9 +323,9 @@
       "family_hit": true,
       "card_hit_top1": false,
       "card_hit_top3": false,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 3.141592653589793(smooth-endpoint → tanh-sinh(分段))",
-      "seconds": 0.39
+      "seconds": 0.37
     },
     {
       "id": "d11",
@@ -355,9 +355,9 @@
       "family_hit": false,
       "card_hit_top1": false,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 1(mapped-to-finite)",
-      "seconds": 0.16
+      "seconds": 0.13
     },
     {
       "id": "d12",
@@ -387,9 +387,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 1(mapped-to-finite)",
-      "seconds": 0.15
+      "seconds": 0.14
     },
     {
       "id": "d13",
@@ -419,9 +419,9 @@
       "family_hit": false,
       "card_hit_top1": false,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 1.772453850905516(split-at-zero)",
-      "seconds": 0.65
+      "seconds": 0.57
     },
     {
       "id": "d14",
@@ -451,9 +451,9 @@
       "family_hit": false,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 1.570796326794897(mapped-to-finite)",
-      "seconds": 0.1
+      "seconds": 0.09
     },
     {
       "id": "d15",
@@ -482,9 +482,9 @@
       "family_hit": false,
       "card_hit_top1": false,
       "card_hit_top3": false,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.866972987339911(tanh-sinh(分段))",
-      "seconds": 0.24
+      "seconds": 0.2
     },
     {
       "id": "d16",
@@ -514,9 +514,9 @@
       "family_hit": true,
       "card_hit_top1": false,
       "card_hit_top3": false,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 1.644934066848226(mapped-to-finite)",
-      "seconds": 0.36
+      "seconds": 0.31
     },
     {
       "id": "d17",
@@ -545,9 +545,9 @@
       "family_hit": false,
       "card_hit_top1": false,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 1.570796326794897(quadosc)",
-      "seconds": 2.87
+      "seconds": 2.47
     },
     {
       "id": "d18",
@@ -576,9 +576,9 @@
       "family_hit": false,
       "card_hit_top1": false,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 1.570796326794897(quadosc)",
-      "seconds": 3.07
+      "seconds": 2.64
     },
     {
       "id": "d19",
@@ -607,9 +607,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.6266570686577502(power-substitution → quadosc)",
-      "seconds": 4.13
+      "seconds": 3.95
     },
     {
       "id": "d20",
@@ -638,9 +638,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.6266570686577502(power-substitution → quadosc)",
-      "seconds": 2.89
+      "seconds": 2.52
     },
     {
       "id": "d21",
@@ -669,9 +669,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.5116633539732443(mapped-to-finite)",
-      "seconds": 0.38
+      "seconds": 0.34
     },
     {
       "id": "d22",
@@ -701,9 +701,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 3.141592653589793(smooth-endpoint → mapped-to-finite)",
-      "seconds": 0.19
+      "seconds": 0.16
     },
     {
       "id": "d23",
@@ -733,9 +733,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 3.627598728468436(smooth-endpoint → mapped-to-finite)",
-      "seconds": 0.3
+      "seconds": 0.27
     },
     {
       "id": "d24",
@@ -767,7 +767,7 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.5890486225480862(tanh-sinh(分段))",
       "seconds": 0.12
     },
@@ -801,9 +801,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.5333333333333333(tanh-sinh(分段))",
-      "seconds": 0.1
+      "seconds": 0.08
     },
     {
       "id": "d26",
@@ -835,9 +835,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.4908738521234052(tanh-sinh(分段))",
-      "seconds": 0.11
+      "seconds": 0.1
     },
     {
       "id": "d27",
@@ -866,9 +866,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.01666666666666667(tanh-sinh(分段))",
-      "seconds": 0.1
+      "seconds": 0.08
     },
     {
       "id": "d28",
@@ -900,7 +900,7 @@
       "family_hit": true,
       "card_hit_top1": false,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.1333333333333333(tanh-sinh(分段))",
       "seconds": 0.16
     },
@@ -931,9 +931,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 2.467401100272339(tanh-sinh(分段))",
-      "seconds": 1.57
+      "seconds": 1.4
     },
     {
       "id": "d30",
@@ -962,9 +962,9 @@
       "family_hit": false,
       "card_hit_top1": false,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.7853981633974483(tanh-sinh(分段))",
-      "seconds": 0.87
+      "seconds": 0.79
     },
     {
       "id": "d31",
@@ -994,9 +994,9 @@
       "family_hit": false,
       "card_hit_top1": false,
       "card_hit_top3": false,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.2721982612879503(tanh-sinh(分段))",
-      "seconds": 18.23
+      "seconds": 18.21
     },
     {
       "id": "d32",
@@ -1025,9 +1025,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ -4.928327177138326e-47(tanh-sinh(分段))",
-      "seconds": 0.33
+      "seconds": 0.3
     },
     {
       "id": "d33",
@@ -1057,9 +1057,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 4(tanh-sinh(分段))",
-      "seconds": 0.38
+      "seconds": 0.35
     },
     {
       "id": "d34",
@@ -1089,9 +1089,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 6.283185307179586(tanh-sinh(分段))",
-      "seconds": 0.1
+      "seconds": 0.12
     },
     {
       "id": "d35",
@@ -1121,9 +1121,9 @@
       "family_hit": true,
       "card_hit_top1": false,
       "card_hit_top3": false,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 1.333333333333333(tanh-sinh(分段))",
-      "seconds": 0.09
+      "seconds": 0.11
     },
     {
       "id": "d36",
@@ -1153,9 +1153,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 0.8224670334241132(tanh-sinh(分段))",
-      "seconds": 0.96
+      "seconds": 0.99
     },
     {
       "id": "d37",
@@ -1185,9 +1185,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ -1.644934066848226(tanh-sinh(分段))",
-      "seconds": 0.89
+      "seconds": 0.84
     },
     {
       "id": "d38",
@@ -1219,7 +1219,7 @@
       "card_hit_top3": true,
       "value_match": null,
       "numeric": "发散(mapped-to-finite)",
-      "seconds": 1.62
+      "seconds": 1.43
     },
     {
       "id": "d39",
@@ -1251,7 +1251,7 @@
       "card_hit_top3": true,
       "value_match": null,
       "numeric": "发散(smooth-endpoint → epsilon-sequence)",
-      "seconds": 0.38
+      "seconds": 0.3
     },
     {
       "id": "d40",
@@ -1282,7 +1282,7 @@
       "card_hit_top3": true,
       "value_match": null,
       "numeric": "发散(decay-test)",
-      "seconds": 0.23
+      "seconds": 0.21
     },
     {
       "id": "d41",
@@ -1313,7 +1313,7 @@
       "card_hit_top3": true,
       "value_match": null,
       "numeric": "发散(mapped-to-finite)",
-      "seconds": 2.01
+      "seconds": 1.78
     },
     {
       "id": "d42",
@@ -1344,7 +1344,7 @@
       "card_hit_top3": false,
       "value_match": null,
       "numeric": "发散(mapped-to-finite)",
-      "seconds": 1.99
+      "seconds": 1.81
     },
     {
       "id": "d43",
@@ -1376,9 +1376,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "无法判定(symbolic-parameters)",
-      "seconds": 1.23
+      "seconds": 1.13
     },
     {
       "id": "d44",
@@ -1411,9 +1411,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "无法判定(symbolic-parameters)",
-      "seconds": 2.21
+      "seconds": 1.92
     },
     {
       "id": "d45",
@@ -1446,9 +1446,9 @@
       "family_hit": true,
       "card_hit_top1": false,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "无法判定(symbolic-parameters)",
-      "seconds": 1.52
+      "seconds": 1.43
     },
     {
       "id": "d46",
@@ -1480,9 +1480,9 @@
       "family_hit": false,
       "card_hit_top1": false,
       "card_hit_top3": false,
-      "value_match": false,
+      "value_match": true,
       "numeric": "无法判定(symbolic-parameters)",
-      "seconds": 0.69
+      "seconds": 0.57
     },
     {
       "id": "d47",
@@ -1514,9 +1514,9 @@
       "family_hit": true,
       "card_hit_top1": false,
       "card_hit_top3": false,
-      "value_match": false,
+      "value_match": true,
       "numeric": "无法判定(symbolic-parameters)",
-      "seconds": 5.53
+      "seconds": 4.92
     },
     {
       "id": "d48",
@@ -1546,9 +1546,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "无法判定(symbolic-parameters)",
-      "seconds": 0.91
+      "seconds": 0.78
     },
     {
       "id": "d49",
@@ -1578,9 +1578,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "无法判定(symbolic-parameters)",
-      "seconds": 0.89
+      "seconds": 0.8
     },
     {
       "id": "d50",
@@ -1612,9 +1612,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "无法判定(symbolic-parameters)",
-      "seconds": 0.13
+      "seconds": 0.12
     },
     {
       "id": "d51",
@@ -1643,9 +1643,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ -1.088793045151801(tanh-sinh(分段))",
-      "seconds": 0.19
+      "seconds": 0.16
     },
     {
       "id": "d52",
@@ -1674,9 +1674,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ -2.177586090303602(tanh-sinh(分段))",
-      "seconds": 0.16
+      "seconds": 0.13
     },
     {
       "id": "d53",
@@ -1706,9 +1706,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ -1.088793045151801(tanh-sinh(分段))",
-      "seconds": 0.14
+      "seconds": 0.13
     },
     {
       "id": "d54",
@@ -1738,9 +1738,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 7.731091719810727e-46(tanh-sinh(分段))",
-      "seconds": 4.57
+      "seconds": 4.31
     },
     {
       "id": "d55",
@@ -1769,9 +1769,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 1.110720734539592(mapped-to-finite)",
-      "seconds": 0.72
+      "seconds": 0.22
     },
     {
       "id": "d56",
@@ -1800,9 +1800,9 @@
       "family_hit": true,
       "card_hit_top1": true,
       "card_hit_top3": true,
-      "value_match": false,
+      "value_match": true,
       "numeric": "收敛 ≈ 2.233361199194051e-48(mapped-to-finite)",
-      "seconds": 2.57
+      "seconds": 1.01
     }
   ]
 }

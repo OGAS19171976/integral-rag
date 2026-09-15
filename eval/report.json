@@ -11,7 +11,7 @@
     "clean": 56,
     "piecewise": 0
   },
-  "seconds_total": 22.94,
+  "seconds_total": 20.98,
   "records": [
     {
       "id": "e01",
@@ -202,7 +202,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.07,
-      "seconds": 0.03
+      "seconds": 0.02
     },
     {
       "id": "e08",
@@ -229,7 +229,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.07,
-      "seconds": 0.03
+      "seconds": 0.02
     },
     {
       "id": "e09",
@@ -257,7 +257,7 @@
       "card_hit_top3": false,
       "n_attempts": 1,
       "ugliness": 0.27,
-      "seconds": 0.07
+      "seconds": 0.06
     },
     {
       "id": "e10",
@@ -284,7 +284,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.06,
-      "seconds": 0.05
+      "seconds": 0.04
     },
     {
       "id": "e11",
@@ -420,7 +420,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.19,
-      "seconds": 0.1
+      "seconds": 0.09
     },
     {
       "id": "e16",
@@ -448,7 +448,7 @@
       "card_hit_top3": false,
       "n_attempts": 1,
       "ugliness": 0.09,
-      "seconds": 0.34
+      "seconds": 0.33
     },
     {
       "id": "e17",
@@ -513,7 +513,7 @@
       ],
       "expect_card": "exp_rational_substitution",
       "ok": true,
-      "result": "RootSum(4*_z**2 + 1, Lambda(_i, _i*log(2*_i + exp(x))))",
+      "result": "RootSum(4*_z**2 + 1, Lambda(_i, _i*log(-2*_i + exp(-x))))",
       "strategy": "直接积分(SymPy 内置算法)",
       "proof": "符号验证:求导后的差式经 simplify 化简为 0",
       "top1_card": "exp_rational_substitution",
@@ -528,7 +528,7 @@
       "card_hit_top1": true,
       "card_hit_top3": true,
       "n_attempts": 1,
-      "ugliness": 0.28,
+      "ugliness": 0.29,
       "seconds": 0.13
     },
     {
@@ -583,7 +583,7 @@
       "card_hit_top3": true,
       "n_attempts": 2,
       "ugliness": 0.21,
-      "seconds": 2.77
+      "seconds": 2.64
     },
     {
       "id": "e22",
@@ -610,7 +610,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.15,
-      "seconds": 0.08
+      "seconds": 0.07
     },
     {
       "id": "e23",
@@ -637,7 +637,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 1.55,
-      "seconds": 0.05
+      "seconds": 0.04
     },
     {
       "id": "e24",
@@ -692,7 +692,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.12,
-      "seconds": 0.08
+      "seconds": 0.07
     },
     {
       "id": "e26",
@@ -746,7 +746,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.07,
-      "seconds": 0.06
+      "seconds": 0.05
     },
     {
       "id": "e28",
@@ -773,7 +773,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.18,
-      "seconds": 0.09
+      "seconds": 0.06
     },
     {
       "id": "e29",
@@ -827,7 +827,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.11,
-      "seconds": 0.19
+      "seconds": 0.13
     },
     {
       "id": "e31",
@@ -854,7 +854,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.14,
-      "seconds": 0.09
+      "seconds": 0.06
     },
     {
       "id": "e32",
@@ -881,7 +881,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.21,
-      "seconds": 0.32
+      "seconds": 0.27
     },
     {
       "id": "e33",
@@ -908,7 +908,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.17,
-      "seconds": 0.13
+      "seconds": 0.1
     },
     {
       "id": "e34",
@@ -935,7 +935,7 @@
       "card_hit_top3": false,
       "n_attempts": 1,
       "ugliness": 0.16,
-      "seconds": 0.1
+      "seconds": 0.08
     },
     {
       "id": "e35",
@@ -989,7 +989,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.14,
-      "seconds": 0.41
+      "seconds": 0.39
     },
     {
       "id": "e37",
@@ -1016,7 +1016,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.15,
-      "seconds": 2.27
+      "seconds": 1.78
     },
     {
       "id": "e38",
@@ -1043,7 +1043,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.12,
-      "seconds": 0.18
+      "seconds": 0.19
     },
     {
       "id": "e39",
@@ -1070,7 +1070,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.21,
-      "seconds": 0.27
+      "seconds": 0.28
     },
     {
       "id": "e40",
@@ -1097,7 +1097,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.15,
-      "seconds": 0.07
+      "seconds": 0.06
     },
     {
       "id": "e41",
@@ -1124,7 +1124,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.1,
-      "seconds": 0.65
+      "seconds": 0.6
     },
     {
       "id": "e42",
@@ -1151,7 +1151,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.12,
-      "seconds": 0.31
+      "seconds": 0.33
     },
     {
       "id": "e43",
@@ -1206,7 +1206,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.13,
-      "seconds": 0.43
+      "seconds": 0.47
     },
     {
       "id": "e45",
@@ -1233,7 +1233,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.24,
-      "seconds": 4.21
+      "seconds": 4.2
     },
     {
       "id": "e46",
@@ -1260,7 +1260,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.14,
-      "seconds": 0.52
+      "seconds": 0.45
     },
     {
       "id": "e47",
@@ -1287,7 +1287,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.21,
-      "seconds": 0.38
+      "seconds": 0.34
     },
     {
       "id": "e48",
@@ -1315,7 +1315,7 @@
       "card_hit_top3": false,
       "n_attempts": 1,
       "ugliness": 0.23,
-      "seconds": 0.38
+      "seconds": 0.3
     },
     {
       "id": "e49",
@@ -1343,7 +1343,7 @@
       "card_hit_top3": true,
       "n_attempts": 3,
       "ugliness": 0.18,
-      "seconds": 3.79
+      "seconds": 3.27
     },
     {
       "id": "e50",
@@ -1371,7 +1371,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.09,
-      "seconds": 0.35
+      "seconds": 0.3
     },
     {
       "id": "e51",
@@ -1399,7 +1399,7 @@
       "card_hit_top3": false,
       "n_attempts": 1,
       "ugliness": 0.08,
-      "seconds": 0.09
+      "seconds": 0.08
     },
     {
       "id": "e52",
@@ -1428,7 +1428,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.69,
-      "seconds": 0.28
+      "seconds": 0.23
     },
     {
       "id": "e53",
@@ -1457,7 +1457,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.69,
-      "seconds": 0.21
+      "seconds": 0.18
     },
     {
       "id": "e54",
@@ -1485,7 +1485,7 @@
       "card_hit_top3": true,
       "n_attempts": 1,
       "ugliness": 0.13,
-      "seconds": 0.65
+      "seconds": 0.61
     },
     {
       "id": "e55",
@@ -1514,7 +1514,7 @@
       "card_hit_top3": false,
       "n_attempts": 1,
       "ugliness": 1.82,
-      "seconds": 0.27
+      "seconds": 0.19
     },
     {
       "id": "e56",
@@ -1542,7 +1542,7 @@
       "card_hit_top3": false,
       "n_attempts": 3,
       "ugliness": 0.24,
-      "seconds": 1.14
+      "seconds": 1.05
     }
   ]
 }
