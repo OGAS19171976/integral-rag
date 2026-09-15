@@ -23,15 +23,20 @@ python eval/run_eval.py            --k 4 --json eval/report.json
 python eval/run_eval.py --definite --k 4 --json eval/report_definite.json
 
 # 把某个指标顶成主指标,以便比较不同策略
-python eval/metric_view.py eval/report_definite.json \
-    --field card_hit_top1 --gate expect_card -o eval/runs/def_top1.json
-python eval/metric_view.py eval/report_definite.json \
-    --field card_hit_top3 --gate expect_card -o eval/runs/def_top3.json
+lev view eval/report_definite.json --field card_hit_top1 --gate expect_card -o eval/runs/def_top1.json
+lev view eval/report_definite.json --field card_hit_top3 --gate expect_card -o eval/runs/def_top3.json
 
 # 配对比较
-python eval/compare.py eval/runs/def_top1.json eval/runs/def_top3.json \
+lev compare eval/runs/def_top1.json eval/runs/def_top3.json \
     --metrics ok --label-a "top-1" --label-b "top-3"
 ```
+
+> **统计与评估的实现已经抽成独立的 [llm-eval-toolkit](../../llm-eval-toolkit)
+> 仓库**,`lev` 就是那个包的命令行入口。本仓库现在是它的**第一个使用者**:
+> 只保留 `evallib/` 这一层解析 shim(见 `evallib/__init__.py`),
+> 实现只有一份,在工具包那边。
+>
+> 装法:`pip install -e ../llm-eval-toolkit`,或设 `LLM_EVAL_TOOLKIT_SRC`。
 
 ---
 
