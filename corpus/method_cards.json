@@ -1,0 +1,814 @@
+[
+  {
+    "id": "basic_table",
+    "name": "基本积分表直接套用",
+    "family": "direct_table",
+    "priority": 10,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "poly",
+        "exp",
+        "trig",
+        "const",
+        "rational"
+      ],
+      "form": [
+        "any"
+      ],
+      "misc": []
+    },
+    "when": "被积函数是基本初等函数(幂函数、指数、正弦余弦、1/x 等)的有限和差或常数倍,没有复合内层、没有乘积纠缠、没有根式障碍。判别信号:每一项都能在基本积分表里逐条找到原函数。",
+    "recipe": "1. 把被积函数拆成若干常数倍的基本项之和,逐项积分:∫(f+g)dx=∫f dx+∫g dx,∫c*f dx=c*∫f dx;\n2. 逐项查基本公式:∫x^{n}dx=x^{n+1}/(n+1)(n≠−1)、∫(1/x)dx=ln|x|、∫e^{x}dx=e^{x}、∫a^{x}dx=a^{x}/ln a、∫sin x dx=−cos x、∫cos x dx=sin x、∫sec^{2}x dx=tan x、∫dx/(1+x^{2})=arctan x、∫dx/√(1−x^{2})=arcsin x;\n3. 把各原函数相加,只在最后写一个任意常数 +C;\n4. 若某项系数不是 1,把该系数直接乘到对应原函数前面。",
+    "pitfalls": "① 最后漏写 +C(不定积分的答案必须带任意常数);\n② ∫(1/x)dx 必须写成 ln|x|,漏绝对值是高频扣分点;\n③ 幂公式 ∫x^{n}dx=x^{n+1}/(n+1) 只在 n≠−1 时成立,n=−1 要用 ln|x|,混用会得到除以零;\n④ 三角函数的符号:∫sin x dx=−cos x、∫cos x dx=sin x,符号写反非常常见。",
+    "examples": [
+      "x^{3}",
+      "3*x^{2}-2*x+1",
+      "e^{x}+\\sin(x)",
+      "\\frac{1}{x}",
+      "e^{x}",
+      "\\cos x",
+      "\\sin x",
+      "\\sqrt{x}"
+    ]
+  },
+  {
+    "id": "linear_substitution",
+    "name": "凑微分/第一类换元 ∫f(ax+b)dx",
+    "family": "substitution_basic",
+    "priority": 15,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "poly",
+        "exp",
+        "trig",
+        "rational"
+      ],
+      "form": [
+        "composite"
+      ],
+      "misc": []
+    },
+    "when": "被积函数是某个基本函数以 ax+b 为内层的复合,即形如 f(ax+b),且外层 f 的原函数已知。判别信号:把 x 全部换成 ax+b、再在外面补一个常数因子就得到它。",
+    "recipe": "1. 令 u=ax+b,则 du=a dx,即 dx=du/a;\n2. 原式=(1/a)∫f(u)du;\n3. 用基本积分表求出 ∫f(u)du=F(u);\n4. 回代 u=ax+b,得 (1/a)*F(ax+b)+C;\n5. 例如 ∫e^{2x+1}dx=(1/2)e^{2x+1}+C;a 为负时要连符号一起代入,如 ∫(2−3x)^{5}dx=−(2−3x)^{6}/18+C。",
+    "pitfalls": "① 漏掉 1/a 这个因子(最常见),例如把 ∫e^{2x}dx 写成 e^{2x} 而不是 e^{2x}/2;\n② a 为负时符号处理错,如 ∫(2−3x)^{5}dx 的结果里应带 1/(−3);\n③ 只换了函数没换 dx,做完就不回代;\n④ 回代不彻底,答案里残留新变量 u。",
+    "examples": [
+      "e^{2*x+1}",
+      "\\sin(3*x-1)",
+      "\\frac{1}{2*x+5}"
+    ]
+  },
+  {
+    "id": "composite_substitution",
+    "name": "第一类换元的一般形式(把 g'(x)dx 凑进微分)",
+    "family": "substitution_basic",
+    "priority": 18,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "poly",
+        "exp",
+        "trig",
+        "log",
+        "rational"
+      ],
+      "form": [
+        "product",
+        "composite"
+      ],
+      "misc": []
+    },
+    "when": "被积函数能拆成 f(g(x))*g'(x) 的形状:一部分是复合的外层、另一部分恰好是内层 g(x) 的导数(最多差一个常数因子)。判别信号:乘积里有一项明显是另一项内层的导数。",
+    "recipe": "1. 选内层 g(x),要求被积函数剩下的部分恰好(或差常数倍)等于 g'(x);\n2. 令 u=g(x),则 du=g'(x)dx;\n3. 若缺常数,乘一个常数再除以同一个常数把系数凑成 g'(x);\n4. 原式化为 ∫f(u)du,查基本表积分;\n5. 回代 u=g(x)。典型:∫x*e^{x^{2}}dx 取 u=x^{2}(du=2x dx);∫(ln x)/x dx 取 u=ln x(du=dx/x);∫sin x cos x dx 取 u=sin x(du=cos x dx)。",
+    "pitfalls": "① 凑系数时乘了常数却忘记除回去;\n② 把 g'(x) 认错(例如 ∫sin x cos x dx 中把内层当成 x 而不是 sin x);\n③ 回代不彻底,答案里还留着 u;\n④ 被积函数其实不能写成 f(g)g' 却硬凑,后面无法收尾。",
+    "examples": [
+      "x*e^{x^{2}}",
+      "\\frac{\\ln(x)}{x}",
+      "\\sin(x)*\\cos(x)",
+      "\\frac{\\cos x}{\\sin x}",
+      "\\frac{\\sin x}{1+\\cos x}"
+    ]
+  },
+  {
+    "id": "radical_linear_substitution",
+    "name": "含 n 次根号 √(ax+b) 的根式代换",
+    "family": "substitution_algebraic",
+    "priority": 56,
+    "triggers": {
+      "has_radical": [
+        "ax+b"
+      ],
+      "has_func": [
+        "radical",
+        "rational"
+      ],
+      "form": [
+        "composite"
+      ],
+      "misc": []
+    },
+    "when": "被积函数中出现一次式的根号 √(ax+b),且它和 x 或有理式同时出现。判别信号:根号内是一次式,直接凑微分后外层还留着 x 或分母,凑不出干净的 du。",
+    "recipe": "1. 令 t=√(ax+b)(n 次根就令 t 为该 n 次根);\n2. 反解 x=(t^{2}−b)/a,dx=(2t/a)dt;一般 n 次根时 dx=(n*t^{n−1}/a)dt;\n3. 把所有 x 与根式都用 t 表示,原式化为关于 t 的有理函数;\n4. 用部分分式或基本积分表积分;\n5. 回代 t=√(ax+b),并注明定义域 ax+b≥0。例如 ∫dx/(1+√x)=2√x−2ln(1+√x)+C。",
+    "pitfalls": "① 只把根号换成 t,忘记 dx 也要换成 (2t/a)dt;\n② 反解 x 时代数变形出错(尤其常数 b 的符号);\n③ 偶次根要求 ax+b≥0,忽略定义域会丢掉区间限制;\n④ 出现多个不同次根式时,应令 t 为各根指数的最小公倍数次根,只令其中一个根会留下另一个根号消不掉。",
+    "examples": [
+      "\\frac{1}{1+\\sqrt{x}}",
+      "\\frac{\\sqrt{x}}{1+x}",
+      "\\frac{1}{x*\\sqrt{x+1}}"
+    ]
+  },
+  {
+    "id": "trig_sub_a2_minus_x2",
+    "name": "三角替换 x = a·sin t(处理 √(a²−x²))",
+    "family": "substitution_trig",
+    "priority": 39,
+    "triggers": {
+      "has_radical": [
+        "a2-x2"
+      ],
+      "has_func": [
+        "radical"
+      ],
+      "form": [
+        "composite"
+      ],
+      "misc": []
+    },
+    "when": "被积函数中出现 √(a^{2}−x^{2})(或其幂次、或在分母上),且用基本公式或凑微分处理不掉。典型信号:根号内是「常数减 x^{2}」,即两个异号平方项。",
+    "recipe": "1. 令 x=a*sin t,t∈(−π/2,π/2),此时 cos t>0;\n2. dx=a*cos t dt;\n3. √(a^{2}−x^{2})=√(a^{2}−a^{2}sin^{2}t)=a*cos t(因 cos t>0,不取绝对值);\n4. 代入后化为关于 t 的三角有理式,用 sin^{m}cos^{n} 的技巧或万能代换处理;\n5. 回代:由 sin t=x/a 得 t=arcsin(x/a);必要时画辅助直角三角形(对边 x、斜边 a、邻边 √(a^{2}−x^{2}))把 cos t、tan t 换回 x。",
+    "pitfalls": "① 回代时把 a*cos t 写成 −a*cos t,必须用 t 的范围说明 cos t>0;\n② 结果里同时含 (1/2)arcsin(x/a) 与 (1/2)sin t cos t 两项时,两项都要回代,漏掉第二项是高频错误;\n③ 忘记 dx=a*cos t dt 里的因子 a;\n④ 在 x=±a 端点替换不合法(被积函数本身可能无定义),要交代积分区间。",
+    "examples": [
+      "\\sqrt{a^{2}-x^{2}}",
+      "x^{2}*\\sqrt{a^{2}-x^{2}}",
+      "\\frac{1}{\\sqrt{a^{2}-x^{2}}}"
+    ]
+  },
+  {
+    "id": "trig_sub_x2_plus_a2",
+    "name": "三角替换 x = a·tan t(处理 √(x²+a²))",
+    "family": "substitution_trig",
+    "priority": 41,
+    "triggers": {
+      "has_radical": [
+        "x2+a2"
+      ],
+      "has_func": [
+        "radical"
+      ],
+      "form": [
+        "composite"
+      ],
+      "misc": []
+    },
+    "when": "被积函数中出现 √(x^{2}+a^{2})(或其幂次)。典型信号:根号内是「x^{2} 加常数」,两个正项之和。",
+    "recipe": "1. 令 x=a*tan t,t∈(−π/2,π/2),此时 sec t>0;\n2. dx=a*sec^{2}t dt;\n3. √(x^{2}+a^{2})=√(a^{2}tan^{2}t+a^{2})=a*sec t;\n4. 代入后得到关于 sec t、tan t 的积分,用 d(tan t)=sec^{2}t dt、d(sec t)=sec t tan t dt 与 ∫sec t dt=ln|sec t+tan t| 处理;\n5. 回代:t=arctan(x/a),sec t=√(x^{2}+a^{2})/a,tan t=x/a;对数结果常可直接写成 ln(x+√(x^{2}+a^{2}))+C。",
+    "pitfalls": "① 只把 √(x^{2}+a^{2}) 换掉却忘了 dx=a*sec^{2}t dt,少一个 sec^{2}t 因子;\n② 回代时 sec t 与 tan t 用混(sec t=√(x^{2}+a^{2})/a,tan t=x/a);\n③ ∫sec t dt 的对数形式漏绝对值,或写成 ln|sec t−tan t|;\n④ 忘记 t 的范围保证 sec t>0,导致符号讨论缺失。",
+    "examples": [
+      "\\sqrt{x^{2}+a^{2}}",
+      "\\frac{1}{\\sqrt{x^{2}+a^{2}}}",
+      "\\frac{x^{2}}{\\sqrt{x^{2}+a^{2}}}"
+    ]
+  },
+  {
+    "id": "trig_sub_x2_minus_a2",
+    "name": "三角替换 x = a·sec t(处理 √(x²−a²))",
+    "family": "substitution_trig",
+    "priority": 43,
+    "triggers": {
+      "has_radical": [
+        "x2-a2"
+      ],
+      "has_func": [
+        "radical"
+      ],
+      "form": [
+        "composite"
+      ],
+      "misc": []
+    },
+    "when": "被积函数中出现 √(x^{2}−a^{2})(或其幂次)。典型信号:根号内是「x^{2} 减常数」。",
+    "recipe": "1. 令 x=a*sec t;为去掉绝对值,先在 x>a>0 上取 t∈(0,π/2),此时 tan t>0;\n2. dx=a*sec t*tan t dt;\n3. √(x^{2}−a^{2})=√(a^{2}sec^{2}t−a^{2})=a*tan t(仅在这条 tan t>0 的分支上);\n4. 代入后用 sec、tan 的基本公式(∫sec t dt、∫sec^{3}t dt 等)积分;\n5. 回代:sec t=x/a,tan t=√(x^{2}−a^{2})/a;结果通常可写成 ln|x+√(x^{2}−a^{2})|+C。",
+    "pitfalls": "① 在 x<−a 的分支上 tan t<0,√(x^{2}−a^{2})=a*|tan t|,直接写 a*tan t 会丢符号;\n② 忘记 dx=a*sec t*tan t dt 里的 tan t 因子;\n③ 回代时把 tan t 写成 √(x^{2}+a^{2})/a(加减号方向错);\n④ 对数结果漏绝对值,定义域只剩 x>a。",
+    "examples": [
+      "\\frac{1}{\\sqrt{x^{2}-a^{2}}}",
+      "\\frac{\\sqrt{x^{2}-a^{2}}}{x}",
+      "\\sqrt{x^{2}-a^{2}}"
+    ]
+  },
+  {
+    "id": "reciprocal_substitution",
+    "name": "倒代换 x = 1/t",
+    "family": "substitution_algebraic",
+    "priority": 58,
+    "triggers": {
+      "has_radical": [
+        "x2+a2",
+        "x2-a2"
+      ],
+      "has_func": [
+        "rational",
+        "radical"
+      ],
+      "form": [
+        "quotient"
+      ],
+      "misc": []
+    },
+    "when": "分母含 x 的较高次幂而分子次数很低,或分母是 x^{n}*√(x^{2}±a^{2}) 的形状。判别信号:直接积分越做越繁,而把 x 换成 1/t 后次数关系反转,根号变成 √(1±a^{2}t^{2}) 型。",
+    "recipe": "1. 令 x=1/t(t≠0),则 dx=−dt/t^{2};\n2. 把所有 x 的幂统一换成 t 的幂:x^{n}=1/t^{n},1/x^{n}=t^{n};\n3. 根式要小心:√(x^{2}+a^{2})=√(1/t^{2}+a^{2})=√(1+a^{2}t^{2})/|t|,在 t>0 时取 √(1+a^{2}t^{2})/t;\n4. 化简后得到一个关于 t 的(通常更简单的)积分,算完回代 t=1/x;\n5. 例如 ∫dx/(x^{2}√(x^{2}+1))=−√(x^{2}+1)/x+C(x>0);∫dx/(x√(x^{4}−1))=−(1/2)arcsin(1/x^{2})+C。",
+    "pitfalls": "① 忘记 dx=−dt/t^{2} 中的负号;\n② 根式化简时丢掉 1/|t| 的绝对值,导致符号错;\n③ 回代时没有把每一处 t 都换回 1/x;\n④ 不交代 x≠0,且 x<0 与 x>0 两条分支的符号要分开讨论。",
+    "examples": [
+      "\\frac{1}{x^{2}*\\sqrt{x^{2}+1}}",
+      "\\frac{1}{x*\\sqrt{x^{2}+1}}",
+      "\\frac{1}{x*\\sqrt{x^{4}-1}}"
+    ]
+  },
+  {
+    "id": "parts_poly_exp_trig",
+    "name": "分部积分:多项式×指数/三角函数",
+    "family": "parts",
+    "priority": 25,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "poly",
+        "exp",
+        "trig"
+      ],
+      "form": [
+        "product"
+      ],
+      "misc": [
+        "poly_times_exp",
+        "poly_times_trig"
+      ]
+    },
+    "when": "被积函数是多项式与 e^{ax}、sin(bx)、cos(bx) 的乘积。判别信号:一个因子求导后次数降低(多项式),另一个因子积分后类型不变(指数或三角),正好满足分部积分的适用条件。",
+    "recipe": "1. 用分部积分公式 ∫u dv=u*v−∫v du;\n2. 取 u=多项式(求导降次),dv=指数或三角部分 dx;\n3. 求 v:dv=e^{ax}dx 时 v=e^{ax}/a;dv=sin(bx)dx 时 v=−cos(bx)/b;dv=cos(bx)dx 时 v=sin(bx)/b;\n4. 代入 u*v−∫v du,得到次数更低的新积分,重复直到多项式变成常数;\n5. 多项式是 k 次就做 k 次分部;次数高时改用表格法。",
+    "pitfalls": "① u 与 dv 选反(让多项式去积分、指数去求导),会越算越复杂;\n② 忘记公式里的减号,或忘记 ∫v du 中 v 自带符号(如 v=−cos(bx)/b);\n③ 重复分部时中途改变 u 的选择规则,导致不收敛;\n④ 最后一步 ∫v du 已经很简单却漏积,直接写成乘积。",
+    "examples": [
+      "x*e^{x}",
+      "x^{2}*\\sin(x)",
+      "x*\\cos(2*x)"
+    ]
+  },
+  {
+    "id": "parts_poly_log_invtrig",
+    "name": "分部积分:多项式×对数/反三角",
+    "family": "parts",
+    "priority": 27,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "poly",
+        "log",
+        "inv_trig"
+      ],
+      "form": [
+        "product"
+      ],
+      "misc": [
+        "poly_times_log",
+        "poly_times_invtrig"
+      ]
+    },
+    "when": "被积函数是多项式与 ln x、arcsin x、arctan x 等的乘积。判别信号:对数与反三角求导后变成有理式或根式(变简单),而多项式积分很容易,所以反过来把对数/反三角放进 u。",
+    "recipe": "1. 取 u=ln x 或反三角函数(求导变简单),dv=多项式 dx;\n2. 求 du 与 v:d(ln x)=dx/x;d(arctan x)=dx/(1+x^{2});dv=x^{n}dx 时 v=x^{n+1}/(n+1);\n3. 代入 ∫u dv=u*v−∫v du;\n4. 新积分是常规的有理式积分,用部分分式或基本表继续算;\n5. 只有单独的 ln x 或 arctan x 时,可看成 u=ln x、dv=dx,基准结果 ∫ln x dx=x*ln x−x+C。",
+    "pitfalls": "① 与指数/三角型相反,这里若把多项式放进 u、把 ln x 放进 dv,新积分里会出现 (x ln x−x) 乘高次幂,反而更难;\n② v 的系数漏写 1/(n+1);\n③ 忘记 ∫ln x dx=x*ln x−x 这个基准结果;\n④ 反三角求导公式记错,如把 d(arctan x) 写成 1/(1−x^{2})。",
+    "examples": [
+      "x*\\ln(x)",
+      "x^{2}*\\arctan(x)",
+      "\\ln(x)",
+      "\\arctan(x)"
+    ]
+  },
+  {
+    "id": "parts_tabular",
+    "name": "分部积分表格法(需多次分部)",
+    "family": "parts",
+    "priority": 31,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "poly",
+        "exp",
+        "trig"
+      ],
+      "form": [
+        "product"
+      ],
+      "misc": [
+        "poly_times_exp",
+        "poly_times_trig"
+      ]
+    },
+    "when": "多项式次数较高(≥2)或需要连续分部三次以上,逐步分部又慢又容易错。判别信号:其中一个因子反复求导会在有限步内变成 0。",
+    "recipe": "1. 画两列:左列 D 放要求导的因子(通常是多项式),右列 I 放要积分的因子;\n2. 左列反复求导直到得到 0,右列同步做相同次数的积分;\n3. 从左上角开始斜向相乘,符号按 +、−、+、− 交替;\n4. 所有斜向乘积相加即为答案,写到最后一项(左列为 0 的那一行为止);\n5. 例如 ∫x^{3}e^{x}dx=(x^{3}−3x^{2}+6x−6)e^{x}+C。",
+    "pitfalls": "① 符号不交替(写成全加),导致正负号整体错乱;\n② 右列积分次数与左列求导次数不匹配,少算或多算一项;\n③ 左列还没降到 0 就停止,漏掉最后一项;\n④ 用表格法后还多写一个 ∫ 项(表格的斜向乘积已经包含了积分)。",
+    "examples": [
+      "x^{3}*e^{x}",
+      "x^{4}*\\sin(x)",
+      "x^{2}*e^{2*x}"
+    ]
+  },
+  {
+    "id": "parts_cyclic",
+    "name": "分部积分:循环型(如 eˣsin x)",
+    "family": "parts",
+    "priority": 34,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "exp",
+        "trig"
+      ],
+      "form": [
+        "product"
+      ],
+      "misc": [
+        "cyclic_parts"
+      ]
+    },
+    "when": "被积函数是 e^{ax} 与 sin(bx) 或 cos(bx) 的乘积。判别信号:这两个因子无论求导还是积分都不改变类型,分部两次后原积分会重新出现。",
+    "recipe": "1. 记 I=∫e^{ax}sin(bx)dx,先分部一次,取 u=sin(bx)、dv=e^{ax}dx;\n2. 第二次分部必须仍取三角部分作 u(保持同样的选择模式),于是右边重新出现 I 的倍数;\n3. 把含 I 的项移到等号左边,得到(1+系数)I=已知表达式;\n4. 两边同除系数解出 I,再加 C;\n5. 记忆结果:I=∫e^{ax}sin(bx)dx=e^{ax}(a*sin(bx)−b*cos(bx))/(a^{2}+b^{2})+C;cos 型为 e^{ax}(a*cos(bx)+b*sin(bx))/(a^{2}+b^{2})+C。",
+    "pitfalls": "① 两次分部选了不同类的 u(一次三角一次指数),结果不封闭、永远循环;\n② 移项时 I 的系数符号或大小算错;\n③ 移项后忘记两边除以系数,直接把系数当作 1;\n④ 答案较长,最后漏写 +C。",
+    "examples": [
+      "e^{x}*\\sin(x)",
+      "e^{2*x}*\\cos(3*x)",
+      "e^{-x}*\\sin(2*x)"
+    ]
+  },
+  {
+    "id": "rational_improper_division",
+    "name": "有理函数假分式先做多项式除法",
+    "family": "partial_fractions",
+    "priority": 30,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "rational",
+        "poly"
+      ],
+      "form": [
+        "rational"
+      ],
+      "misc": [
+        "improper_fraction"
+      ]
+    },
+    "when": "被积函数是有理函数 P(x)/Q(x) 且分子次数 ≥ 分母次数。判别信号:先比次数,次数关系不满足「分子低于分母」时,直接做部分分式分解是不合法的。",
+    "recipe": "1. 比较分子与分母的次数;\n2. 若 deg P ≥ deg Q,做多项式长除法,写成 P/Q=S(x)+R(x)/Q(x),其中 deg R<deg Q;\n3. 先对商 S(x) 逐项积分(幂函数);\n4. 再对真分式 R/Q 因式分解、部分分式分解后积分;\n5. 例如 x^{3}/(x^{2}+1)=x−x/(x^{2}+1),积分得 x^{2}/2−(1/2)ln(x^{2}+1)+C。",
+    "pitfalls": "① 不先做除法就设部分分式,导致恒等式无解或系数荒谬;\n② 长除法的余式次数没有真正降到低于分母;\n③ 把商 S(x) 的积分漏掉(它一般会贡献 x 的幂次项);\n④ 带余除法某一步符号写错,后面全盘皆错。",
+    "examples": [
+      "\\frac{x^{3}}{x^{2}+1}",
+      "\\frac{x^{2}+1}{x-1}",
+      "\\frac{x^{4}}{x^{2}-1}"
+    ]
+  },
+  {
+    "id": "rational_distinct_linear",
+    "name": "有理函数部分分式:互异单实根",
+    "family": "partial_fractions",
+    "priority": 36,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "rational"
+      ],
+      "form": [
+        "rational"
+      ],
+      "misc": []
+    },
+    "when": "真分式的分母能分解成互不相同的一次因式之积,即分母只有单重实根。判别信号:分母因式分解后每个因子都是一次式且指数为 1。",
+    "recipe": "1. 把分母分解为 (x−a)(x−b)…,各根互异;\n2. 设 P/Q=A/(x−a)+B/(x−b)+…;\n3. 用待定系数法(通分比较各项系数)或留数法(两边乘 x−a 后令 x=a)求 A、B…;\n4. 逐项积分得 A*ln|x−a|+B*ln|x−b|+…+C;\n5. 例如 1/(x^{2}−1)=(1/2)/(x−1)−(1/2)/(x+1),积分得 (1/2)ln|x−1|−(1/2)ln|x+1|+C。",
+    "pitfalls": "① 对数里漏绝对值(必须写 ln|x−a|);\n② 通分比较系数时方程列错或漏解某个系数;\n③ 分母没有先因式分解就直接套公式;\n④ 用对数运算合并两项时符号写错:减法应合并成商的绝对值,即 ln|(x−1)/(x+1)|。",
+    "examples": [
+      "\\frac{1}{x^{2}-1}",
+      "\\frac{x+2}{x^{2}-5*x+6}",
+      "\\frac{2*x+1}{x^{2}+x}"
+    ]
+  },
+  {
+    "id": "rational_repeated_linear",
+    "name": "有理函数部分分式:重实根",
+    "family": "partial_fractions",
+    "priority": 38,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "rational"
+      ],
+      "form": [
+        "rational"
+      ],
+      "misc": [
+        "repeated_root"
+      ]
+    },
+    "when": "真分式的分母含 (x−a)^{k} 这样的重因式(k≥2)。判别信号:因式分解后某个一次因子的指数大于 1。",
+    "recipe": "1. 对 (x−a)^{k} 必须设 k 项:A1/(x−a)+A2/(x−a)^{2}+…+Ak/(x−a)^{k},指数从 1 一直写到 k,一项都不能少;\n2. 其余互异一次因子照常各设一项;\n3. 用待定系数或逐次代入特殊值定出所有系数;\n4. 逐项积分:j=1 时 ∫A1/(x−a)dx=A1*ln|x−a|;j≥2 时 ∫Aj/(x−a)^{j}dx=Aj*(x−a)^{1−j}/(1−j);\n5. 例如 1/(x(x+1)^{2})=1/x−1/(x+1)−1/(x+1)^{2},逐项积分即得 ln|x|−ln|x+1|+1/(x+1)+C。",
+    "pitfalls": "① 最高频错误:只写 Ak/(x−a)^{k} 一项,漏掉低次幂 A1/(x−a)、A2/(x−a)^{2}…;\n② 求 ∫dx/(x−a)^{2} 时忘记负号,结果是 −1/(x−a) 而不是 1/(x−a);\n③ 用代入法时低估重根,方程不够,定不出全部系数;\n④ j≥2 的项积完误写成 ln,而不是 (x−a)^{1−j}/(1−j)。",
+    "examples": [
+      "\\frac{1}{x*(x+1)^{2}}",
+      "\\frac{x}{(x-1)^{2}}",
+      "\\frac{1}{x^{2}*(x+1)}"
+    ]
+  },
+  {
+    "id": "rational_irreducible_quadratic",
+    "name": "有理函数部分分式:不可约二次因子",
+    "family": "partial_fractions",
+    "priority": 40,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "rational"
+      ],
+      "form": [
+        "rational"
+      ],
+      "misc": [
+        "irreducible_quadratic"
+      ]
+    },
+    "when": "真分式的分母含判别式小于 0 的二次因子 x^{2}+px+q(在实数范围内不可分解)。判别信号:二次因子无法再拆成两个实一次因式之积。",
+    "recipe": "1. 对每个不可约二次因子设一次式分子:(A*x+B)/(x^{2}+p*x+q),不能只设常数;\n2. 把 A*x+B 拆成 (A/2)(2x+p)+(B−A*p/2),使第一块恰为分母导数的常数倍;\n3. 第一块凑微分得 (A/2)ln(x^{2}+p*x+q);\n4. 剩余部分 (B−A*p/2)/(x^{2}+p*x+q) 先配方成 (B−A*p/2)/((x+p/2)^{2}+(q−p^{2}/4)),再用 ∫du/(u^{2}+c^{2})=(1/c)arctan(u/c);\n5. 若二次因子带重数 (x^{2}+p*x+q)^{k},要对 j=1…k 各设一个一次式分子。",
+    "pitfalls": "① 分子只设常数 B,无法匹配分母求导产生的一次项,系数方程组无解;\n② 配方时常数项写成 q 而不是 q−p^{2}/4;\n③ arctan 前的系数漏掉 1/√(q−p^{2}/4);\n④ 把对数项的系数 A/2 写成 A(拆分时系数 (A/2) 与 (2x+p) 相乘才得到 A*x)。",
+    "examples": [
+      "\\frac{x+1}{x^{2}+2*x+5}",
+      "\\frac{1}{x^{2}+x+1}",
+      "\\frac{3*x-1}{x^{2}+4}"
+    ]
+  },
+  {
+    "id": "weierstrass_substitution",
+    "name": "三角函数有理式:万能代换 t = tan(x/2)",
+    "family": "weierstrass",
+    "priority": 50,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "trig",
+        "rational"
+      ],
+      "form": [
+        "rational_in_sin_cos"
+      ],
+      "misc": []
+    },
+    "when": "被积函数是 sin x 与 cos x 的有理式,而用奇偶性、倍角或凑微分都处理不掉时(既不满足「cos 为奇次」也不满足「sin 为奇次」,也不是只含 tan x)。判别信号:sin x、cos x 以任意加减乘除组合出现且不易拆分。",
+    "recipe": "1. 令 t=tan(x/2);\n2. 三个替换式:sin x=2t/(1+t^{2}),cos x=(1−t^{2})/(1+t^{2}),dx=2dt/(1+t^{2});\n3. 代入后原式变成关于 t 的有理函数;\n4. 用部分分式分解并逐项积分;\n5. 回代 t=tan(x/2);注意 x=(2k+1)π 处 t 无定义,积分区间要避开这些点。",
+    "pitfalls": "① dx=2dt/(1+t^{2}) 的因子 2 漏掉(最常见);\n② cos x 的分子写成 1+t^{2}(应为 1−t^{2});\n③ 回代时把 t 写成 tan x 而不是 tan(x/2);\n④ 万能代换一定可行,但会把次数抬高,能用更简单的奇偶性技巧时应优先用简单方法。",
+    "examples": [
+      "\\frac{1}{1+\\sin(x)+\\cos(x)}",
+      "\\frac{\\sin(x)}{1+\\sin(x)}",
+      "\\frac{1}{2+\\cos(x)}"
+    ]
+  },
+  {
+    "id": "sin_cos_odd_power",
+    "name": "sinᵐcosⁿ:m 或 n 为奇数,拆出一个凑微分",
+    "family": "rational_trig",
+    "priority": 46,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "trig"
+      ],
+      "form": [
+        "power",
+        "product"
+      ],
+      "misc": [
+        "odd_power_sin_cos"
+      ]
+    },
+    "when": "被积函数是 sin^{m}x*cos^{n}x,且 m、n 中至少有一个是正奇数。判别信号:两个幂次里有一个是 1、3、5 这样的奇数。",
+    "recipe": "1. 若 n(cos 的指数)为奇数:拆出一个 cos x,令 u=sin x(du=cos x dx),把剩下的 cos^{n−1}x 用 cos^{2}x=1−sin^{2}x 全部换成 u 的多项式;\n2. 若 m(sin 的指数)为奇数:拆出一个 sin x,令 u=cos x(du=−sin x dx),把剩下的 sin^{m−1}x 用 sin^{2}x=1−cos^{2}x 换成 u 的多项式;\n3. 原式化为 ∫u 的多项式 du,逐项积分;\n4. 回代 u;\n5. 例如 ∫sin^{3}x*cos^{2}x dx,取 u=cos x,得 −∫(1−u^{2})u^{2}du=−u^{3}/3+u^{5}/5+C。",
+    "pitfalls": "① 取 u=cos x 时 du=−sin x dx,负号漏掉是高发错误;\n② 拆出的那个因子要正好配成 du,拆错因子(该拆 cos 却拆了 sin 的幂)就凑不出;\n③ 剩余偶次幂用 sin^{2}x+cos^{2}x=1 转换时符号或指数学错;\n④ 回代时 u 没有换回 sin x 或 cos x。",
+    "examples": [
+      "\\sin^{3}(x)*\\cos^{2}(x)",
+      "\\sin^{2}(x)*\\cos^{5}(x)",
+      "\\cos^{5}(x)"
+    ]
+  },
+  {
+    "id": "sin_cos_even_power",
+    "name": "sinᵐcosⁿ:均为偶数,降幂/半角",
+    "family": "rational_trig",
+    "priority": 48,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "trig"
+      ],
+      "form": [
+        "power",
+        "product"
+      ],
+      "misc": [
+        "even_power_sin_cos"
+      ]
+    },
+    "when": "被积函数是 sin^{m}x*cos^{n}x,且 m、n 都是正偶数。判别信号:两个幂次都是偶数,拆不出可用于凑微分的奇次因子。",
+    "recipe": "1. 用半角公式降幂:sin^{2}x=(1−cos 2x)/2,cos^{2}x=(1+cos 2x)/2;\n2. 对高次幂反复使用,直到化成 1、cos 2x、cos 4x 的一次式之和;\n3. 两个幂次都很大时,也可先写 sin^{2}x*cos^{2}x=(1/4)sin^{2}2x,再与半角公式交替降次;\n4. 逐项积分,用 ∫cos(kx)dx=sin(kx)/k、∫sin(kx)dx=−cos(kx)/k;\n5. 例如 ∫sin^{2}x dx=x/2−sin(2x)/4+C;∫sin^{2}x*cos^{2}x dx=x/8−sin(4x)/32+C。",
+    "pitfalls": "① 半角公式里的 1/2 漏掉;\n② cos 2x 的符号写反(sin^{2}x 是 (1−cos 2x)/2,cos^{2}x 是 (1+cos 2x)/2);\n③ 降幂后出现 cos 4x、cos 6x 等高次项时忘记继续展开或漏积;\n④ 用倍角公式回写成 sin x、cos x 形式时系数出错。",
+    "examples": [
+      "\\sin^{2}(x)",
+      "\\cos^{4}(x)",
+      "\\sin^{2}(x)*\\cos^{2}(x)"
+    ]
+  },
+  {
+    "id": "trig_product_to_sum",
+    "name": "三角函数乘积化和差",
+    "family": "rational_trig",
+    "priority": 44,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "trig"
+      ],
+      "form": [
+        "product"
+      ],
+      "misc": []
+    },
+    "when": "被积函数是两个不同频率的三角函数之积,如 sin(ax)cos(bx)、sin(ax)sin(bx)、cos(ax)cos(bx)。判别信号:两个因子频率不同且都没有幂次。",
+    "recipe": "1. 用积化和差公式:sin A*cos B=(1/2)[sin(A+B)+sin(A−B)];sin A*sin B=(1/2)[cos(A−B)−cos(A+B)];cos A*cos B=(1/2)[cos(A+B)+cos(A−B)];\n2. 取 A=ax、B=bx,注意 A−B 的顺序与符号;\n3. 化为若干 ∫sin(kx)dx 与 ∫cos(kx)dx;\n4. 逐项积分得 −cos(kx)/k 或 sin(kx)/k,频率 k 为 a+b 或 a−b;\n5. 例如 ∫sin(3x)cos(5x)dx=−cos(8x)/16+cos(2x)/4+C。",
+    "pitfalls": "① 前面的系数 1/2 漏掉;\n② sin A*sin B 的差序写错(应为 cos(A−B)−cos(A+B),符号容易反);\n③ 把 A−B 与 B−A 搞混(cos 是偶函数无影响,但 sin(A−B) 会差一个符号);\n④ 频率 a±b 算错,导致积分系数 1/(a±b) 全错。",
+    "examples": [
+      "\\sin(3*x)*\\cos(5*x)",
+      "\\sin(2*x)*\\sin(4*x)",
+      "\\cos(x)*\\cos(3*x)"
+    ]
+  },
+  {
+    "id": "tan_sec_powers",
+    "name": "tan/sec 幂次型的处理",
+    "family": "rational_trig",
+    "priority": 49,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "trig"
+      ],
+      "form": [
+        "power",
+        "product"
+      ],
+      "misc": []
+    },
+    "when": "被积函数是 tan^{m}x、sec^{n}x 或二者乘积的幂次形式。判别信号:出现 tan/sec 的幂,且不混有独立的 sin、cos 因子。",
+    "recipe": "1. ∫tan^{n}x dx:拆出 tan^{n−2}x,用 tan^{2}x=sec^{2}x−1 得 ∫tan^{n−2}x*sec^{2}x dx−∫tan^{n−2}x dx,第一项令 u=tan x,第二项递推;\n2. ∫sec^{n}x dx(n 为偶数):拆出 sec^{2}x,令 u=tan x,其余 sec^{2}x 用 1+tan^{2}x 替换;\n3. ∫tan^{m}x*sec^{n}x dx,m 为奇数:拆出 sec x*tan x,令 u=sec x,其余 tan^{2}x 用 sec^{2}x−1 替换;\n4. n 为偶数:拆出 sec^{2}x,令 u=tan x;\n5. 基本公式:∫sec x dx=ln|sec x+tan x|,∫sec^{3}x dx=(1/2)(sec x*tan x+ln|sec x+tan x|)。",
+    "pitfalls": "① tan^{2}x=sec^{2}x−1 里的常数 1 漏掉(写成 sec^{2}x 结果就错);\n② ∫sec x dx 写成 ln|cos x| 或漏绝对值;\n③ 判断 m、n 的奇偶时看错,选错代换;\n④ m 为偶数、n 为奇数的混合情形既不能用 u=tan x 也不能直接用 u=sec x,要先用 tan^{2}x=sec^{2}x−1 或分部化成 sec 的幂再递推。",
+    "examples": [
+      "\\tan^{3}(x)",
+      "\\sec^{4}(x)",
+      "\\tan^{3}(x)*\\sec(x)"
+    ]
+  },
+  {
+    "id": "denom_a_plus_b_trig",
+    "name": "分母为 a+b·sin x 型的特殊技巧",
+    "family": "rational_trig",
+    "priority": 52,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "trig",
+        "const"
+      ],
+      "form": [
+        "rational_in_sin_cos"
+      ],
+      "misc": []
+    },
+    "when": "分母是 a+b*sin x 或 a+b*cos x 这类「常数加单个三角函数」,尤其 a=±b 的退化情形(1±sin x、1±cos x),分子为常数。判别信号:分母只有一个三角函数项加常数,用共轭或辅助角比万能代换更快。",
+    "recipe": "1. 形如 1±sin x:分子分母同乘共轭 1∓sin x,分母变成 1−sin^{2}x=cos^{2}x,原式=(1∓sin x)/cos^{2}x=sec^{2}x∓sec x*tan x,积分得 tan x∓sec x+C;\n2. 形如 1±cos x:同乘 1∓cos x,分母变成 sin^{2}x,原式=csc^{2}x∓csc x*cot x,积分得 −cot x∓csc x+C;\n3. 形如 a*sin x+b*cos x:用辅助角公式 a*sin x+b*cos x=R*sin(x+φ),R=√(a^{2}+b^{2}),tan φ=b/a,原式=(1/R)∫csc(x+φ)dx=(1/R)ln|tan((x+φ)/2)|+C;\n4. 一般的 a+b*sin x(不退化)再退回万能代换 t=tan(x/2);\n5. 回代时注意相位 φ 由 tan φ=b/a 确定,并检查象限。",
+    "pitfalls": "① 乘共轭后分母是 1−sin^{2}x=cos^{2}x,不是 cos x,漏平方会导致全错;\n② 辅助角公式的系数 R=√(a^{2}+b^{2}) 与相位 φ 写错;\n③ 1−cos x 的共轭是 1+cos x,方向写反;\n④ 在非退化情形硬用共轭技巧,分母不能化成单项三角函数平方,越做越繁。",
+    "examples": [
+      "\\frac{1}{1+\\sin(x)}",
+      "\\frac{1}{1-\\cos(x)}",
+      "\\frac{1}{\\sin(x)+\\cos(x)}"
+    ]
+  },
+  {
+    "id": "exp_rational_substitution",
+    "name": "指数有理式代换 t = eˣ",
+    "family": "substitution_algebraic",
+    "priority": 54,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "exp",
+        "rational"
+      ],
+      "form": [
+        "rational"
+      ],
+      "misc": [
+        "exponential_rational"
+      ]
+    },
+    "when": "被积函数是 e^{x} 的有理式,即把 e^{x} 当成一个整体后是有理函数。判别信号:分子分母只由 e^{kx}(k 为整数)经加减乘除构成。",
+    "recipe": "1. 令 t=e^{x},则 x=ln t,dx=dt/t;\n2. 把所有 e^{kx} 换成 t^{k},常数项保持不变;\n3. 原式化为关于 t 的有理函数积分;\n4. 用部分分式拆开后逐项积分;\n5. 回代 t=e^{x};注意 ln 内只能放正量(如 e^{x}+1>0,不必加绝对值)。例如 ∫dx/(1+e^{x})=x−ln(1+e^{x})+C。",
+    "pitfalls": "① 忘记 dx=dt/t,把 dx 当成 dt;\n② 只替换 e^{x} 而没有统一替换 e^{2x} 等(应写成 t^{2});\n③ 回代不彻底,答案里留着 t;\n④ 分母含 e^{x}−1 时有 x=0 的奇点,盲目加绝对值或忽略分段都不严谨。",
+    "examples": [
+      "\\frac{1}{e^{x}+1}",
+      "\\frac{e^{x}}{e^{2*x}+1}",
+      "\\frac{1}{1+e^{2*x}}"
+    ]
+  },
+  {
+    "id": "hyperbolic_substitution",
+    "name": "双曲替换 sinh/cosh",
+    "family": "substitution_algebraic",
+    "priority": 62,
+    "triggers": {
+      "has_radical": [
+        "x2+a2",
+        "x2-a2"
+      ],
+      "has_func": [
+        "radical",
+        "hyperbolic"
+      ],
+      "form": [
+        "composite"
+      ],
+      "misc": []
+    },
+    "when": "被积函数含 √(x^{2}+a^{2}) 或 √(x^{2}−a^{2}),而三角替换回代要画辅助三角形较繁琐,或结果天然含 ln 时。判别信号:希望避免 |·| 与符号分支的讨论,直接得到 arsinh/arcosh 或对数形式。",
+    "recipe": "1. 含 √(x^{2}+a^{2}) 时令 x=a*sinh t,t∈R,则 dx=a*cosh t dt,√(x^{2}+a^{2})=a*cosh t(cosh t>0 恒成立,无绝对值问题);\n2. 含 √(x^{2}−a^{2})(x>a)时令 x=a*cosh t,t≥0,则 dx=a*sinh t dt,√(x^{2}−a^{2})=a*sinh t;\n3. 用 cosh^{2}t−sinh^{2}t=1、d(sinh t)=cosh t dt、d(cosh t)=sinh t dt 化简积分;\n4. 回代用反双曲函数的对数形式:arsinh u=ln(u+√(u^{2}+1)),arcosh u=ln(u+√(u^{2}−1))(u≥1);\n5. 例如 ∫dx/√(x^{2}+a^{2})=ln(x+√(x^{2}+a^{2}))+C。",
+    "pitfalls": "① 把 √(x^{2}+a^{2}) 写成 a*sinh t(应为 a*cosh t);\n② 回代时 arsinh 与 arcosh 混淆,并把对数里 √(u^{2}±1) 的加减号写错;\n③ 与三角替换混用,忘记双曲恒等式是 cosh^{2}t−sinh^{2}t=1(中间是减号);\n④ x<a 时 √(x^{2}−a^{2}) 无实值,忽略定义域。",
+    "examples": [
+      "\\frac{1}{\\sqrt{x^{2}+a^{2}}}",
+      "\\sqrt{x^{2}+a^{2}}",
+      "\\frac{1}{x^{2}*\\sqrt{x^{2}+a^{2}}}"
+    ]
+  },
+  {
+    "id": "reduction_sin_cos_power",
+    "name": "递推公式 ∫sinⁿx dx、∫cosⁿx dx",
+    "family": "reduction_formula",
+    "priority": 60,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "trig"
+      ],
+      "form": [
+        "power"
+      ],
+      "misc": [
+        "even_power_sin_cos"
+      ]
+    },
+    "when": "被积函数是单一的 sin^{n}x 或 cos^{n}x,幂次较高(n≥4)且为偶数,用半角逐次展开项数太多时。判别信号:只有一个三角函数的高次幂,没有另一个三角函数的乘积。",
+    "recipe": "1. 记 I_n=∫sin^{n}x dx,分部积分(拆出一个 sin x,把 sin^{n−1}x 当 u)得 I_n=−(1/n)sin^{n−1}x*cos x+(n−1)/n*I_{n−2};\n2. 同理 J_n=∫cos^{n}x dx 满足 J_n=(1/n)cos^{n−1}x*sin x+(n−1)/n*J_{n−2};\n3. 反复降幂,直到 n=1 或 n=2;\n4. 基准:∫sin x dx=−cos x,∫cos x dx=sin x,∫sin^{2}x dx=x/2−sin(2x)/4,∫cos^{2}x dx=x/2+sin(2x)/4;\n5. 逐层回代得闭式,例如 ∫sin^{4}x dx=3x/8−sin(2x)/4+sin(4x)/32+C。",
+    "pitfalls": "① 递推系数 (n−1)/n 写成 n/(n−1) 或整项漏掉;\n② sin 与 cos 两条公式的开头符号不同(sin 的带负号、cos 的不带),互相套用会错;\n③ n 为奇数时用奇次凑微分更快,硬套递推反而绕远;\n④ 降幂过程中忘记更新 n,或最后一步基准积分取错。",
+    "examples": [
+      "\\sin^{4}(x)",
+      "\\cos^{6}(x)",
+      "\\sin^{8}(x)"
+    ]
+  },
+  {
+    "id": "reduction_quadratic_power",
+    "name": "递推公式 ∫dx/(x²+a²)ⁿ",
+    "family": "reduction_formula",
+    "priority": 64,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "rational",
+        "const"
+      ],
+      "form": [
+        "rational",
+        "power"
+      ],
+      "misc": []
+    },
+    "when": "被积函数是 1/(x^{2}+a^{2})^{n} 的形式且 n≥2,或分母是 x^{2}+p*x+q 配方后的高次幂。判别信号:分母是不可约二次式的高次幂,直接三角替换会落到 sec 的高次幂积分上。",
+    "recipe": "1. 记 I_n=∫dx/(x^{2}+a^{2})^{n},基准 I_1=(1/a)arctan(x/a);\n2. 用分部积分(把 1/(x^{2}+a^{2})^{n} 拆成 1/(x^{2}+a^{2})^{n−1} 与 1/(x^{2}+a^{2}) 的乘积)得递推式 I_n=x/(2a^{2}(n−1)(x^{2}+a^{2})^{n−1})+(2n−3)/(2a^{2}(n−1))*I_{n−1};\n3. 从 n 逐次降到 1;\n4. 最后用 I_1 收尾;\n5. 例如 I_2=x/(2a^{2}(x^{2}+a^{2}))+1/(2a^{3})arctan(x/a)+C(取 a>0)。",
+    "pitfalls": "① 分母里的 (n−1) 因子漏掉或写成 n;\n② 递推式只在 n≥2 时成立,n=1 必须改用 arctan 基准;\n③ 分母是 x^{2}+p*x+q 时忘记先配方成 (x+p/2)^{2}+(q−p^{2}/4) 就套公式;\n④ 最后 arctan 前系数 1/(2a^{3}) 中 a 的幂次写错。",
+    "examples": [
+      "\\frac{1}{(x^{2}+a^{2})^{2}}",
+      "\\frac{1}{(x^{2}+1)^{3}}",
+      "\\frac{1}{(x^{2}+a^{2})^{3}}"
+    ]
+  },
+  {
+    "id": "euler_substitution",
+    "name": "欧拉替换处理 √(ax²+bx+c)",
+    "family": "euler_substitution",
+    "priority": 66,
+    "triggers": {
+      "has_radical": [
+        "general"
+      ],
+      "has_func": [
+        "radical",
+        "rational"
+      ],
+      "form": [
+        "composite",
+        "rational"
+      ],
+      "misc": []
+    },
+    "when": "被积函数含二次三项式的根式 √(a*x^{2}+b*x+c),而配方后用三角/双曲替换不方便(根式之外还缠着 x 的有理式)。判别信号:根号内是完整二次三项式,而不是单纯的 x^{2}±a^{2}。",
+    "recipe": "1. 第一欧拉替换(适用于 a>0):令 √(a*x^{2}+b*x+c)=t−√a*x,平方得 b*x+c=t^{2}−2√a*t*x,解出 x=(t^{2}−c)/(b+2√a*t);\n2. 第二欧拉替换(适用于 c>0):令 √(a*x^{2}+b*x+c)=x*t+√c,平方得 a*x+b=x*t^{2}+2√c*t,解出 x=(2√c*t−b)/(a−t^{2});\n3. 第三欧拉替换(ax^{2}+b*x+c 有实根 α、β):令 √(a(x−α)(x−β))=t(x−α),解出 x=(a*β−α*t^{2})/(a−t^{2});\n4. 三种替换都把根式有理化,dx 也换成 t 的有理式,原式化为 t 的有理函数积分;\n5. 积分后从替换式反解 t 并回代,必要时用对数化简。",
+    "pitfalls": "① 选错替换类型(a>0 且 c>0 时两种都可行,应选代数变形更简单的那种);\n② 平方解出 x 时符号或移项写错,后面的有理函数全错;\n③ 回代时 t 的表达式写错,结果无法化简;\n④ 计算量偏大,应先试配方加三角/双曲替换,只有根式外还有复杂有理式时才用欧拉替换。",
+    "examples": [
+      "\\frac{1}{x*\\sqrt{x^{2}+x+1}}",
+      "\\frac{\\sqrt{x^{2}+x+1}}{x}",
+      "\\frac{1}{(x+1)*\\sqrt{x^{2}+x+1}}"
+    ]
+  },
+  {
+    "id": "chebyshev_binomial",
+    "name": "xᵐ(a+bxⁿ)ᵖ 的切比雪夫判别与三种可积情形",
+    "family": "substitution_algebraic",
+    "priority": 72,
+    "triggers": {
+      "has_radical": [
+        "general"
+      ],
+      "has_func": [
+        "radical",
+        "poly"
+      ],
+      "form": [
+        "power",
+        "product"
+      ],
+      "misc": [
+        "binomial_power"
+      ]
+    },
+    "when": "被积函数是二项微分 x^{m}(a+b*x^{n})^{p},即幂函数与一次式幂的乘积,m、n、p 为有理数。判别信号:能整理成「x 的幂 × (常数 + 常数·x 的幂)的幂」这一标准形。",
+    "recipe": "1. 把被积函数整理成标准形 x^{m}(a+b*x^{n})^{p}(m、n、p 为有理数);\n2. 计算三个判别量:p、(m+1)/n、(m+1)/n+p;\n3. 若 p 是整数:令 x=t^{N},N 取 m、n 分母的最小公倍数,化为 t 的有理函数;\n4. 若 (m+1)/n 是整数:令 t=(a+b*x^{n})^{1/s},s 为 p 的分母,即把整个括号开 s 次方作为新变量;\n5. 若 (m+1)/n+p 是整数:令 t=((a+b*x^{n})/x^{n})^{1/s}=(a*x^{−n}+b)^{1/s};\n6. 三种情形之外,该二项微分不能用初等函数表示(切比雪夫定理),应报告「非初等」,不要硬套代换。",
+    "pitfalls": "① 三个判别量记混,尤其把 (m+1)/n+p 写成 (m+1)/(n+p);\n② m、n、p 必须先化为最简分数再判断整数,否则会误判;\n③ p 为负整数时仍按「p 是整数」处理没错,但开方次数 s 要按 p 的分母重新确定;\n④ 三个判据都不满足时仍强行代换,得到一个积不出的式子,应识别为非初等积分。",
+    "examples": [
+      "\\frac{x^{3}}{\\sqrt{1+x^{2}}}",
+      "\\frac{1}{x^{4}*\\sqrt{1+x^{2}}}",
+      "\\sqrt{1+x^{2}}"
+    ]
+  },
+  {
+    "id": "conjugate_pairing",
+    "name": "配对/共轭技巧(如 1/(1+x⁴)、1/(1+x⁶))",
+    "family": "special_trick",
+    "priority": 78,
+    "triggers": {
+      "has_radical": [],
+      "has_func": [
+        "rational"
+      ],
+      "form": [
+        "rational"
+      ],
+      "misc": []
+    },
+    "when": "被积函数是 1/(1+x^{2k}) 或 x^{2}/(1+x^{2k}) 这类偶次对称有理式,而直接部分分式的因式项数很多时。判别信号:分母是 1+x^{2k},分子是 1 或 x^{2},且没有更低次项。",
+    "recipe": "1. 配对:令 I=∫dx/(1+x^{4}),J=∫x^{2}/(1+x^{4})dx;\n2. 求和:I+J=∫(1+x^{2})/(1+x^{4})dx,分子分母同除 x^{2} 得 ∫(1+1/x^{2})/(x^{2}+1/x^{2})dx,由 d(x−1/x)=(1+1/x^{2})dx 化为 ∫du/(u^{2}+2)=(1/√2)arctan((x−1/x)/√2),其中 u=x−1/x;\n3. 求差:I−J=∫(1−x^{2})/(1+x^{4})dx,同除 x^{2} 得 −∫(1−1/x^{2})/(x^{2}+1/x^{2})dx,由 d(x+1/x)=(1−1/x^{2})dx 化为 −∫dv/(v^{2}−2)=(1/(2√2))ln|(x^{2}+√2*x+1)/(x^{2}−√2*x+1)|,其中 v=x+1/x;\n4. 反解:I=((I+J)+(I−J))/2,J=((I+J)−(I−J))/2,即 I=(1/(2√2))arctan((x^{2}−1)/(√2*x))+(1/(4√2))ln|(x^{2}+√2*x+1)/(x^{2}−√2*x+1)|+C;\n5. 对 1/(1+x^{6}) 同法两两配对,或先分解 1+x^{6}=(1+x^{2})(1−x^{2}+x^{4}) 再做部分分式。",
+    "pitfalls": "① 配对后的系数 1/2 漏掉(I、J 是两个组合量的平均);\n② 处理 I−J 时符号弄错,导致对数里分子的 ±√2 项写反;\n③ 配方时把 u^{2}+2 的常数写成 1 或 √2;\n④ 同除 x^{2} 要求 x≠0,应说明 x=0 的处理(被积函数在 0 附近可积,结果应按整体因式分解延拓)。",
+    "examples": [
+      "\\frac{1}{1+x^{4}}",
+      "\\frac{1}{1+x^{6}}",
+      "\\frac{x^{2}}{1+x^{4}}"
+    ]
+  },
+  {
+    "id": "algebraic_rationalization",
+    "name": "通过有理化/待定系数把根式和式化简",
+    "family": "substitution_algebraic",
+    "priority": 68,
+    "triggers": {
+      "has_radical": [
+        "general"
+      ],
+      "has_func": [
+        "radical",
+        "rational"
+      ],
+      "form": [
+        "sum",
+        "quotient"
+      ],
+      "misc": []
+    },
+    "when": "被积函数含根式的和差(如 √(x+1)±√(x−1)、x+√(x^{2}+1)),或分母带根式,直接整体代换后仍很乱时。判别信号:出现「根式 ± 根式」或「根式 ± x」这种可用共轭配对的组合。",
+    "recipe": "1. 若分母是 √A±√B:分子分母同乘共轭 √A∓√B,分母化为 A−B(通常是多项式或常数);\n2. 若分母是 x+√(x^{2}+c):乘共轭 √(x^{2}+c)−x,利用 (√(x^{2}+c)−x)(√(x^{2}+c)+x)=c 把分母变成常数;\n3. 有理化后把积分拆成若干简单项(多项式、幂函数、1/(x+a) 等),分别积分;\n4. 若含多个根式且共轭消不掉,令 t 为各根指数的最小公倍数次根做整体代换,再配合部分分式;\n5. 例:1/(√(x+1)+√(x−1))=(√(x+1)−√(x−1))/2,积分化为两个幂函数积分。",
+    "pitfalls": "① 乘共轭时符号写反(把 A−B 用成 A+B),分母不但没化简反而更复杂;\n② 只在分子或只在分母有理化,忘了整体同乘;\n③ 用待定系数时把恒等式两边对应次幂的系数列错;\n④ 忽略根式的定义域(如 √(x−1) 要求 x≥1),结果里带出无定义区间。",
+    "examples": [
+      "\\frac{1}{\\sqrt{x+1}+\\sqrt{x-1}}",
+      "\\frac{1}{x+\\sqrt{x^{2}+1}}",
+      "\\frac{\\sqrt{x+1}-\\sqrt{x-1}}{\\sqrt{x+1}+\\sqrt{x-1}}"
+    ]
+  }
+]

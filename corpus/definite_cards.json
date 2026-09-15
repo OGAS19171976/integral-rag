@@ -1,0 +1,896 @@
+[
+  {
+    "id": "def_newton_leibniz",
+    "name": "牛顿-莱布尼茨公式",
+    "family": "newton_leibniz",
+    "priority": 10,
+    "triggers": {
+      "interval": [
+        "finite",
+        "unit",
+        "symmetric",
+        "zero_to_pi",
+        "zero_to_pi_over_2",
+        "zero_to_two_pi",
+        "zero_to_inf",
+        "infinite"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "poly",
+        "exp",
+        "log",
+        "trig",
+        "inv_trig",
+        "rational",
+        "const",
+        "abs",
+        "hyperbolic"
+      ],
+      "form": [
+        "sum",
+        "product",
+        "quotient",
+        "power",
+        "composite",
+        "rational"
+      ],
+      "misc": []
+    },
+    "when": "被积函数在区间上能求出初等原函数,并且原函数在整个积分区间(含端点)上连续。判别信号:被积函数是多项式、有理函数、指数、正弦余弦或它们的简单组合,而且积分区间是有限的。",
+    "recipe": "1. 先确认 f 在 [a,b] 上可积(有界,或只有有限个可积的瑕点),再求出原函数 F,使 F'(x) = f(x) 在 (a,b) 内成立;\n2. 检查 F 在闭区间 [a,b] 上是否连续:若被积函数在区间内部有无穷间断点或跳跃,必须先在间断点处把区间拆开,否则 F 的跳跃会抵消出错误结果;\n3. F 连续时直接代入:∫_{a}^{b} f(x) dx = F(b) − F(a);\n4. 若被积函数在端点无界而 F 在端点有极限,用极限形式:∫_{a}^{b} f(x) dx = F(b) − lim_{x→a+} F(x);\n5. 被积函数的原函数不是初等函数时放弃本卡,改用幂级数展开或含参积分方法。",
+    "pitfalls": "① 不检查原函数在区间内是否连续,对 ∫_{−1}^{1} 1/x^{2} dx 错用原函数 −1/x 得到 −2,而该积分其实发散(被积函数恒正,结果不可能为负);\n② 端点处原函数无定义时直接代入,例如把 ∫_{0}^{1} 1/x dx 写成 ln1 − ln0;\n③ 跨过被积函数的间断点忘记分区间,例如 ∫_{−1}^{1} 1/x dx 必须拆成两段分别判敛;\n④ 换元后没有把上下限同时换掉,导致代入错误。",
+    "examples": [
+      "\\int_{0}^{1} x^{2} dx",
+      "\\int_{0}^{\\pi} \\sin x dx",
+      "\\int_{1}^{e} \\frac{1}{x} dx",
+      "\\int_{0}^{2} (x+1) dx",
+      "\\int_{0}^{1} e^{x} dx",
+      "\\int_{0}^{\\pi/2} \\cos x dx",
+      "\\int_{1}^{2} (3x^{2}+2x) dx",
+      "\\int_{-1}^{1} (x^{2}+1) dx"
+    ]
+  },
+  {
+    "id": "def_symmetry_even_odd",
+    "name": "对称区间上的奇偶性",
+    "family": "symmetry",
+    "priority": 15,
+    "triggers": {
+      "interval": [
+        "symmetric"
+      ],
+      "has_radical": [],
+      "has_func": [],
+      "form": [],
+      "misc": [
+        "even_odd"
+      ]
+    },
+    "when": "积分区间关于原点对称(形如 [−a,a]),且被积函数是奇函数或偶函数。判别信号:把 x 换成 −x 后表达式只差一个整体符号(奇函数)或完全不变(偶函数)。",
+    "recipe": "1. 先验证区间对称,再计算 f(−x) 并与 f(x) 比较,两步都做才可用本卡;\n2. 若 f(−x) = −f(x),则 f 为奇函数,∫_{−a}^{a} f(x) dx = 0,直接得结果;\n3. 若 f(−x) = f(x),则 f 为偶函数,∫_{−a}^{a} f(x) dx = 2∫_{0}^{a} f(x) dx,化为半区间问题;\n4. 复合函数用规则判断整体奇偶性:奇*奇=偶,偶*偶=偶,奇*偶=奇;\n5. 两个条件有一个不满足,本卡不适用。",
+    "pitfalls": "① 区间不对称也套用奇函数为零,例如 ∫_{0}^{1} x^{3} dx 并不等于 0;\n② 函数奇偶性判错:x*cos x 是奇函数不是偶函数,sin(x^{2}) 是偶函数而 sin(x^{3}) 是奇函数;\n③ 只对乘积中的一部分因子用了奇偶性就下结论;\n④ 把 f(x)+g(x) 的奇偶性当成 f、g 奇偶性的简单相加。",
+    "examples": [
+      "\\int_{-1}^{1} x^{3} dx",
+      "\\int_{-a}^{a} x^{2} dx",
+      "\\int_{-\\pi}^{\\pi} x\\cos x dx",
+      "\\int_{-2}^{2} x^{4} dx",
+      "\\int_{-1}^{1} \\frac{x}{1+x^{2}} dx",
+      "\\int_{-\\pi}^{\\pi} \\sin^{3}x dx"
+    ]
+  },
+  {
+    "id": "def_king_property",
+    "name": "区间再现公式",
+    "family": "king_property",
+    "priority": 18,
+    "triggers": {
+      "interval": [
+        "finite",
+        "any"
+      ],
+      "has_radical": [],
+      "has_func": [],
+      "form": [
+        "any"
+      ],
+      "misc": []
+    },
+    "when": "被积函数含 x 与某个关于区间中点对称的因子(如 sin x、cos x、1/(1+cos^{2}x)),区间有限,且把 x 换成 a+b−x 后表达式更容易积分。判别信号:f(x)+f(a+b−x) 比 f(x) 本身简单得多。",
+    "recipe": "1. 记 I = ∫_{a}^{b} f(x) dx,作区间再现代换 x = a + b − t,得 I = ∫_{a}^{b} f(a + b − t) dt;\n2. 把两式相加:2I = ∫_{a}^{b} [f(x) + f(a + b − x)] dx;\n3. 若 f(x) + f(a+b−x) 是常数或比 f 简单得多,直接积分即可解出 I;\n4. 常用特例一:∫_{0}^{\\pi} x*g(sin x) dx = (\\pi/2)*∫_{0}^{\\pi} g(sin x) dx;\n5. 常用特例二:当 g>0 时 ∫_{0}^{\\pi/2} g(sin x)/(g(sin x)+g(cos x)) dx = \\pi/4;\n6. 对分式可反复使用同一次代换,配合通分简化。",
+    "pitfalls": "① 只作代换而不与原式相加,得不到简化;\n② 区间不是 [a,b] 却乱用中点 a+b 的对称式;\n③ 在 ∫_{0}^{\\pi} x*f(sin x) dx 中把 x 直接当作 \\pi,漏掉系数 1/2(正确结果是 (\\pi/2)*∫_{0}^{\\pi} f(sin x) dx);\n④ 相加后两个被积函数部分化简错误,例如分母不同就直接相加。",
+    "examples": [
+      "\\int_{0}^{\\pi} \\frac{x\\sin x}{1+\\cos^{2} x} dx",
+      "\\int_{0}^{\\pi/2} \\frac{\\sin x}{\\sin x+\\cos x} dx",
+      "\\int_{0}^{1} \\frac{\\ln(1+x)}{1+x^{2}} dx",
+      "\\int_{0}^{\\pi/2} \\frac{\\cos x}{\\sin x+\\cos x} dx"
+    ]
+  },
+  {
+    "id": "def_periodicity",
+    "name": "周期函数的定积分",
+    "family": "periodicity",
+    "priority": 20,
+    "triggers": {
+      "interval": [
+        "finite",
+        "any"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "trig"
+      ],
+      "form": [],
+      "misc": []
+    },
+    "when": "被积函数是周期函数(如 sin x、cos x、|sin x|、sin^{2} x),或积分区间长度恰为周期的整数倍。判别信号:存在 T>0 使 f(x+T) = f(x),并且积分区间的长度能被 T 整除。",
+    "recipe": "1. 先求出最小正周期 T;\n2. 利用 ∫_{a}^{a+T} f(x) dx 与起点 a 无关这一性质,把任意一个整周期上的积分平移到最好算的 [0,T];\n3. 若区间为 [a, a+nT],则 ∫_{a}^{a+nT} f(x) dx = n*∫_{0}^{T} f(x) dx;\n4. 对取绝对值的周期函数(例如 |sin x|,周期为 \\pi)先在一个周期上用对称性化简;\n5. 区间长度不是 T 的整数倍时,只能拆成整周期部分加余项,不能直接乘 n。",
+    "pitfalls": "① 区间长度不是周期整数倍也套用 n 倍公式;\n② 把 sin^{2} x 的周期误判为 2\\pi(实际最小正周期是 \\pi);\n③ 忽略 |sin x| 的周期是 \\pi 而不是 2\\pi,导致倍数算错;\n④ 平移区间时忘记只有整周期平移才不改变积分值。",
+    "examples": [
+      "\\int_{0}^{2\\pi} |\\sin x| dx",
+      "\\int_{1}^{1+2\\pi} \\sin x dx",
+      "\\int_{0}^{4\\pi} \\sin^{2} x dx",
+      "\\int_{0}^{2\\pi} |\\cos x| dx",
+      "\\int_{0}^{4\\pi} \\sin x dx",
+      "\\int_{0}^{2\\pi} \\cos^{2}x dx"
+    ]
+  },
+  {
+    "id": "def_orthogonality",
+    "name": "三角函数正交性",
+    "family": "orthogonality",
+    "priority": 22,
+    "triggers": {
+      "interval": [
+        "zero_to_pi",
+        "zero_to_two_pi",
+        "symmetric"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "trig"
+      ],
+      "form": [
+        "product"
+      ],
+      "misc": [
+        "trig_orthogonality",
+        "product_of_trig"
+      ]
+    },
+    "when": "区间为 [0,2\\pi] 或 [−\\pi,\\pi](也可为 [0,\\pi]),被积函数是整数倍角三角函数的乘积 sin(mx)sin(nx)、cos(mx)cos(nx)、sin(mx)cos(nx),或含 sin^{2}(mx)、cos^{2}(mx)。判别信号:出现整数倍的三角函数相乘,且区间长度是 2\\pi 或 \\pi。",
+    "recipe": "1. 先用积化和差把乘积拆成和:sin(mx)cos(nx) = (1/2)[sin((m+n)x) + sin((m−n)x)],sin(mx)sin(nx) 与 cos(mx)cos(nx) 同理;\n2. 在 [0,2\\pi] 上:∫_{0}^{2\\pi} sin(mx) dx = 0 与 ∫_{0}^{2\\pi} cos(mx) dx = 0 对非零整数 m 成立;\n3. ∫_{0}^{2\\pi} sin(mx)sin(nx) dx = \\pi*\\delta_{mn},∫_{0}^{2\\pi} cos(mx)cos(nx) dx = \\pi*\\delta_{mn},∫_{0}^{2\\pi} sin(mx)cos(nx) dx = 0,其中 \\delta_{mn} 在 m=n 时取 1 否则取 0;\n4. 在 [−\\pi,\\pi] 上结论与 [0,2\\pi] 相同;在 [0,\\pi] 上把系数 \\pi 改为 \\pi/2;\n5. 出现常数项时补上 ∫_{0}^{2\\pi} 1 dx = 2\\pi;\n6. 形如 sin^{2}(mx) 的情形就是 m=n 的自身正交,结果为 \\pi(区间 [0,2\\pi])。",
+    "pitfalls": "① 把 ∫_{0}^{2\\pi} sin(mx)cos(nx) dx 误记为 \\pi(正确为 0);\n② 对长度不是 2\\pi 或 \\pi 的区间乱用正交性,正交性依赖区间长度等于周期的整数倍;\n③ 混淆 [0,\\pi] 与 [0,2\\pi] 的系数,把 \\pi/2 与 \\pi 弄反;\n④ 把 m、n 当成实数而不是整数,正交性只对整数成立。",
+    "examples": [
+      "\\int_{0}^{2\\pi} \\sin(2x)\\cos(3x) dx",
+      "\\int_{0}^{2\\pi} \\cos^{2}(3x) dx",
+      "\\int_{-\\pi}^{\\pi} \\sin(4x)\\sin(7x) dx",
+      "\\int_{0}^{2\\pi} \\sin(3x)\\sin(5x) dx",
+      "\\int_{-\\pi}^{\\pi} \\cos(2x)\\cos(4x) dx",
+      "\\int_{0}^{2\\pi} \\sin^{2}(2x) dx"
+    ]
+  },
+  {
+    "id": "def_beta_gamma",
+    "name": "化归 Beta / Gamma 函数",
+    "family": "beta_gamma",
+    "priority": 28,
+    "triggers": {
+      "interval": [
+        "zero_to_inf",
+        "unit",
+        "zero_to_pi_over_2"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "poly",
+        "exp",
+        "trig"
+      ],
+      "form": [
+        "power",
+        "rational"
+      ],
+      "misc": [
+        "beta_shape",
+        "gamma_shape"
+      ]
+    },
+    "when": "区间为 [0,1]、[0,\\infty) 或 [0,\\pi/2],被积函数形如 x^{p−1}(1−x)^{q−1}、x^{s−1}e^{−x}、sin^{\\alpha}x*cos^{\\beta}x。判别信号:幂函数因子与 (1−x) 因子或 e^{−x} 因子的组合,而且指数都是常数。",
+    "recipe": "1. Beta 函数:B(p,q) = ∫_{0}^{1} x^{p−1}(1−x)^{q−1} dx = \\Gamma(p)\\Gamma(q)/\\Gamma(p+q),要求 p>0 且 q>0;\n2. 三角形式:∫_{0}^{\\pi/2} sin^{2p−1}x*cos^{2q−1}x dx = (1/2)*B(p,q),要求 p>0 且 q>0;\n3. Gamma 函数:\\Gamma(s) = ∫_{0}^{\\infty} x^{s−1}e^{−x} dx(s>0),并利用 \\Gamma(s+1) = s\\Gamma(s)、\\Gamma(n+1) = n!、\\Gamma(1/2) = \\sqrt{\\pi};\n4. 含尺度因子:∫_{0}^{\\infty} x^{s−1}e^{−ax} dx = \\Gamma(s)/a^{s},要求 s>0 且 a>0;\n5. 先把待求积分整理成标准形再查值:对照指数确定 p、q 或 s,特别小心 p−1 与 p 的换算;\n6. 最后用递推把 \\Gamma 化为整数点或 1/2 处的值。",
+    "pitfalls": "① 指数配错:∫_{0}^{1} x^{2}(1−x)^{3} dx 中 p−1=2 故 p=3、q−1=3 故 q=4,写成 p=2、q=3 是错的;\n② 三角形式漏掉因子 1/2;\n③ 条件不满足仍代公式,例如 s≤0 时 ∫_{0}^{\\infty} x^{s−1}e^{−x} dx 发散;\n④ 对 x^{s−1}e^{−ax} 忘记除以 a^{s}。",
+    "examples": [
+      "\\int_{0}^{\\infty} x^{3} e^{-x} dx",
+      "\\int_{0}^{1} x^{2}(1-x)^{3} dx",
+      "\\int_{0}^{\\pi/2} \\sin^{3} x\\cos^{2} x dx",
+      "\\int_{0}^{\\infty} x^{2}e^{-x} dx",
+      "\\int_{0}^{1} x^{3}(1-x)^{2} dx",
+      "\\int_{0}^{\\pi/2} \\sin^{4}x\\cos^{3}x dx",
+      "\\int_{0}^{1} \\frac{1}{\\sqrt{x(1-x)}} dx"
+    ]
+  },
+  {
+    "id": "def_wallis",
+    "name": "Wallis 公式",
+    "family": "wallis_reduction",
+    "priority": 30,
+    "triggers": {
+      "interval": [
+        "zero_to_pi_over_2"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "trig"
+      ],
+      "form": [
+        "power"
+      ],
+      "misc": []
+    },
+    "when": "区间为 [0,\\pi/2],被积函数是 sin^{n}x 或 cos^{n}x(n 为不小于 0 的整数),或者可以通过换元化为这种形式。判别信号:偶次或奇次幂的正弦、余弦单独出现在 [0,\\pi/2] 上,而且幂次较高。",
+    "recipe": "1. 记 W_{n} = ∫_{0}^{\\pi/2} sin^{n}x dx = ∫_{0}^{\\pi/2} cos^{n}x dx,两者相等;\n2. 分部积分得递推 W_{n} = ((n−1)/n)*W_{n−2}(n≥2),初值 W_{0} = \\pi/2,W_{1} = 1;\n3. 偶数 n=2k 时 W_{2k} = ((2k−1)!!/(2k)!!)*(\\pi/2);奇数 n=2k+1 时 W_{2k+1} = (2k)!!/(2k+1)!!;\n4. 双阶乘按定义逐项写开约分,例如 W_{4} = (3/4)*(1/2)*(\\pi/2) = 3\\pi/16,W_{5} = (4/5)*(2/3)*1 = 8/15;\n5. 若被积函数是 sin^{m}x*cos^{n}x 且两个指数不能同时写成 2p−1 与 2q−1(整数 p、q)的形式,应改用 Beta 函数公式而不是本卡。",
+    "pitfalls": "① 不区分 n 的奇偶:偶数结果必须带 \\pi/2 因子,奇数结果不带,搞反是高频错误;\n② 把双阶乘 (2k)!! 当成普通阶乘 (2k)!;\n③ 在 [0,\\pi] 上直接套 W_{n},实际上 ∫_{0}^{\\pi} sin^{n}x dx 当 n 为偶数时等于 2W_{n},当 n 为奇数时等于 0;\n④ 递推方向写错,把 W_{n} = ((n−1)/n)W_{n−2} 记成 W_{n−2} = ((n−1)/n)W_{n}。",
+    "examples": [
+      "\\int_{0}^{\\pi/2} \\sin^{4} x dx",
+      "\\int_{0}^{\\pi/2} \\sin^{5} x dx",
+      "\\int_{0}^{\\pi/2} \\cos^{6} x dx",
+      "\\int_{0}^{\\pi/2} \\sin^{2}x dx",
+      "\\int_{0}^{\\pi/2} \\cos^{4}x dx",
+      "\\int_{0}^{\\pi/2} \\sin^{6}x dx"
+    ]
+  },
+  {
+    "id": "def_standard_dirichlet",
+    "name": "Dirichlet 型积分",
+    "family": "standard_result",
+    "priority": 32,
+    "triggers": {
+      "interval": [
+        "zero_to_inf",
+        "infinite"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "trig"
+      ],
+      "form": [
+        "quotient"
+      ],
+      "misc": [
+        "oscillatory",
+        "algebraic_decay"
+      ]
+    },
+    "when": "被积函数形如 sin(ax)/x,或 sin(ax)、cos(ax) 乘一个有界因子再除以 x 的一次幂,上限为 \\infty,且参数 a>0。判别信号:振荡因子除以 x 的一次幂,没有其他快速衰减因子。",
+    "recipe": "1. 直接套用:∫_{0}^{\\infty} sin(ax)/x dx = \\pi/2,要求 a>0;\n2. 符号规则:a<0 时结果为 −\\pi/2;a=0 时被积函数恒为 0,结果为 0;\n3. 该积分只条件收敛:∫_{0}^{\\infty} |sin(ax)/x| dx 发散,所以不能用比较判别法证明它收敛;\n4. 含乘积时先积化和差,例如 sin(2x)cos(x) = (1/2)[sin(3x) + sin(x)],再分别套用标准结果;\n5. 常用派生结论:∫_{0}^{\\infty} e^{−tx}*sin(x)/x dx = arctan(1/t)(t>0),令 t→0+ 得到 \\pi/2。",
+    "pitfalls": "① 忽略 a>0 的条件,对 a<0 直接写 \\pi/2(符号错);\n② 把条件收敛当绝对收敛,用比较法判 |sin x|/x 的敛散,它其实发散;\n③ 把 ∫_{0}^{\\infty} arctan x/x dx 这类积分误归入本族并写成 \\pi/2,实际上它发散(被积函数在 \\infty 处等价于 \\pi/(2x));\n④ 积化和差时丢掉系数 1/2。",
+    "examples": [
+      "\\int_{0}^{\\infty} \\frac{\\sin x}{x} dx",
+      "\\int_{0}^{\\infty} \\frac{\\sin(3x)}{x} dx",
+      "\\int_{0}^{\\infty} \\frac{\\sin(2x)\\cos x}{x} dx",
+      "\\int_{0}^{\\infty} \\frac{\\sin(ax)}{x} dx",
+      "\\int_{0}^{\\infty} \\frac{\\sin(5x)}{x} dx"
+    ]
+  },
+  {
+    "id": "def_standard_poisson",
+    "name": "Poisson 积分",
+    "family": "standard_result",
+    "priority": 34,
+    "triggers": {
+      "interval": [
+        "zero_to_inf",
+        "infinite"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "exp"
+      ],
+      "form": [
+        "power"
+      ],
+      "misc": [
+        "exponential_decay"
+      ]
+    },
+    "when": "被积函数含 e^{−ax^{2}}(高斯型),区间为 [0,\\infty) 或 (−\\infty,\\infty),参数 a>0。判别信号:指数上是负的二次式。指数上出现 x 的**一次项**(即 e^{−ax²+bx})时同样归本卡,方法是配方法 + 平移。",
+    "recipe": "1. 套用半直线公式:∫_{0}^{\\infty} e^{−ax^{2}} dx = (1/2)*\\sqrt{\\pi/a},要求 a>0;\n2. 全直线公式:∫_{−\\infty}^{\\infty} e^{−ax^{2}} dx = \\sqrt{\\pi/a},要求 a>0;\n3. 二阶矩:∫_{0}^{\\infty} x^{2}e^{−ax^{2}} dx = \\sqrt{\\pi}/(4a^{3/2}),可用对参数求导或分部积分得到;\n4. 遇到 e^{−ax^{2}+bx} 先配方:e^{−a(x−b/(2a))^{2} + b^{2}/(4a)},再用平移不改变 (−\\infty,\\infty) 上积分值的性质;\n5. 参数必须满足 a>0,否则指数不衰减,积分发散。",
+    "pitfalls": "① 漏掉因子 1/2,把半直线结果写成 \\sqrt{\\pi/a};\n② 对 a≤0 使用公式;\n③ 配方后忘记提取 e^{b^{2}/(4a)} 这个常数因子;\n④ 把 ∫_{0}^{\\infty} x^{2}e^{−ax^{2}} dx 的幂次写错,漏掉 a^{3/2}。",
+    "examples": [
+      "\\int_{0}^{\\infty} e^{-x^{2}} dx",
+      "\\int_{0}^{\\infty} e^{-3x^{2}} dx",
+      "\\int_{-\\infty}^{\\infty} e^{-2x^{2}} dx",
+      "\\int_{-\\infty}^{\\infty} e^{-x^{2}/2} dx",
+      "\\int_{0}^{\\infty} e^{-x^{2}/4} dx",
+      "\\int_{-\\infty}^{\\infty} e^{-x^{2}/3} dx",
+      "\\int_{-\\infty}^{\\infty} e^{-ax^{2}+bx} dx"
+    ]
+  },
+  {
+    "id": "def_substitution_limits",
+    "name": "换元同时换上下限",
+    "family": "substitution_limits",
+    "priority": 35,
+    "triggers": {
+      "interval": [
+        "any"
+      ],
+      "has_radical": [
+        "a2-x2",
+        "general"
+      ],
+      "has_func": [
+        "radical",
+        "rational"
+      ],
+      "form": [
+        "composite"
+      ],
+      "misc": []
+    },
+    "when": "被积函数含 \\sqrt{a^{2}−x^{2}}、\\sqrt{x^{2}+a^{2}}、\\sqrt{x^{2}−a^{2}} 等根式,或含 1/(1+x^{2}) 这类标准换元结构,或有明显的内层复合函数。判别信号:根号内是二次式,或出现某函数与其导数相乘的结构。",
+    "recipe": "1. 选代换:\\sqrt{a^{2}−x^{2}} 令 x = a*sin t;\\sqrt{x^{2}+a^{2}} 令 x = a*tan t;\\sqrt{x^{2}−a^{2}} 令 x = a*sec t;含 \\sqrt{ax+b} 令 t = \\sqrt{ax+b};\n2. 求出 dx = \\phi'(t) dt;\n3. 上下限同时换:原下限 a 对应 t = \\phi^{−1}(a),原上限 b 对应 t = \\phi^{−1}(b),绝不能保留旧上下限;\n4. 要求代换在积分区间上单调(三角换元通常通过限制 t 的范围保证),否则必须分段处理;\n5. 在新变量下完成积分并直接在新上下限代入,不必换回 x;\n6. 凑微分情形:若 f(x) = g'(x)*h(g(x)),令 u = g(x),上下限变为 g(a) 与 g(b)。",
+    "pitfalls": "① 换元后仍用旧上下限,这是最高频的致命错误;\n② 忘记把 dx 换成 \\phi'(t) dt;\n③ 三角换元不限定取值范围,导致 \\sqrt{a^{2}sin^{2}t} = a*sin t 的符号判断出错;\n④ 代换在积分区间上不单调却强行使用,使 t 与 x 不是一一对应。",
+    "examples": [
+      "\\int_{0}^{a} \\sqrt{a^{2}-x^{2}} dx",
+      "\\int_{0}^{1} x\\sqrt{1-x^{2}} dx",
+      "\\int_{0}^{1} \\frac{x}{\\sqrt{1+x^{2}}} dx",
+      "\\int_{0}^{a} x\\sqrt{a^{2}-x^{2}} dx",
+      "\\int_{0}^{2} \\sqrt{4-x^{2}} dx",
+      "\\int_{0}^{1} x^{3}\\sqrt{1-x^{2}} dx"
+    ]
+  },
+  {
+    "id": "def_standard_fresnel",
+    "name": "Fresnel 型积分",
+    "family": "standard_result",
+    "priority": 36,
+    "triggers": {
+      "interval": [
+        "zero_to_inf",
+        "infinite"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "trig"
+      ],
+      "form": [
+        "composite"
+      ],
+      "misc": [
+        "oscillatory"
+      ]
+    },
+    "when": "被积函数形如 cos(x^{2})、sin(x^{2}),或更一般的 cos(ax^{2})、sin(ax^{2})(a>0),区间为 [0,\\infty)。判别信号:振荡函数的自变量是二次式,而且没有 1/x 型衰减因子。",
+    "recipe": "1. 直接套用:∫_{0}^{\\infty} cos(x^{2}) dx = ∫_{0}^{\\infty} sin(x^{2}) dx = (1/2)*\\sqrt{\\pi/2} = \\sqrt{2\\pi}/4;\n2. 带参数 a>0:∫_{0}^{\\infty} cos(ax^{2}) dx = ∫_{0}^{\\infty} sin(ax^{2}) dx = (1/2)*\\sqrt{\\pi/(2a)};\n3. 换元 u = x^{2} 可把 Fresnel 型化为 ∫_{0}^{\\infty} u^{−1/2}e^{±iu} du,再用 Gamma 函数或围道方法处理;\n4. 收敛性来自振荡抵消,属于条件收敛,被积函数本身并不趋于 0,不能用绝对收敛解释;\n5. 若区间是 [0,b] 这样的有限区间,没有初等闭式,应改用数值方法而不是套本结论。",
+    "pitfalls": "① 漏掉因子 1/2,把结果写成 \\sqrt{\\pi/2}(正确是 (1/2)*\\sqrt{\\pi/2});\n② 认为 cos(x^{2}) 不趋于 0 所以积分发散;\n③ 对有限区间 [0,b] 错套 \\sqrt{2\\pi}/4;\n④ 参数 a 取负或为零时仍套公式,此时积分发散或没有意义。",
+    "examples": [
+      "\\int_{0}^{\\infty} \\cos(x^{2}) dx",
+      "\\int_{0}^{\\infty} \\sin(x^{2}) dx",
+      "\\int_{0}^{\\infty} \\cos(2x^{2}) dx",
+      "\\int_{0}^{\\infty} \\cos(3x^{2}) dx"
+    ]
+  },
+  {
+    "id": "def_standard_bose_fermi",
+    "name": "Bose/Fermi 型积分:∫_0^∞ x^(s−1)/(e^(ax)±1)dx",
+    "family": "standard_result",
+    "priority": 36,
+    "triggers": {
+      "interval": [
+        "zero_to_inf"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "poly",
+        "exp"
+      ],
+      "form": [
+        "quotient"
+      ],
+      "misc": [
+        "power_denominator",
+        "exponential_decay"
+      ]
+    },
+    "when": "被积函数是 x 的幂除以 e^{ax}±1(a>0),区间 [0,∞)。判别信号:分母是「指数函数 ±1」这种常数,而不是 1+x^n。看到它就想到 Γ(s)ζ(s),不要去凑部分分式。",
+    "recipe": "1. 判别形状:∫_0^∞ x^{p}/(e^{ax}−1)dx,记 s = p+1;\n2. Bose 型(分母 −1):结果 = Γ(s)·ζ(s)/a^s;\n3. Fermi 型(分母 +1):结果 = (1 − 2^{1−s})·Γ(s)·ζ(s)/a^s;\n4. 特例:p=1、a=1 时 s=2,得 Γ(2)ζ(2) = π²/6;\n5. 若 a≠1,先做 ax = t 的换元把 a 提出来(整体除以 a^s)。\n注:它的推导通常是把 1/(e^x−1) 展开成 Σ_{n≥1} e^{−nx},逐项积分得到 Σ 1/n^s = ζ(s),所以别指望泰勒展开能work,要的是几何级数展开。",
+    "pitfalls": "① 把分母当成 1+x^n 去做部分分式或欧拉替换(完全不同的两族);\n② Fermi 型漏掉 (1 − 2^{1−s}) 这个因子;\n③ a≠1 时忘记整体除以 a^s;\n④ 用泰勒级数在 x=0 展开 1/(e^x−1)(会得到 1/x − 1/2 + … 这种含 1/x 的式子,积不出来)—— 要用 e^{−nx} 的几何级数。",
+    "examples": [
+      "\\int_{0}^{\\infty} \\frac{x}{e^{x}-1} dx",
+      "\\int_{0}^{\\infty} \\frac{x}{e^{x}+1} dx",
+      "\\int_{0}^{\\infty} \\frac{x^{2}}{e^{x}-1} dx",
+      "\\int_{0}^{\\infty} \\frac{x^{3}}{e^{x}-1} dx",
+      "\\int_{0}^{\\infty} \\frac{x}{e^{2x}-1} dx"
+    ]
+  },
+  {
+    "id": "def_standard_power_denom",
+    "name": "幂函数分母型积分",
+    "family": "standard_result",
+    "priority": 38,
+    "triggers": {
+      "interval": [
+        "zero_to_inf",
+        "infinite"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "rational",
+        "poly"
+      ],
+      "form": [
+        "rational",
+        "power"
+      ],
+      "misc": [
+        "power_denominator",
+        "algebraic_decay"
+      ]
+    },
+    "when": "被积函数形如 x^{s−1}/(1+x),区间为 [0,\\infty),且 0<s<1。判别信号:分子是幂函数、分母是 1+x 的一次式,在 0 与 \\infty 两端各由一个不等式限制参数。",
+    "recipe": "1. 套用标准结果:∫_{0}^{\\infty} x^{s−1}/(1+x) dx = \\pi/sin(\\pi s),当且仅当 0<s<1;\n2. 等价来源:上式 = B(s,1−s) = \\Gamma(s)\\Gamma(1−s),由余元公式得到 \\pi/sin(\\pi s);\n3. 参数范围用 p 判别法自己验一遍:在 x=0 附近需 s−1>−1 即 s>0;在 x→\\infty 附近需 (s−1)−1<−1 即 s<1;两者取交得 0<s<1;\n4. 求值时先把分子写成 x^{s−1} 的形式并读出 s,再代入公式;\n5. s 不在 (0,1) 内时积分发散,不能代公式(此时 sin(\\pi s) 还可能为零或使结果变号,没有意义)。",
+    "pitfalls": "① 忽略条件 0<s<1:例如 ∫_{0}^{\\infty} \\sqrt{x}/(1+x) dx 对应 s=3/2,在 \\infty 处发散,绝不能写成 \\pi/sin(3\\pi/2);\n② 把 x^{s−1} 的指数认错,例如 x^{−1/2} 对应 s=1/2 而不是 s=−1/2;\n③ 把 \\pi/sin(\\pi s) 与 \\pi/cos(\\pi s) 混淆;\n④ 只检查 0 处或只检查 \\infty 处,漏掉另一端条件。",
+    "examples": [
+      "\\int_{0}^{\\infty} \\frac{1}{\\sqrt{x}(1+x)} dx",
+      "\\int_{0}^{\\infty} \\frac{1}{x^{1/3}(1+x)} dx",
+      "\\int_{0}^{\\infty} \\frac{1}{x^{3/4}(1+x)} dx",
+      "\\int_{0}^{\\infty} \\frac{1}{x^{1/4}(1+x)} dx",
+      "\\int_{0}^{\\infty} \\frac{x^{s-1}}{1+x} dx"
+    ]
+  },
+  {
+    "id": "def_standard_frullani",
+    "name": "Frullani 积分(两项之差除以 x)",
+    "family": "standard_result",
+    "priority": 40,
+    "triggers": {
+      "interval": [
+        "zero_to_inf",
+        "infinite"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "exp",
+        "inv_trig",
+        "trig"
+      ],
+      "form": [
+        "quotient"
+      ],
+      "misc": [
+        "frullani_shape"
+      ]
+    },
+    "when": "形如 ∫_0^∞ [f(ax) − f(bx)]/x dx 的积分,其中 f 在 [0,∞) 上有极限。判别信号(`frullani_shape`):分子是**同一个函数在两个不同缩放下的取值之差**,分母恰好是 x。指数函数、反三角函数、对数都很常见。这类积分里两个被加项各自发散,只有配对之后才收敛。注意与 Dirichlet 型 ∫_0^∞ g(x)/x dx(分子只有一项)区分开 —— 那一项单独收敛,不属于本卡。",
+    "recipe": "1. 记 f(0) = lim_{x→0+} f(x)、f(∞) = lim_{x→∞} f(x),两者都存在时:\n   ∫_0^∞ [f(ax) − f(bx)]/x dx = [f(0) − f(∞)]·ln(b/a)   (a, b > 0);\n2. 推导先截断:算 ∫_ε^R,对两项分别换元 u = ax、v = bx,把区间对齐;\n3. 得到 ∫_{aε}^{aR} f(u)/u du − ∫_{bε}^{bR} f(v)/v dv,合并为 ∫_{aε}^{bε} − ∫_{aR}^{bR};\n4. 第一段 ε→0 时用 f ≈ f(0),得到 f(0)·ln(b/a);第二段 R→∞ 时用 f ≈ f(∞),得到 f(∞)·ln(b/a);\n5. 相减即得 [f(0) − f(∞)]·ln(b/a)。特例 f(∞) = 0 时结果就是 f(0)·ln(b/a)。",
+    "pitfalls": "① 误以为 f(∞) 一定是 0:f(x) = arctan x 时 f(0) = 0、f(∞) = π/2,结果是 (0 − π/2)ln(b/a) = (π/2)·ln(a/b);\n② 把两项拆开分别积分 —— 它们各自在 0 或 ∞ 处发散,必须先截断再配对;\n③ 参数必须为正,否则换元后上下限方向反转,符号会错;\n④ 这是**条件收敛**的结果,不能当作两个收敛积分之和来做四则运算。",
+    "examples": [
+      "\\int_{0}^{\\infty} \\frac{e^{-ax}-e^{-bx}}{x} dx",
+      "\\int_{0}^{\\infty} \\frac{e^{-x}-e^{-2x}}{x} dx",
+      "\\int_{0}^{\\infty} \\frac{\\arctan(ax)-\\arctan(bx)}{x} dx"
+    ]
+  },
+  {
+    "id": "def_log_sine",
+    "name": "对数正弦积分(Euler)",
+    "family": "standard_result",
+    "priority": 41,
+    "triggers": {
+      "interval": [
+        "zero_to_pi_over_2",
+        "zero_to_pi"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "log",
+        "trig"
+      ],
+      "form": [
+        "composite"
+      ],
+      "misc": []
+    },
+    "when": "被积函数是 ln(sin x)、ln(cos x) 或它们的线性组合 —— 包括 ln(sin x cos x)、ln(tan x)、ln(sin²x),区间为 [0, π/2] 或 [0, π]。判别信号:对数里面是三角函数,而且**没有**别的东西乘进来;含有 x 的幂或多项式因子的不属于这一族。这一族 SymPy 是全线放弃的,integrate 与 meijerg 都返回未求值的 Integral。",
+    "recipe": "记 I = ∫_0^{π/2} ln(sin x)dx,五步推出闭式:\n1. **区间再现** x → π/2 − x:因为 sin(π/2 − x) = cos x,所以 I = ∫_0^{π/2} ln(cos x)dx;\n2. 两式相加:2I = ∫_0^{π/2} ln(sin x cos x)dx;\n3. 用倍角 sin x cos x = sin(2x)/2,并换元 u = 2x:∫_0^{π/2} ln(sin 2x)dx = (1/2)∫_0^{π} ln(sin u)du;\n4. 再用 sin u 关于 u = π/2 的对称性:∫_0^{π} ln(sin u)du = 2I;\n   于是 ∫_0^{π/2} ln(sin x cos x)dx = I − (π/2)ln2;\n5. 代回第 2 步得 2I = I − (π/2)ln2,所以 **I = −(π/2)ln2**。\n推广:任意 a·ln(sin x) + b·ln(cos x) 在 [0, π/2] 上等于 (a+b)·I;∫_0^{π} ln(sin x)dx = 2I = −π ln2。",
+    "pitfalls": "① 漏掉系数 π/2:把 ∫_0^{π/2} ln(sin x)dx 写成 −ln2(正确是 −(π/2)ln2);\n② 区间搞错:∫_0^{π} ln(sin x)dx = −π ln2,是半区间值的 2 倍,不是同一个数;\n③ 在 [0, π] 上对 ln(cos x) 套公式 —— cos x 在那里变号,对数没有实值意义;\n④ 在 [π, 2π] 上直接写 ln(sin x):sin x < 0,必须写成 ln|sin x|;\n⑤ 把 ln(sin x cos x) 误读成 ln(sin x)·ln(cos x) —— 那是两个对数**相加**。",
+    "examples": [
+      "\\int_{0}^{\\pi/2} \\ln(\\sin x) dx",
+      "\\int_{0}^{\\pi/2} \\ln(\\cos x) dx",
+      "\\int_{0}^{\\pi} \\ln(\\sin x) dx",
+      "\\int_{0}^{\\pi/2} \\ln(\\sin x\\cos x) dx",
+      "\\int_{0}^{\\pi/2} \\ln(\\tan x) dx",
+      "\\int_{0}^{\\pi/2} \\ln(\\sin^{2}x) dx"
+    ]
+  },
+  {
+    "id": "def_series_expansion",
+    "name": "幂级数展开逐项积分",
+    "family": "series_expansion",
+    "priority": 45,
+    "triggers": {
+      "interval": [
+        "unit",
+        "finite"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "log",
+        "poly",
+        "rational",
+        "trig",
+        "inv_trig"
+      ],
+      "form": [
+        "power",
+        "rational"
+      ],
+      "misc": []
+    },
+    "when": "被积函数的幂级数展开已知(如 1/(1−x)、e^{x}、sin x、ln(1+x)、arctan x),且积分区间落在收敛域内(常见 [0,1])。判别信号:被积函数是 ln(1±x)/x、arctan x/x 型,或含有现成级数的函数。",
+    "recipe": "1. 写出被积函数的幂级数,例如 ln(1+x) = \\Sigma_{n=1}^{\\infty} (−1)^{n+1}x^{n}/n(−1<x≤1),1/(1−x) = \\Sigma_{n=0}^{\\infty} x^{n}(|x|<1);\n2. 在收敛域内逐项积分:∫_{a}^{b} \\Sigma a_{n}x^{n} dx = \\Sigma a_{n}(b^{n+1}−a^{n+1})/(n+1);\n3. 端点 x=1 处于收敛边界时,用一致收敛性或 Abel 第二定理说明逐项积分合法;\n4. 求出级数和,常用 \\Sigma 1/n^{2} = \\pi^{2}/6,\\Sigma (−1)^{n+1}/n^{2} = \\pi^{2}/12;\n5. 常用技巧:∫_{0}^{1} x^{n}ln x dx = −1/(n+1)^{2},可把含 ln x 的积分化为级数;\n6. 只取前若干项作近似时要给出余项的量级。",
+    "pitfalls": "① 不看收敛域端点就在级数发散处逐项积分;\n② 完全忽略逐项积分所要求的一致收敛条件;\n③ 级数指标错位,例如把 ln(1+x)/x 展开的首项写成常数项而不是 x 的一次项;\n④ 对含对数奇点的端点不做说明就代入,例如 ∫_{0}^{1} ln(1−x)/x dx 在 x=1 处需先说明该奇点可积。",
+    "examples": [
+      "\\int_{0}^{1} \\frac{\\ln(1+x)}{x} dx",
+      "\\int_{0}^{1} \\frac{\\ln(1-x)}{x} dx",
+      "\\int_{0}^{1} x^{2}\\ln x dx",
+      "\\int_{0}^{1} x^{3}\\ln x dx",
+      "\\int_{0}^{1} \\ln(1+x) dx"
+    ]
+  },
+  {
+    "id": "def_reciprocal_symmetry",
+    "name": "倒代换 x → 1/t",
+    "family": "substitution_limits",
+    "priority": 46,
+    "triggers": {
+      "interval": [
+        "zero_to_inf",
+        "infinite"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "log",
+        "rational",
+        "poly"
+      ],
+      "form": [
+        "rational",
+        "quotient"
+      ],
+      "misc": [
+        "algebraic_decay",
+        "power_denominator"
+      ]
+    },
+    "when": "区间是 (0, ∞),且被积函数在 x → 1/x 的变换下呈现对称性。典型情形:分母是 x 的多项式、分子含 ln x 或 x 的幂,而且幂次配置在倒代换下**互补**。判别方法:算一下 f(1/t)·(1/t²) 与 f(t) 的关系,若两者成比例或恰好互为相反数,本卡可用。",
+    "recipe": "1. 令 x = 1/t,则 dx = −dt/t²;(0, ∞) 仍映到 (0, ∞),区间方向反转经微分负号抵消;\n2. 于是 I = ∫_0^∞ f(x) dx = ∫_0^∞ f(1/t)·(1/t²) dt;\n3. 把右边整理成 ∫_0^∞ g(t) dt,再把哑变量 t 改回 x,得到 I 的**第二个表达式**;\n4. 两个表达式相加除以 2,分子往往整体化简掉,直接读出结果;\n5. 典型结论:分母为 1 + x² 或 1 + x⁴ 时,ln x 型被积函数的两个表达式互为相反数,所以 ∫_0^∞ ln x/(1+x²) dx = 0。",
+    "pitfalls": "① 忘记 dx = −dt/t² 中的 t² 因子,只换变量不换微分;\n② 区间方向反转没处理,整体差一个负号;\n③ 对含 ln x 的被积函数:倒代换把 ln x 变成 −ln t,这正是它能配对消掉的原因,但要连同 t² 一起看;\n④ 只能用于 (0, ∞);区间含 0 或跨负半轴时不成立。",
+    "examples": [
+      "\\int_{0}^{\\infty} \\frac{\\ln x}{1+x^{2}} dx",
+      "\\int_{0}^{\\infty} \\frac{x^{2}}{1+x^{4}} dx"
+    ]
+  },
+  {
+    "id": "def_improper_split",
+    "name": "反常积分在奇点处拆开",
+    "family": "improper_split",
+    "priority": 50,
+    "triggers": {
+      "interval": [
+        "finite",
+        "unit",
+        "symmetric"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "log",
+        "rational"
+      ],
+      "form": [
+        "rational"
+      ],
+      "misc": [
+        "singular_endpoint",
+        "singular_interior",
+        "log_singularity"
+      ]
+    },
+    "when": "被积函数在积分区间内有瑕点(无定义或趋于无穷的点),例如含 ln x 在 x=0、分母在区间内为零、分数幂在端点奇异。判别信号:把某个内点或端点代入被积函数时它发散。",
+    "recipe": "1. 找出 [a,b] 内所有瑕点 c_{1} < ... < c_{k}(包括端点);\n2. 在每个瑕点处拆开,内点 c 的情形:∫_{a}^{b} = lim_{\\epsilon→0+}∫_{a}^{c−\\epsilon} + lim_{\\epsilon→0+}∫_{c+\\epsilon}^{b};\n3. 各段极限必须分别存在且有限,积分才收敛,值等于各极限之和;\n4. 只要有一段发散,整个反常积分发散;不能用同一个 \\epsilon 从两侧对称逼近来抵消发散,那是 Cauchy 主值而不是收敛;\n5. 先判定敛散再求值,常用 p 判别法或比较判别法确认每段收敛。",
+    "pitfalls": "① 不拆开就套牛顿-莱布尼茨公式,把发散的 ∫_{−1}^{1} 1/x^{2} dx 算成有限值;\n② 只检查一个瑕点,漏掉区间内的其他奇点;\n③ 把 Cauchy 主值当成普通收敛值:∫_{−1}^{1} 1/x dx 的主值是 0,但积分发散;\n④ 用同一 \\epsilon 同时逼近两侧,掩盖了单侧发散。",
+    "examples": [
+      "\\int_{0}^{1} \\frac{1}{\\sqrt{x}} dx",
+      "\\int_{-1}^{1} \\frac{1}{\\sqrt{1-x^{2}}} dx",
+      "\\int_{0}^{1} \\ln x dx",
+      "\\int_{0}^{1} \\frac{1}{x^{2/3}} dx",
+      "\\int_{0}^{1} \\frac{1}{\\sqrt{1-x}} dx",
+      "\\int_{0}^{1} \\frac{\\ln x}{\\sqrt{x}} dx"
+    ]
+  },
+  {
+    "id": "def_infinite_truncation",
+    "name": "无穷限积分截断判敛",
+    "family": "improper_split",
+    "priority": 52,
+    "triggers": {
+      "interval": [
+        "infinite",
+        "zero_to_inf"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "exp",
+        "rational"
+      ],
+      "form": [
+        "rational"
+      ],
+      "misc": [
+        "exponential_decay"
+      ]
+    },
+    "when": "积分区间为无穷,例如 [a,\\infty)、(−\\infty,b] 或 (−\\infty,\\infty)。判别信号:积分上限或下限是 \\infty。",
+    "recipe": "1. 按定义截断:∫_{a}^{\\infty} f(x) dx = lim_{R→\\infty}∫_{a}^{R} f(x) dx;\n2. 先算出含 R 的截断积分(通常有显式表达式),再令 R→\\infty;\n3. 极限存在且有限则积分收敛,值就是该极限;极限为无穷或不存在则发散;\n4. 对 (−\\infty,\\infty) 必须先取分点 c 拆成 ∫_{−\\infty}^{c} 与 ∫_{c}^{\\infty} 两段,两段都收敛才收敛;\n5. 求值前先用比较判别法或 p 判别法确认收敛,避免做无效计算。",
+    "pitfalls": "① 对 (−\\infty,\\infty) 只算 lim_{R→\\infty}∫_{−R}^{R},这得到的是主值,会掩盖发散,例如 ∫_{−\\infty}^{\\infty} x dx;\n② 把截断积分的极限与不定积分混为一谈,忘记验证极限存在;\n③ 认为被积函数趋于 0 就一定收敛,1/x 在 [1,\\infty) 上是反例;\n④ 截断点恰好选在被积函数的奇点上,使截断积分本身无意义。",
+    "examples": [
+      "\\int_{1}^{\\infty} \\frac{1}{x^{2}} dx",
+      "\\int_{0}^{\\infty} e^{-x} dx",
+      "\\int_{0}^{\\infty} \\frac{1}{1+x^{2}} dx",
+      "\\int_{1}^{\\infty} \\frac{1}{x^{3}} dx",
+      "\\int_{0}^{\\infty} e^{-2x} dx",
+      "\\int_{0}^{\\infty} \\frac{1}{x^{2}+4} dx"
+    ]
+  },
+  {
+    "id": "def_param_continuity",
+    "name": "含参积分的连续性",
+    "family": "parametric",
+    "priority": 58,
+    "triggers": {
+      "interval": [
+        "finite",
+        "infinite",
+        "any"
+      ],
+      "has_radical": [],
+      "has_func": [],
+      "form": [],
+      "misc": [
+        "parameterized"
+      ]
+    },
+    "when": "积分含参数 t,要判断 I(t) 关于 t 是否连续,或要计算 lim_{t→t0} I(t)。判别信号:被积函数中出现参数,题目要求对参数取极限或讨论参数连续性。",
+    "recipe": "1. 有限区间 [a,b] 情形:若 f(x,t) 在矩形 [a,b]×[t0−\\delta,t0+\\delta] 上连续,则 I(t) 在 t0 处连续,即 lim_{t→t0}∫_{a}^{b} f(x,t) dx = ∫_{a}^{b} f(x,t0) dx;\n2. 无穷区间情形:仅有 f 连续不够,还必须 ∫_{a}^{\\infty} f(x,t) dx 在 t0 的某个邻域内一致收敛,常用 Weierstrass 判别法,即找与 t 无关的 g(x) 使 |f(x,t)| ≤ g(x) 且 ∫_{a}^{\\infty} g(x) dx 收敛;\n3. 一致收敛加上 f 连续,才能把极限移进积分号,得到 I(t) 的连续性;\n4. 反例检验:∫_{0}^{\\infty} sin(tx)/x dx 对每个 t≠0 收敛,但当 t→0+ 时极限是 \\pi/2,而 t=0 时被积函数为 0、积分为 0,说明无穷区间上连续性可能失效;\n5. 求极限时先把 t 限制在一个闭区间上验证条件,再令 t→t0。",
+    "pitfalls": "① 在无穷区间上只验证被积函数对 x 连续就交换极限与积分,漏掉一致收敛;\n② 把 ∫_{0}^{\\infty} sin(tx)/x dx 在 t=0 处当作连续;\n③ 把参数区间的端点 t0 当内点处理,条件在那里退化;\n④ 把有限区间的结论(矩形上连续即可)直接搬到无穷区间。",
+    "examples": [
+      "\\int_{0}^{\\infty} e^{-tx} dx",
+      "\\int_{0}^{1} x^{t} dx",
+      "\\int_{0}^{\\infty} \\frac{\\sin(tx)}{x} dx"
+    ]
+  },
+  {
+    "id": "def_convergence_p_test",
+    "name": "p 积分判别法",
+    "family": "divergence_test",
+    "priority": 60,
+    "triggers": {
+      "interval": [
+        "infinite",
+        "zero_to_inf"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "poly",
+        "rational"
+      ],
+      "form": [
+        "power",
+        "rational"
+      ],
+      "misc": [
+        "singular_endpoint",
+        "algebraic_decay"
+      ]
+    },
+    "when": "判定含幂函数因子的积分在端点或无穷远处的敛散性。判别信号:被积函数在某个奇点附近等价于 C/(x−c)^{p} 或 C/x^{p}。本卡三条例题中,第 1 条 p=3>1 与第 2 条 p=1/2<1 都收敛,第 3 条 p=1 发散。",
+    "recipe": "1. 无穷限:∫_{1}^{\\infty} 1/x^{p} dx 当 p>1 时收敛,当 p≤1 时发散;\n2. 瑕点:∫_{0}^{1} 1/x^{p} dx 当 p<1 时收敛,当 p≥1 时发散;更一般地 ∫_{a}^{b} 1/(b−x)^{p} dx 当 p<1 时收敛,当 p≥1 时发散;\n3. 操作:在每个奇点附近用泰勒展开或等价量把被积函数写成 C/x^{p}(无穷限)或 C/(b−x)^{p}(瑕点)的形式,读出 p;\n4. 按奇点位置选对应规则:无穷限要求 p>1,瑕点要求 p<1,两者方向相反;\n5. 多个奇点时逐段判断,所有段都收敛才收敛。",
+    "pitfalls": "① 把两条规则的方向记反:无穷限是 p>1 收敛,瑕点是 p<1 收敛;\n② 只看幂次不看常数 C 是否非零同号,被积函数变号时应先取绝对值;\n③ 两端都有奇点时只判一端;\n④ 认为被积函数趋于 0 就一定收敛,1/x 在 [1,\\infty) 是反例。",
+    "examples": [
+      "\\int_{1}^{\\infty} \\frac{1}{x^{3}} dx",
+      "\\int_{0}^{1} \\frac{1}{\\sqrt{x}} dx",
+      "\\int_{1}^{\\infty} \\frac{1}{x} dx",
+      "\\int_{0}^{1} \\frac{1}{x^{3/4}} dx",
+      "\\int_{1}^{\\infty} \\frac{1}{x^{5/2}} dx"
+    ]
+  },
+  {
+    "id": "def_param_differentiation",
+    "name": "积分号下求导",
+    "family": "parametric",
+    "priority": 61,
+    "triggers": {
+      "interval": [
+        "zero_to_inf",
+        "infinite",
+        "finite"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "exp",
+        "log"
+      ],
+      "form": [
+        "any"
+      ],
+      "misc": [
+        "parameterized",
+        "oscillatory"
+      ]
+    },
+    "when": "被积函数含参数 t,直接积分困难,但对 t 求导后积分变简单(费曼技巧)。判别信号:积分中出现 ln x 因子、e^{−tx} 因子,或参数出现在指数上。",
+    "recipe": "1. 设 I(t) = ∫ f(x,t) dx,先确定一个使积分收敛的 t 区间,并找出一个具体点 t0 使 ∫ f(x,t0) dx 收敛;\n2. 有限区间 [a,b]:若 f 与 \\partial f/\\partial t 在矩形 [a,b]×[t1,t2] 上连续,则 I'(t) = ∫_{a}^{b} (\\partial f/\\partial t)(x,t) dx;\n3. 无穷区间:除 f 与 \\partial f/\\partial t 连续外,还要求 ∫_{a}^{\\infty} (\\partial f/\\partial t)(x,t) dx 在 [t1,t2] 上一致收敛,实用判据是存在与 t 无关的 g(x) 使 |\\partial f/\\partial t| ≤ g(x) 且 ∫_{a}^{\\infty} g(x) dx 收敛,同时 ∫_{a}^{\\infty} f(x,t0) dx 对某个 t0 收敛;\n4. 算出 I'(t) 后积分回推:I(t) = I(t0) + ∫_{t0}^{t} I'(u) du,常数 I(t0) 用直接计算或取极限确定;\n5. 最后回验所得结果在要求的参数范围与端点处是否成立;参数同时出现在积分限内时还要加上积分限求导的边界项。",
+    "pitfalls": "① 只验证被积函数连续就交换求导与积分,漏掉 \\partial f/\\partial t 的一致收敛条件;\n② 忘记确定常数 I(t0),通常需要取 t 的特殊值直接算;\n③ 在 ∫_{0}^{\\infty} e^{−tx} dx = 1/t 上用求导法时忽略 t>0 的条件;\n④ 求导后得到的积分发散,却仍把它当作合法结果;\n⑤ 参数同时出现在积分限与积分号内时,漏掉积分限求导产生的边界项。",
+    "examples": [
+      "\\int_{0}^{\\infty} \\frac{e^{-ax}-e^{-bx}}{x} dx",
+      "\\int_{0}^{\\infty} e^{-tx}\\frac{\\sin x}{x} dx",
+      "\\int_{0}^{1} \\frac{x^{t}-1}{\\ln x} dx"
+    ]
+  },
+  {
+    "id": "def_param_limit_interchange",
+    "name": "积分号下求极限",
+    "family": "parametric",
+    "priority": 64,
+    "triggers": {
+      "interval": [
+        "finite",
+        "infinite",
+        "any"
+      ],
+      "has_radical": [],
+      "has_func": [],
+      "form": [],
+      "misc": [
+        "parameterized"
+      ]
+    },
+    "when": "要计算 lim_{t→t0}∫ f(x,t) dx 或 lim_{n→\\infty}∫ f_{n}(x) dx,即把极限移到积分号内。判别信号:外层是极限、内层是积分。",
+    "recipe": "1. 有限区间 [a,b]:若 f(x,t) 在矩形 [a,b]×[t0−\\delta,t0+\\delta] 上连续,则 lim_{t→t0}∫_{a}^{b} f(x,t) dx = ∫_{a}^{b} f(x,t0) dx;\n2. 无穷区间:需要 f(x,t) 连续且 ∫_{a}^{\\infty} f(x,t) dx 关于 t 一致收敛,或者存在与 t 无关的可积控制函数 g(x),即 |f(x,t)| ≤ g(x) 且 ∫_{a}^{\\infty} g(x) dx 收敛,这是最常用的充分条件;\n3. 数列情形同理:若 |f_{n}(x)| ≤ g(x)、∫ g 收敛且 f_{n}(x)→f(x) 逐点,则 lim_{n→\\infty}∫ f_{n} = ∫ f;\n4. 验证不了控制函数时,改为先求出 I(t) 的显式表达式,再直接对 t 取极限;\n5. 交换后要把极限值与积分在 t0 处的取值对照,注意可能出现跳跃。",
+    "pitfalls": "① 只有逐点收敛就交换极限与积分:反例 f_{n}(x) = n*x*(1−x^{2})^{n} 在 [0,1] 上逐点趋于 0,但 ∫_{0}^{1} f_{n}(x) dx = n/(2(n+1)) → 1/2,不等于 0;\n② 无穷区间上忽略一致收敛,漏掉跳跃点;\n③ 所取的控制函数仍依赖 t,不构成控制函数;\n④ 交换后忘记检查积分在 t0 处本身是否有定义。",
+    "examples": [
+      "\\int_{0}^{1} x^{t} dx",
+      "\\int_{0}^{\\infty} \\frac{\\cos(tx)}{1+x^{2}} dx"
+    ]
+  },
+  {
+    "id": "def_convergence_comparison",
+    "name": "比较判别法与等价量法",
+    "family": "divergence_test",
+    "priority": 66,
+    "triggers": {
+      "interval": [
+        "any"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "poly",
+        "exp",
+        "log",
+        "trig",
+        "rational"
+      ],
+      "form": [
+        "any"
+      ],
+      "misc": [
+        "algebraic_decay",
+        "exponential_decay"
+      ]
+    },
+    "when": "判定非负被积函数积分的敛散性,并且能用一个已知敛散的积分作界。判别信号:被积函数在奇点附近与某个幂函数或指数函数同阶。本卡三条例题中,第 1、2 条收敛,第 3 条发散。",
+    "recipe": "1. 比较判别法:设 0 ≤ f(x) ≤ g(x)。若 ∫ g 收敛,则 ∫ f 收敛;若 ∫ f 发散,则 ∫ g 发散;\n2. 极限比较(等价量)法:若在奇点处 f/g → L 且 0<L<\\infty(特别地 f~g),则 ∫ f 与 ∫ g 同敛散;\n3. 操作顺序:找奇点 → 用泰勒展开保留主项写出等价量 → 选 p 积分作参照 → 由极限比较下结论;\n4. 被积函数变号时先对绝对值讨论绝对收敛,再用 Dirichlet 或 Abel 判别法讨论条件收敛;\n5. 与数值结果对照:收敛时数值求积会稳定,发散时数值随截断增大而不断增大。",
+    "pitfalls": "① 比较方向用反:由 f ≤ g 且 ∫ f 收敛不能推出 ∫ g 收敛;\n② 等价量主项系数为 0 或 \\infty 时不能直接用极限比较,需要保留更高阶项;\n③ 用 e^{−x} 之类的界去控制只有代数衰减的因子,把条件收敛误判为绝对收敛;\n④ 忽略被积函数在区间内变号,直接使用比较判别法。",
+    "examples": [
+      "\\int_{1}^{\\infty} \\frac{1}{x^{2}+1} dx",
+      "\\int_{0}^{\\infty} \\frac{x}{x^{3}+1} dx",
+      "\\int_{1}^{\\infty} \\frac{1}{\\sqrt{x}} dx"
+    ]
+  },
+  {
+    "id": "def_param_conditions",
+    "name": "含参积分的参数范围",
+    "family": "parametric",
+    "priority": 67,
+    "triggers": {
+      "interval": [
+        "zero_to_inf",
+        "infinite"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "poly",
+        "exp"
+      ],
+      "form": [
+        "power"
+      ],
+      "misc": [
+        "parameterized",
+        "algebraic_decay"
+      ]
+    },
+    "when": "含参积分中出现参数(如 s、t、a、p),需要确定参数取什么值时积分收敛、公式是否成立。判别信号:被积函数含 x^{s−1}、e^{−tx}、1/(1+x^{p}) 之类带参数的幂或指数结构。",
+    "recipe": "1. 找出所有与参数有关的分界点:x=0 附近、x→\\infty 附近,以及参数使分母为零的点;\n2. 在每个端点用 p 判别法列出参数不等式,例如 ∫_{0}^{1} x^{s−1} dx 在 0 处收敛需 s>0,∫_{1}^{\\infty} x^{s−1} dx 在 \\infty 处收敛需 s<1;\n3. 把所有端点的条件取交集,得到收敛的参数区间;\n4. 常用结论:∫_{0}^{\\infty} x^{s−1}e^{−x} dx 收敛当且仅当 s>0,值等于 \\Gamma(s);∫_{0}^{\\infty} x^{s−1}/(1+x) dx 收敛当且仅当 0<s<1,值等于 \\pi/sin(\\pi s);∫_{0}^{\\infty} e^{−tx} dx 收敛当且仅当 t>0,值等于 1/t;\n5. 只有在收敛区间内部才能对参数求导、取极限;参数端点处条件退化,必须单独讨论。",
+    "pitfalls": "① 只判一个端点而忽略另一端,例如 x^{s−1}(1−x)^{q−1} 必须同时在 0 与 1 两端给出条件;\n② 在参数端点套用公式,如 s=1 时 ∫_{0}^{\\infty} 1/(1+x) dx 发散而 \\pi/sin(\\pi s) 无意义;\n③ 把参数当作固定正数而不说明取值范围;\n④ 求导或取极限时越出收敛区间。",
+    "examples": [
+      "\\int_{0}^{\\infty} x^{t-1} e^{-x} dx",
+      "\\int_{0}^{\\infty} \\frac{x^{s-1}}{1+x} dx",
+      "\\int_{0}^{\\infty} e^{-tx} dx"
+    ]
+  },
+  {
+    "id": "def_param_uniform_convergence",
+    "name": "一致收敛判别",
+    "family": "parametric",
+    "priority": 70,
+    "triggers": {
+      "interval": [
+        "infinite",
+        "zero_to_inf"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "exp",
+        "trig"
+      ],
+      "form": [
+        "any"
+      ],
+      "misc": [
+        "parameterized",
+        "oscillatory"
+      ]
+    },
+    "when": "需要对含参积分做逐项取极限、逐项积分或逐项求导,必须先建立一致收敛。判别信号:参数出现在 e^{−tx}、sin(tx) 这类因子里,其余部分能给出与参数无关的界。",
+    "recipe": "1. Weierstrass(优函数)判别法:若存在与 t 无关的函数 g(x),使 |f(x,t)| ≤ g(x) 对一切 t∈T 与 x 成立,且 ∫_{a}^{\\infty} g(x) dx 收敛,则 ∫_{a}^{\\infty} f(x,t) dx 在 T 上一致收敛;\n2. 优函数取法:把参数换成使衰减最慢的端点值,例如 e^{−tx} ≤ e^{−t1 x}(t≥t1>0);\n3. 一致收敛的作用:f 连续时 I(t) 连续;可以逐项取极限;可以在 T 上逐项积分;\n4. 只有条件收敛的振荡积分不能直接用 Weierstrass(因为绝对值积分发散),改用 Dirichlet 型一致判别:∫_{a}^{X} f 关于 X 与 t 一致有界,且 g(x,t) 对 x 单调并关于 t 一致趋于 0;\n5. 判别时先把参数限制在闭区间 [t1,t2] 上,并且让 t1 远离使条件退化的点。",
+    "pitfalls": "① 把逐点收敛当一致收敛:∫_{0}^{\\infty} e^{−tx} dx 对每个 t>0 收敛,但当 t→0+ 时并不一致收敛;\n② 优函数仍含参数,不满足与 t 无关的要求;\n③ 对振荡积分直接比较绝对值,误判为绝对收敛;\n④ 只在单个参数值处验证条件,而一致收敛是区间上的性质。",
+    "examples": [
+      "\\int_{0}^{\\infty} \\frac{\\cos(tx)}{1+x^{2}} dx",
+      "\\int_{0}^{\\infty} e^{-tx}\\cos x dx",
+      "\\int_{0}^{\\infty} \\frac{\\sin(tx)}{x(1+x^{2})} dx"
+    ]
+  },
+  {
+    "id": "def_convergence_dirichlet_abel",
+    "name": "Dirichlet / Abel 判别法",
+    "family": "divergence_test",
+    "priority": 74,
+    "triggers": {
+      "interval": [
+        "infinite",
+        "zero_to_inf"
+      ],
+      "has_radical": [],
+      "has_func": [
+        "trig"
+      ],
+      "form": [
+        "product",
+        "quotient"
+      ],
+      "misc": [
+        "oscillatory",
+        "algebraic_decay"
+      ]
+    },
+    "when": "被积函数是振荡因子(sin 或 cos)乘一个单调趋于 0 的因子,绝对值积分发散而原积分收敛,属于条件收敛。判别信号:振荡因子的部分积分有界,另一因子单调趋于 0。本卡三条例题都收敛(条件收敛),可对照 |sin x|/x 在 [1,\\infty) 上发散。",
+    "recipe": "1. Dirichlet 判别法:若 F(X) = ∫_{a}^{X} f(t) dt 关于所有 X≥a 一致有界(例如 f = sin x 时 |∫ sin| ≤ 2),且 g(x) 在 [a,\\infty) 上单调并满足 lim_{x→\\infty} g(x) = 0,则 ∫_{a}^{\\infty} f(x)g(x) dx 收敛;\n2. 瑕点端的类似形式:若 ∫_{a}^{x} f 有界,且 g 在 (a,b] 上单调、当 x→a+ 时趋于 0,则 ∫_{a}^{b} f g dx 收敛;\n3. Abel 判别法:若 ∫_{a}^{\\infty} f(x) dx 收敛,而 g(x) 单调且有界,则 ∫_{a}^{\\infty} f(x)g(x) dx 收敛;\n4. 应用要点:振荡因子取 f(sin x、cos x 的部分积分一致有界),衰减因子取 g(如 1/x^{p},p>0);\n5. 本卡只给出敛散性,不给具体数值;需要数值时可通过分部积分把积分化为绝对收敛项后再算。",
+    "pitfalls": "① 把条件收敛当绝对收敛,用比较法对 |sin x|/x 判敛散,它其实发散;\n② g 不单调或极限不为 0 时仍用 Dirichlet;\n③ 用 Dirichlet 判别法求值,它只能判定收敛而得不到积分值;\n④ 忘记 ∫_{a}^{X} f 的有界性必须对所有 X 一致成立,而不是逐点有界。",
+    "examples": [
+      "\\int_{1}^{\\infty} \\frac{\\sin x}{x} dx",
+      "\\int_{1}^{\\infty} \\frac{\\cos x}{\\sqrt{x}} dx",
+      "\\int_{1}^{\\infty} \\frac{\\sin(2x)}{x} dx"
+    ]
+  }
+]

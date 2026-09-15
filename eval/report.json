@@ -1,0 +1,1548 @@
+{
+  "summary": {
+    "total": 56,
+    "solved": 56,
+    "refused": 0,
+    "family_hit": 55,
+    "family_total": 56,
+    "card_hit_top1": 44,
+    "card_hit_top3": 45,
+    "card_total": 45,
+    "clean": 56,
+    "piecewise": 0
+  },
+  "seconds_total": 22.94,
+  "records": [
+    {
+      "id": "e01",
+      "latex": "x^{3}",
+      "kind": "indefinite",
+      "expect_family": [
+        "direct_table"
+      ],
+      "expect_card": "basic_table",
+      "ok": true,
+      "result": "x**4/4",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "basic_table",
+      "top1_family": "direct_table",
+      "top_hits": [
+        "basic_table",
+        "composite_substitution",
+        "tan_sec_powers",
+        "linear_substitution"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.03,
+      "seconds": 0.03
+    },
+    {
+      "id": "e02",
+      "latex": "\\frac{1}{x}",
+      "kind": "indefinite",
+      "expect_family": [
+        "direct_table"
+      ],
+      "expect_card": "basic_table",
+      "ok": true,
+      "result": "log(x)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "basic_table",
+      "top1_family": "direct_table",
+      "top_hits": [
+        "basic_table",
+        "rational_distinct_linear",
+        "conjugate_pairing",
+        "rational_irreducible_quadratic"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.03,
+      "seconds": 0.0
+    },
+    {
+      "id": "e03",
+      "latex": "e^{x}",
+      "kind": "indefinite",
+      "expect_family": [
+        "direct_table",
+        "substitution_basic"
+      ],
+      "expect_card": null,
+      "ok": true,
+      "result": "exp(x)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "basic_table",
+      "top1_family": "direct_table",
+      "top_hits": [
+        "basic_table",
+        "linear_substitution",
+        "composite_substitution",
+        "exp_rational_substitution"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "n_attempts": 1,
+      "ugliness": 0.03,
+      "seconds": 0.01
+    },
+    {
+      "id": "e04",
+      "latex": "\\cos x",
+      "kind": "indefinite",
+      "expect_family": [
+        "direct_table",
+        "substitution_basic"
+      ],
+      "expect_card": null,
+      "ok": true,
+      "result": "sin(x)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "basic_table",
+      "top1_family": "direct_table",
+      "top_hits": [
+        "basic_table",
+        "linear_substitution",
+        "composite_substitution",
+        "trig_product_to_sum"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "n_attempts": 1,
+      "ugliness": 0.03,
+      "seconds": 0.0
+    },
+    {
+      "id": "e05",
+      "latex": "5",
+      "kind": "indefinite",
+      "expect_family": [
+        "direct_table"
+      ],
+      "expect_card": null,
+      "ok": true,
+      "result": "5*x",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "basic_table",
+      "top1_family": "direct_table",
+      "top_hits": [
+        "basic_table",
+        "reduction_quadratic_power",
+        "denom_a_plus_b_trig",
+        "linear_substitution"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "n_attempts": 1,
+      "ugliness": 0.01,
+      "seconds": 0.0
+    },
+    {
+      "id": "e06",
+      "latex": "\\sin(3x+1)",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_basic"
+      ],
+      "expect_card": "linear_substitution",
+      "ok": true,
+      "result": "-cos(3*x + 1)/3",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "linear_substitution",
+      "top1_family": "substitution_basic",
+      "top_hits": [
+        "linear_substitution",
+        "composite_substitution",
+        "trig_product_to_sum",
+        "tan_sec_powers"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.07,
+      "seconds": 0.04
+    },
+    {
+      "id": "e07",
+      "latex": "e^{2x-1}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_basic"
+      ],
+      "expect_card": "linear_substitution",
+      "ok": true,
+      "result": "exp(2*x - 1)/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "linear_substitution",
+      "top1_family": "substitution_basic",
+      "top_hits": [
+        "linear_substitution",
+        "composite_substitution",
+        "basic_table",
+        "exp_rational_substitution"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.07,
+      "seconds": 0.03
+    },
+    {
+      "id": "e08",
+      "latex": "\\frac{1}{2x+5}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_basic"
+      ],
+      "expect_card": "linear_substitution",
+      "ok": true,
+      "result": "log(2*x + 5)/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "linear_substitution",
+      "top1_family": "substitution_basic",
+      "top_hits": [
+        "linear_substitution",
+        "rational_distinct_linear",
+        "conjugate_pairing",
+        "rational_repeated_linear"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.07,
+      "seconds": 0.03
+    },
+    {
+      "id": "e09",
+      "latex": "(2x+1)^{5}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_basic",
+        "direct_table"
+      ],
+      "expect_card": null,
+      "ok": true,
+      "result": "16*x**6/3 + 16*x**5 + 20*x**4 + 40*x**3/3 + 5*x**2 + x",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "linear_substitution",
+      "top1_family": "substitution_basic",
+      "top_hits": [
+        "linear_substitution",
+        "composite_substitution",
+        "basic_table",
+        "tan_sec_powers"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "n_attempts": 1,
+      "ugliness": 0.27,
+      "seconds": 0.07
+    },
+    {
+      "id": "e10",
+      "latex": "x e^{x^{2}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_basic"
+      ],
+      "expect_card": "composite_substitution",
+      "ok": true,
+      "result": "exp(x**2)/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "composite_substitution",
+      "top1_family": "substitution_basic",
+      "top_hits": [
+        "composite_substitution",
+        "parts_tabular",
+        "parts_poly_exp_trig",
+        "basic_table"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.06,
+      "seconds": 0.05
+    },
+    {
+      "id": "e11",
+      "latex": "\\frac{\\cos x}{\\sin x}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_basic"
+      ],
+      "expect_card": "composite_substitution",
+      "ok": true,
+      "result": "log(sin(x))",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "composite_substitution",
+      "top1_family": "substitution_basic",
+      "top_hits": [
+        "composite_substitution",
+        "trig_product_to_sum",
+        "weierstrass_substitution",
+        "denom_a_plus_b_trig"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.06,
+      "seconds": 0.03
+    },
+    {
+      "id": "e12",
+      "latex": "\\frac{\\ln x}{x}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_basic"
+      ],
+      "expect_card": "composite_substitution",
+      "ok": true,
+      "result": "log(x)**2/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "composite_substitution",
+      "top1_family": "substitution_basic",
+      "top_hits": [
+        "composite_substitution",
+        "parts_poly_log_invtrig",
+        "trig_product_to_sum",
+        "tan_sec_powers"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.06,
+      "seconds": 0.07
+    },
+    {
+      "id": "e13",
+      "latex": "2x\\sqrt{1+x^{2}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_basic",
+        "substitution_trig"
+      ],
+      "expect_card": null,
+      "ok": true,
+      "result": "2*x**2*sqrt(x**2 + 1)/3 + 2*sqrt(x**2 + 1)/3",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "trig_sub_x2_plus_a2",
+      "top1_family": "substitution_trig",
+      "top_hits": [
+        "trig_sub_x2_plus_a2",
+        "reciprocal_substitution",
+        "hyperbolic_substitution",
+        "composite_substitution"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "n_attempts": 1,
+      "ugliness": 0.22,
+      "seconds": 0.06
+    },
+    {
+      "id": "e14",
+      "latex": "x\\sqrt{x+1}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_algebraic"
+      ],
+      "expect_card": "radical_linear_substitution",
+      "ok": true,
+      "result": "2*x**2*sqrt(x + 1)/5 + 2*x*sqrt(x + 1)/15 - 4*sqrt(x + 1)/15",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "radical_linear_substitution",
+      "top1_family": "substitution_algebraic",
+      "top_hits": [
+        "radical_linear_substitution",
+        "composite_substitution",
+        "linear_substitution",
+        "basic_table"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.3,
+      "seconds": 0.4
+    },
+    {
+      "id": "e15",
+      "latex": "\\frac{1}{1+\\sqrt{x+1}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_algebraic"
+      ],
+      "expect_card": "radical_linear_substitution",
+      "ok": true,
+      "result": "2*sqrt(x + 1) - 2*log(sqrt(x + 1) + 1)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "radical_linear_substitution",
+      "top1_family": "substitution_algebraic",
+      "top_hits": [
+        "radical_linear_substitution",
+        "basic_table",
+        "linear_substitution",
+        "composite_substitution"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.19,
+      "seconds": 0.1
+    },
+    {
+      "id": "e16",
+      "latex": "\\frac{1}{x^{2}\\sqrt{1+x^{2}}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_algebraic",
+        "substitution_trig"
+      ],
+      "expect_card": null,
+      "ok": true,
+      "result": "-sqrt(x**2 + 1)/x",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "reciprocal_substitution",
+      "top1_family": "substitution_algebraic",
+      "top_hits": [
+        "reciprocal_substitution",
+        "trig_sub_x2_plus_a2",
+        "hyperbolic_substitution",
+        "composite_substitution"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "n_attempts": 1,
+      "ugliness": 0.09,
+      "seconds": 0.34
+    },
+    {
+      "id": "e17",
+      "latex": "\\frac{1}{1+e^{x}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_algebraic"
+      ],
+      "expect_card": "exp_rational_substitution",
+      "ok": true,
+      "result": "x - log(exp(x) + 1)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "exp_rational_substitution",
+      "top1_family": "substitution_algebraic",
+      "top_hits": [
+        "exp_rational_substitution",
+        "basic_table",
+        "linear_substitution",
+        "composite_substitution"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.1,
+      "seconds": 0.23
+    },
+    {
+      "id": "e18",
+      "latex": "\\frac{e^{x}}{1+e^{x}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_algebraic"
+      ],
+      "expect_card": "exp_rational_substitution",
+      "ok": true,
+      "result": "log(exp(x) + 1)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "exp_rational_substitution",
+      "top1_family": "substitution_algebraic",
+      "top_hits": [
+        "exp_rational_substitution",
+        "composite_substitution",
+        "parts_cyclic",
+        "parts_poly_exp_trig"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.07,
+      "seconds": 0.06
+    },
+    {
+      "id": "e19",
+      "latex": "\\frac{1}{e^{x}+e^{-x}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_algebraic"
+      ],
+      "expect_card": "exp_rational_substitution",
+      "ok": true,
+      "result": "RootSum(4*_z**2 + 1, Lambda(_i, _i*log(2*_i + exp(x))))",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "exp_rational_substitution",
+      "top1_family": "substitution_algebraic",
+      "top_hits": [
+        "exp_rational_substitution",
+        "linear_substitution",
+        "composite_substitution",
+        "basic_table"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.28,
+      "seconds": 0.13
+    },
+    {
+      "id": "e20",
+      "latex": "\\sqrt{4-x^{2}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_trig"
+      ],
+      "expect_card": "trig_sub_a2_minus_x2",
+      "ok": true,
+      "result": "x*sqrt(4 - x**2)/2 + 2*asin(x/2)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "trig_sub_a2_minus_x2",
+      "top1_family": "substitution_trig",
+      "top_hits": [
+        "trig_sub_a2_minus_x2",
+        "tan_sec_powers",
+        "reduction_quadratic_power",
+        "basic_table"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.16,
+      "seconds": 0.04
+    },
+    {
+      "id": "e21",
+      "latex": "x^{2}\\sqrt{1-x^{2}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_trig"
+      ],
+      "expect_card": "trig_sub_a2_minus_x2",
+      "ok": true,
+      "result": "sqrt(1 - x**2)*(x**3/4 - x/8) + asin(x)/8",
+      "strategy": "恒等变形:因式分解",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "trig_sub_a2_minus_x2",
+      "top1_family": "substitution_trig",
+      "top_hits": [
+        "trig_sub_a2_minus_x2",
+        "composite_substitution",
+        "parts_poly_exp_trig",
+        "parts_poly_log_invtrig"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 2,
+      "ugliness": 0.21,
+      "seconds": 2.77
+    },
+    {
+      "id": "e22",
+      "latex": "\\frac{x^{2}}{\\sqrt{1-x^{2}}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_trig"
+      ],
+      "expect_card": "trig_sub_a2_minus_x2",
+      "ok": true,
+      "result": "-x*sqrt(1 - x**2)/2 + asin(x)/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "trig_sub_a2_minus_x2",
+      "top1_family": "substitution_trig",
+      "top_hits": [
+        "trig_sub_a2_minus_x2",
+        "composite_substitution",
+        "parts_poly_exp_trig",
+        "parts_poly_log_invtrig"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.15,
+      "seconds": 0.08
+    },
+    {
+      "id": "e23",
+      "latex": "\\frac{1}{\\sqrt{x^{2}+4}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_trig"
+      ],
+      "expect_card": "trig_sub_x2_plus_a2",
+      "ok": true,
+      "result": "asinh(x/2)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "trig_sub_x2_plus_a2",
+      "top1_family": "substitution_trig",
+      "top_hits": [
+        "trig_sub_x2_plus_a2",
+        "hyperbolic_substitution",
+        "reciprocal_substitution",
+        "tan_sec_powers"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 1.55,
+      "seconds": 0.05
+    },
+    {
+      "id": "e24",
+      "latex": "\\sqrt{x^{2}+1}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_trig",
+        "substitution_algebraic"
+      ],
+      "expect_card": "trig_sub_x2_plus_a2",
+      "ok": true,
+      "result": "x*sqrt(x**2 + 1)/2 + asinh(x)/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "trig_sub_x2_plus_a2",
+      "top1_family": "substitution_trig",
+      "top_hits": [
+        "trig_sub_x2_plus_a2",
+        "hyperbolic_substitution",
+        "reciprocal_substitution",
+        "tan_sec_powers"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 1.66,
+      "seconds": 0.04
+    },
+    {
+      "id": "e25",
+      "latex": "\\frac{1}{\\sqrt{x^{2}-4}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_trig"
+      ],
+      "expect_card": "trig_sub_x2_minus_a2",
+      "ok": true,
+      "result": "log(x + sqrt(x**2 - 4))",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "trig_sub_x2_minus_a2",
+      "top1_family": "substitution_trig",
+      "top_hits": [
+        "trig_sub_x2_minus_a2",
+        "hyperbolic_substitution",
+        "reciprocal_substitution",
+        "tan_sec_powers"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.12,
+      "seconds": 0.08
+    },
+    {
+      "id": "e26",
+      "latex": "\\frac{x^{2}}{\\sqrt{x^{2}+a^{2}}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_trig"
+      ],
+      "expect_card": "trig_sub_x2_plus_a2",
+      "ok": true,
+      "result": "-a**2*asinh(x/a)/2 + x*sqrt(a**2 + x**2)/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "trig_sub_x2_plus_a2",
+      "top1_family": "substitution_trig",
+      "top_hits": [
+        "trig_sub_x2_plus_a2",
+        "hyperbolic_substitution",
+        "reciprocal_substitution",
+        "composite_substitution"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 1.71,
+      "seconds": 0.07
+    },
+    {
+      "id": "e27",
+      "latex": "x e^{x}",
+      "kind": "indefinite",
+      "expect_family": [
+        "parts"
+      ],
+      "expect_card": "parts_poly_exp_trig",
+      "ok": true,
+      "result": "(x - 1)*exp(x)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "parts_poly_exp_trig",
+      "top1_family": "parts",
+      "top_hits": [
+        "parts_poly_exp_trig",
+        "parts_tabular",
+        "composite_substitution",
+        "parts_cyclic"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.07,
+      "seconds": 0.06
+    },
+    {
+      "id": "e28",
+      "latex": "x^{2}\\sin x",
+      "kind": "indefinite",
+      "expect_family": [
+        "parts"
+      ],
+      "expect_card": "parts_poly_exp_trig",
+      "ok": true,
+      "result": "-x**2*cos(x) + 2*x*sin(x) + 2*cos(x)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "parts_poly_exp_trig",
+      "top1_family": "parts",
+      "top_hits": [
+        "parts_poly_exp_trig",
+        "parts_tabular",
+        "trig_product_to_sum",
+        "tan_sec_powers"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.18,
+      "seconds": 0.09
+    },
+    {
+      "id": "e29",
+      "latex": "\\ln x",
+      "kind": "indefinite",
+      "expect_family": [
+        "parts"
+      ],
+      "expect_card": "parts_poly_log_invtrig",
+      "ok": true,
+      "result": "x*log(x) - x",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "parts_poly_log_invtrig",
+      "top1_family": "parts",
+      "top_hits": [
+        "parts_poly_log_invtrig",
+        "composite_substitution",
+        "linear_substitution",
+        "basic_table"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.06,
+      "seconds": 0.02
+    },
+    {
+      "id": "e30",
+      "latex": "x\\ln x",
+      "kind": "indefinite",
+      "expect_family": [
+        "parts"
+      ],
+      "expect_card": "parts_poly_log_invtrig",
+      "ok": true,
+      "result": "x**2*log(x)/2 - x**2/4",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "parts_poly_log_invtrig",
+      "top1_family": "parts",
+      "top_hits": [
+        "parts_poly_log_invtrig",
+        "composite_substitution",
+        "parts_poly_exp_trig",
+        "parts_tabular"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.11,
+      "seconds": 0.19
+    },
+    {
+      "id": "e31",
+      "latex": "\\arctan x",
+      "kind": "indefinite",
+      "expect_family": [
+        "parts"
+      ],
+      "expect_card": "parts_poly_log_invtrig",
+      "ok": true,
+      "result": "x*atan(x) - log(x**2 + 1)/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "parts_poly_log_invtrig",
+      "top1_family": "parts",
+      "top_hits": [
+        "parts_poly_log_invtrig",
+        "linear_substitution",
+        "composite_substitution",
+        "basic_table"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.14,
+      "seconds": 0.09
+    },
+    {
+      "id": "e32",
+      "latex": "x^{2}\\arctan x",
+      "kind": "indefinite",
+      "expect_family": [
+        "parts"
+      ],
+      "expect_card": "parts_poly_log_invtrig",
+      "ok": true,
+      "result": "x**3*atan(x)/3 - x**2/6 + log(x**2 + 1)/6",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "parts_poly_log_invtrig",
+      "top1_family": "parts",
+      "top_hits": [
+        "parts_poly_log_invtrig",
+        "composite_substitution",
+        "parts_poly_exp_trig",
+        "parts_tabular"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.21,
+      "seconds": 0.32
+    },
+    {
+      "id": "e33",
+      "latex": "e^{x}\\sin x",
+      "kind": "indefinite",
+      "expect_family": [
+        "parts"
+      ],
+      "expect_card": "parts_cyclic",
+      "ok": true,
+      "result": "exp(x)*sin(x)/2 - exp(x)*cos(x)/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "parts_cyclic",
+      "top1_family": "parts",
+      "top_hits": [
+        "parts_cyclic",
+        "trig_product_to_sum",
+        "tan_sec_powers",
+        "composite_substitution"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.17,
+      "seconds": 0.13
+    },
+    {
+      "id": "e34",
+      "latex": "x^{3}e^{x}",
+      "kind": "indefinite",
+      "expect_family": [
+        "parts"
+      ],
+      "expect_card": null,
+      "ok": true,
+      "result": "(x**3 - 3*x**2 + 6*x - 6)*exp(x)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "parts_tabular",
+      "top1_family": "parts",
+      "top_hits": [
+        "parts_tabular",
+        "parts_poly_exp_trig",
+        "composite_substitution",
+        "basic_table"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "n_attempts": 1,
+      "ugliness": 0.16,
+      "seconds": 0.1
+    },
+    {
+      "id": "e35",
+      "latex": "\\frac{1}{x^{2}-1}",
+      "kind": "indefinite",
+      "expect_family": [
+        "partial_fractions"
+      ],
+      "expect_card": "rational_distinct_linear",
+      "ok": true,
+      "result": "log(x - 1)/2 - log(x + 1)/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "rational_distinct_linear",
+      "top1_family": "partial_fractions",
+      "top_hits": [
+        "rational_distinct_linear",
+        "conjugate_pairing",
+        "rational_irreducible_quadratic",
+        "rational_repeated_linear"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.14,
+      "seconds": 0.07
+    },
+    {
+      "id": "e36",
+      "latex": "\\frac{2x+3}{x^{2}+x-2}",
+      "kind": "indefinite",
+      "expect_family": [
+        "partial_fractions"
+      ],
+      "expect_card": "rational_distinct_linear",
+      "ok": true,
+      "result": "5*log(x - 1)/3 + log(x + 2)/3",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "rational_distinct_linear",
+      "top1_family": "partial_fractions",
+      "top_hits": [
+        "rational_distinct_linear",
+        "conjugate_pairing",
+        "rational_improper_division",
+        "rational_irreducible_quadratic"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.14,
+      "seconds": 0.41
+    },
+    {
+      "id": "e37",
+      "latex": "\\frac{1}{x(x+1)^{2}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "partial_fractions"
+      ],
+      "expect_card": "rational_repeated_linear",
+      "ok": true,
+      "result": "log(x) - log(x + 1) + 1/(x + 1)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "rational_repeated_linear",
+      "top1_family": "partial_fractions",
+      "top_hits": [
+        "rational_repeated_linear",
+        "rational_distinct_linear",
+        "conjugate_pairing",
+        "linear_substitution"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.15,
+      "seconds": 2.27
+    },
+    {
+      "id": "e38",
+      "latex": "\\frac{x^{3}}{x^{2}+1}",
+      "kind": "indefinite",
+      "expect_family": [
+        "partial_fractions"
+      ],
+      "expect_card": "rational_improper_division",
+      "ok": true,
+      "result": "x**2/2 - log(x**2 + 1)/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "rational_improper_division",
+      "top1_family": "partial_fractions",
+      "top_hits": [
+        "rational_improper_division",
+        "conjugate_pairing",
+        "rational_irreducible_quadratic",
+        "rational_distinct_linear"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.12,
+      "seconds": 0.18
+    },
+    {
+      "id": "e39",
+      "latex": "\\frac{1}{x^{2}+x+1}",
+      "kind": "indefinite",
+      "expect_family": [
+        "partial_fractions"
+      ],
+      "expect_card": "rational_irreducible_quadratic",
+      "ok": true,
+      "result": "2*sqrt(3)*atan(2*sqrt(3)*x/3 + sqrt(3)/3)/3",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "rational_irreducible_quadratic",
+      "top1_family": "partial_fractions",
+      "top_hits": [
+        "rational_irreducible_quadratic",
+        "conjugate_pairing",
+        "rational_distinct_linear",
+        "reduction_quadratic_power"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.21,
+      "seconds": 0.27
+    },
+    {
+      "id": "e40",
+      "latex": "\\frac{3x-1}{x^{2}+4}",
+      "kind": "indefinite",
+      "expect_family": [
+        "partial_fractions"
+      ],
+      "expect_card": "rational_irreducible_quadratic",
+      "ok": true,
+      "result": "3*log(x**2 + 4)/2 - atan(x/2)/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "rational_irreducible_quadratic",
+      "top1_family": "partial_fractions",
+      "top_hits": [
+        "rational_irreducible_quadratic",
+        "rational_distinct_linear",
+        "conjugate_pairing",
+        "rational_improper_division"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.15,
+      "seconds": 0.07
+    },
+    {
+      "id": "e41",
+      "latex": "\\frac{1}{x(x+1)}",
+      "kind": "indefinite",
+      "expect_family": [
+        "partial_fractions"
+      ],
+      "expect_card": "rational_distinct_linear",
+      "ok": true,
+      "result": "log(x) - log(x + 1)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "rational_distinct_linear",
+      "top1_family": "partial_fractions",
+      "top_hits": [
+        "rational_distinct_linear",
+        "conjugate_pairing",
+        "linear_substitution",
+        "rational_repeated_linear"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.1,
+      "seconds": 0.65
+    },
+    {
+      "id": "e42",
+      "latex": "\\sin^{3}x\\cos^{2}x",
+      "kind": "indefinite",
+      "expect_family": [
+        "rational_trig"
+      ],
+      "expect_card": "sin_cos_odd_power",
+      "ok": true,
+      "result": "cos(x)**5/5 - cos(x)**3/3",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "sin_cos_odd_power",
+      "top1_family": "rational_trig",
+      "top_hits": [
+        "sin_cos_odd_power",
+        "sin_cos_even_power",
+        "trig_product_to_sum",
+        "tan_sec_powers"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.12,
+      "seconds": 0.31
+    },
+    {
+      "id": "e43",
+      "latex": "\\cos^{3}x",
+      "kind": "indefinite",
+      "expect_family": [
+        "rational_trig"
+      ],
+      "expect_card": "sin_cos_odd_power",
+      "ok": true,
+      "result": "-sin(x)**3/3 + sin(x)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "sin_cos_odd_power",
+      "top1_family": "rational_trig",
+      "top_hits": [
+        "sin_cos_odd_power",
+        "reduction_sin_cos_power",
+        "sin_cos_even_power",
+        "tan_sec_powers"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.1,
+      "seconds": 0.21
+    },
+    {
+      "id": "e44",
+      "latex": "\\sin^{2}x\\cos^{2}x",
+      "kind": "indefinite",
+      "expect_family": [
+        "rational_trig",
+        "reduction_formula"
+      ],
+      "expect_card": "sin_cos_even_power",
+      "ok": true,
+      "result": "x/8 - sin(2*x)*cos(2*x)/16",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "sin_cos_even_power",
+      "top1_family": "rational_trig",
+      "top_hits": [
+        "sin_cos_even_power",
+        "reduction_sin_cos_power",
+        "sin_cos_odd_power",
+        "trig_product_to_sum"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.13,
+      "seconds": 0.43
+    },
+    {
+      "id": "e45",
+      "latex": "\\sin 3x\\cos 5x",
+      "kind": "indefinite",
+      "expect_family": [
+        "rational_trig"
+      ],
+      "expect_card": "trig_product_to_sum",
+      "ok": true,
+      "result": "5*sin(3*x)*sin(5*x)/16 + 3*cos(3*x)*cos(5*x)/16",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "trig_product_to_sum",
+      "top1_family": "rational_trig",
+      "top_hits": [
+        "trig_product_to_sum",
+        "composite_substitution",
+        "linear_substitution",
+        "tan_sec_powers"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.24,
+      "seconds": 4.21
+    },
+    {
+      "id": "e46",
+      "latex": "\\tan^{3}x",
+      "kind": "indefinite",
+      "expect_family": [
+        "rational_trig"
+      ],
+      "expect_card": "tan_sec_powers",
+      "ok": true,
+      "result": "log(cos(x)) + 1/(2*cos(x)**2)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "tan_sec_powers",
+      "top1_family": "rational_trig",
+      "top_hits": [
+        "tan_sec_powers",
+        "reduction_sin_cos_power",
+        "sin_cos_odd_power",
+        "sin_cos_even_power"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.14,
+      "seconds": 0.52
+    },
+    {
+      "id": "e47",
+      "latex": "\\sec^{4}x",
+      "kind": "indefinite",
+      "expect_family": [
+        "rational_trig"
+      ],
+      "expect_card": "tan_sec_powers",
+      "ok": true,
+      "result": "2*sin(x)/(3*cos(x)) + sin(x)/(3*cos(x)**3)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "tan_sec_powers",
+      "top1_family": "rational_trig",
+      "top_hits": [
+        "tan_sec_powers",
+        "reduction_sin_cos_power",
+        "sin_cos_odd_power",
+        "sin_cos_even_power"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.21,
+      "seconds": 0.38
+    },
+    {
+      "id": "e48",
+      "latex": "\\sin^{4}x",
+      "kind": "indefinite",
+      "expect_family": [
+        "rational_trig",
+        "reduction_formula"
+      ],
+      "expect_card": null,
+      "ok": true,
+      "result": "3*x/8 - sin(x)**3*cos(x)/4 - 3*sin(x)*cos(x)/8",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "reduction_sin_cos_power",
+      "top1_family": "reduction_formula",
+      "top_hits": [
+        "reduction_sin_cos_power",
+        "sin_cos_even_power",
+        "tan_sec_powers",
+        "sin_cos_odd_power"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "n_attempts": 1,
+      "ugliness": 0.23,
+      "seconds": 0.38
+    },
+    {
+      "id": "e49",
+      "latex": "\\frac{1}{2+\\cos x}",
+      "kind": "indefinite",
+      "expect_family": [
+        "weierstrass",
+        "rational_trig"
+      ],
+      "expect_card": "weierstrass_substitution",
+      "ok": true,
+      "result": "2*sqrt(3)*atan(sqrt(3)*tan(x/2)/3)/3",
+      "strategy": "代换:万能代换 t = tan(x/2)(化为 ∫2/(t**2 + 3) dt)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "weierstrass_substitution",
+      "top1_family": "weierstrass",
+      "top_hits": [
+        "weierstrass_substitution",
+        "denom_a_plus_b_trig",
+        "tan_sec_powers",
+        "reduction_sin_cos_power"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 3,
+      "ugliness": 0.18,
+      "seconds": 3.79
+    },
+    {
+      "id": "e50",
+      "latex": "\\frac{1}{1+\\sin x}",
+      "kind": "indefinite",
+      "expect_family": [
+        "weierstrass",
+        "rational_trig"
+      ],
+      "expect_card": "denom_a_plus_b_trig",
+      "ok": true,
+      "result": "-2/(tan(x/2) + 1)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "denom_a_plus_b_trig",
+      "top1_family": "rational_trig",
+      "top_hits": [
+        "denom_a_plus_b_trig",
+        "weierstrass_substitution",
+        "tan_sec_powers",
+        "reduction_sin_cos_power"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.09,
+      "seconds": 0.35
+    },
+    {
+      "id": "e51",
+      "latex": "\\frac{\\sin x}{1+\\cos x}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_basic",
+        "weierstrass"
+      ],
+      "expect_card": null,
+      "ok": true,
+      "result": "-log(cos(x) + 1)",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式直接为 0",
+      "top1_card": "composite_substitution",
+      "top1_family": "substitution_basic",
+      "top_hits": [
+        "composite_substitution",
+        "trig_product_to_sum",
+        "weierstrass_substitution",
+        "denom_a_plus_b_trig"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "n_attempts": 1,
+      "ugliness": 0.08,
+      "seconds": 0.09
+    },
+    {
+      "id": "e52",
+      "latex": "\\frac{1}{1+x^{4}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "special_trick",
+        "substitution_algebraic",
+        "partial_fractions"
+      ],
+      "expect_card": "conjugate_pairing",
+      "ok": true,
+      "result": "-sqrt(2)*log(x**2 - sqrt(2)*x + 1)/8 + sqrt(2)*log(x**2 + sqrt(2)*x + 1)/8 + sqrt(2)*atan(sqrt(2)*x - 1)/4 + sqrt(2)*atan(sqrt(2)*x + 1)/4",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "conjugate_pairing",
+      "top1_family": "special_trick",
+      "top_hits": [
+        "conjugate_pairing",
+        "rational_distinct_linear",
+        "rational_irreducible_quadratic",
+        "rational_repeated_linear"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.69,
+      "seconds": 0.28
+    },
+    {
+      "id": "e53",
+      "latex": "\\frac{x^{2}}{1+x^{4}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "special_trick",
+        "substitution_algebraic",
+        "partial_fractions"
+      ],
+      "expect_card": "conjugate_pairing",
+      "ok": true,
+      "result": "sqrt(2)*log(x**2 - sqrt(2)*x + 1)/8 - sqrt(2)*log(x**2 + sqrt(2)*x + 1)/8 + sqrt(2)*atan(sqrt(2)*x - 1)/4 + sqrt(2)*atan(sqrt(2)*x + 1)/4",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "conjugate_pairing",
+      "top1_family": "special_trick",
+      "top_hits": [
+        "conjugate_pairing",
+        "rational_improper_division",
+        "rational_distinct_linear",
+        "rational_irreducible_quadratic"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.69,
+      "seconds": 0.21
+    },
+    {
+      "id": "e54",
+      "latex": "\\frac{1}{(x^{2}+1)^{2}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "reduction_formula",
+        "substitution_trig"
+      ],
+      "expect_card": "reduction_quadratic_power",
+      "ok": true,
+      "result": "x/(2*x**2 + 2) + atan(x)/2",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "rational_irreducible_quadratic",
+      "top1_family": "partial_fractions",
+      "top_hits": [
+        "rational_irreducible_quadratic",
+        "rational_repeated_linear",
+        "reduction_quadratic_power",
+        "conjugate_pairing"
+      ],
+      "family_hit": false,
+      "card_hit_top1": false,
+      "card_hit_top3": true,
+      "n_attempts": 1,
+      "ugliness": 0.13,
+      "seconds": 0.65
+    },
+    {
+      "id": "e55",
+      "latex": "\\sqrt{x^{2}+x+1}",
+      "kind": "indefinite",
+      "expect_family": [
+        "euler_substitution",
+        "substitution_trig",
+        "substitution_algebraic"
+      ],
+      "expect_card": null,
+      "ok": true,
+      "result": "(x/2 + 1/4)*sqrt(x**2 + x + 1) + 3*asinh(2*sqrt(3)*(x + 1/2)/3)/8",
+      "strategy": "直接积分(SymPy 内置算法)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "euler_substitution",
+      "top1_family": "euler_substitution",
+      "top_hits": [
+        "euler_substitution",
+        "chebyshev_binomial",
+        "algebraic_rationalization",
+        "tan_sec_powers"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "n_attempts": 1,
+      "ugliness": 1.82,
+      "seconds": 0.27
+    },
+    {
+      "id": "e56",
+      "latex": "\\frac{1}{x\\sqrt{x^{2}+1}}",
+      "kind": "indefinite",
+      "expect_family": [
+        "substitution_trig",
+        "substitution_algebraic"
+      ],
+      "expect_card": null,
+      "ok": true,
+      "result": "log((1 - sqrt(x**2 + 1))/(sqrt(x**2 + 1) + 1))/2",
+      "strategy": "代换:三角替换 x = 1·tan t(化为 ∫1/(cos(t)*tan(t)) dt)",
+      "proof": "符号验证:求导后的差式经 simplify 化简为 0",
+      "top1_card": "reciprocal_substitution",
+      "top1_family": "substitution_algebraic",
+      "top_hits": [
+        "reciprocal_substitution",
+        "trig_sub_x2_plus_a2",
+        "hyperbolic_substitution",
+        "composite_substitution"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "n_attempts": 3,
+      "ugliness": 0.24,
+      "seconds": 1.14
+    }
+  ]
+}

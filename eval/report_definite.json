@@ -1,0 +1,1808 @@
+{
+  "summary": {
+    "total": 56,
+    "family_hit": 45,
+    "family_total": 56,
+    "card_hit_top1": 37,
+    "card_hit_top3": 46,
+    "card_total": 49,
+    "expect_finite": 51,
+    "solved": 51,
+    "value_match": 51,
+    "expect_divergent": 5,
+    "divergence_ok": 5
+  },
+  "seconds_total": 68.06,
+  "records": [
+    {
+      "id": "d01",
+      "latex": "\\int_{0}^{1} x^{2} dx",
+      "kind": "definite",
+      "expect": "1/3",
+      "expect_family": [
+        "newton_leibniz"
+      ],
+      "expect_card": "def_newton_leibniz",
+      "note": "最基础",
+      "ok": true,
+      "diverges": false,
+      "result": "1/3",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_newton_leibniz",
+      "top1_family": "newton_leibniz",
+      "top_hits": [
+        "def_newton_leibniz",
+        "def_series_expansion",
+        "def_beta_gamma",
+        "def_symmetry_even_odd"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.3333333333333333(tanh-sinh(分段))",
+      "seconds": 0.05
+    },
+    {
+      "id": "d02",
+      "latex": "\\int_{0}^{\\pi} \\sin x dx",
+      "kind": "definite",
+      "expect": "2",
+      "expect_family": [
+        "newton_leibniz"
+      ],
+      "expect_card": "def_newton_leibniz",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "2",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_newton_leibniz",
+      "top1_family": "newton_leibniz",
+      "top_hits": [
+        "def_newton_leibniz",
+        "def_log_sine",
+        "def_standard_fresnel",
+        "def_orthogonality"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 2(tanh-sinh(分段))",
+      "seconds": 0.06
+    },
+    {
+      "id": "d03",
+      "latex": "\\int_{-1}^{1} x^{3} dx",
+      "kind": "definite",
+      "expect": "0",
+      "expect_family": [
+        "symmetry",
+        "newton_leibniz"
+      ],
+      "expect_card": "def_symmetry_even_odd",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "0",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_symmetry_even_odd",
+      "top1_family": "symmetry",
+      "top_hits": [
+        "def_symmetry_even_odd",
+        "def_newton_leibniz",
+        "def_orthogonality",
+        "def_series_expansion"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0(tanh-sinh(分段))",
+      "seconds": 0.01
+    },
+    {
+      "id": "d04",
+      "latex": "\\int_{-a}^{a} x^{2} dx",
+      "kind": "definite",
+      "expect": "2*a**3/3",
+      "expect_family": [
+        "symmetry",
+        "newton_leibniz"
+      ],
+      "expect_card": "def_symmetry_even_odd",
+      "note": "符号上限",
+      "ok": true,
+      "diverges": false,
+      "result": "2*a**3/3",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";在 3 组参数取值上数值核对通过",
+      "conditions": [],
+      "top1_card": "def_symmetry_even_odd",
+      "top1_family": "symmetry",
+      "top_hits": [
+        "def_symmetry_even_odd",
+        "def_newton_leibniz",
+        "def_orthogonality",
+        "def_series_expansion"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "无法判定(symbolic-limits)",
+      "seconds": 0.03
+    },
+    {
+      "id": "d05",
+      "latex": "\\int_{-1}^{2} |x| dx",
+      "kind": "definite",
+      "expect": "5/2",
+      "expect_family": [
+        "newton_leibniz",
+        "improper_split"
+      ],
+      "expect_card": null,
+      "note": "含折点",
+      "ok": true,
+      "diverges": false,
+      "result": "5/2",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_newton_leibniz",
+      "top1_family": "newton_leibniz",
+      "top_hits": [
+        "def_newton_leibniz",
+        "def_series_expansion",
+        "def_symmetry_even_odd",
+        "def_periodicity"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "value_match": false,
+      "numeric": "收敛 ≈ 2.5(tanh-sinh(分段))",
+      "seconds": 0.02
+    },
+    {
+      "id": "d06",
+      "latex": "\\int_{0}^{\\pi/4} \\tan x dx",
+      "kind": "definite",
+      "expect": "log(2)/2",
+      "expect_family": [
+        "newton_leibniz"
+      ],
+      "expect_card": null,
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "-log(sqrt(2)/2)",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_newton_leibniz",
+      "top1_family": "newton_leibniz",
+      "top_hits": [
+        "def_newton_leibniz",
+        "def_periodicity",
+        "def_series_expansion",
+        "def_symmetry_even_odd"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.3465735902799726(tanh-sinh(分段))",
+      "seconds": 0.16
+    },
+    {
+      "id": "d07",
+      "latex": "\\int_{1}^{e} \\frac{1}{x} dx",
+      "kind": "definite",
+      "expect": "1",
+      "expect_family": [
+        "newton_leibniz"
+      ],
+      "expect_card": "def_newton_leibniz",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "1",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_newton_leibniz",
+      "top1_family": "newton_leibniz",
+      "top_hits": [
+        "def_newton_leibniz",
+        "def_series_expansion",
+        "def_improper_split",
+        "def_convergence_p_test"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 1(tanh-sinh(分段))",
+      "seconds": 0.06
+    },
+    {
+      "id": "d08",
+      "latex": "\\int_{0}^{1} \\frac{1}{\\sqrt{x}} dx",
+      "kind": "definite",
+      "expect": "2",
+      "expect_family": [
+        "improper_split"
+      ],
+      "expect_card": "def_improper_split",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "2",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 smooth-endpoint → tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_improper_split",
+      "top1_family": "improper_split",
+      "top_hits": [
+        "def_improper_split",
+        "def_convergence_p_test",
+        "def_series_expansion",
+        "def_newton_leibniz"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 2(smooth-endpoint → tanh-sinh(分段))",
+      "seconds": 0.05
+    },
+    {
+      "id": "d09",
+      "latex": "\\int_{0}^{1} \\ln x dx",
+      "kind": "definite",
+      "expect": "-1",
+      "expect_family": [
+        "improper_split"
+      ],
+      "expect_card": "def_improper_split",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "-1",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_improper_split",
+      "top1_family": "improper_split",
+      "top_hits": [
+        "def_improper_split",
+        "def_series_expansion",
+        "def_newton_leibniz",
+        "def_log_sine"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ -1(tanh-sinh(分段))",
+      "seconds": 0.06
+    },
+    {
+      "id": "d10",
+      "latex": "\\int_{-1}^{1} \\frac{1}{\\sqrt{1-x^{2}}} dx",
+      "kind": "definite",
+      "expect": "pi",
+      "expect_family": [
+        "improper_split"
+      ],
+      "expect_card": null,
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "pi",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 smooth-endpoint → tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_improper_split",
+      "top1_family": "improper_split",
+      "top_hits": [
+        "def_improper_split",
+        "def_symmetry_even_odd",
+        "def_substitution_limits",
+        "def_newton_leibniz"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "value_match": false,
+      "numeric": "收敛 ≈ 3.141592653589793(smooth-endpoint → tanh-sinh(分段))",
+      "seconds": 0.39
+    },
+    {
+      "id": "d11",
+      "latex": "\\int_{1}^{\\infty} \\frac{1}{x^{2}} dx",
+      "kind": "definite",
+      "expect": "1",
+      "expect_family": [
+        "improper_split",
+        "newton_leibniz"
+      ],
+      "expect_card": "def_infinite_truncation",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "1",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 mapped-to-finite)",
+      "conditions": [],
+      "top1_card": "def_convergence_p_test",
+      "top1_family": "divergence_test",
+      "top_hits": [
+        "def_convergence_p_test",
+        "def_infinite_truncation",
+        "def_reciprocal_symmetry",
+        "def_standard_power_denom"
+      ],
+      "family_hit": false,
+      "card_hit_top1": false,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 1(mapped-to-finite)",
+      "seconds": 0.16
+    },
+    {
+      "id": "d12",
+      "latex": "\\int_{0}^{\\infty} e^{-x} dx",
+      "kind": "definite",
+      "expect": "1",
+      "expect_family": [
+        "improper_split",
+        "newton_leibniz"
+      ],
+      "expect_card": "def_infinite_truncation",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "1",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 mapped-to-finite)",
+      "conditions": [],
+      "top1_card": "def_infinite_truncation",
+      "top1_family": "improper_split",
+      "top_hits": [
+        "def_infinite_truncation",
+        "def_standard_poisson",
+        "def_standard_frullani",
+        "def_param_conditions"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 1(mapped-to-finite)",
+      "seconds": 0.15
+    },
+    {
+      "id": "d13",
+      "latex": "\\int_{-\\infty}^{\\infty} e^{-x^{2}} dx",
+      "kind": "definite",
+      "expect": "sqrt(pi)",
+      "expect_family": [
+        "standard_result",
+        "newton_leibniz"
+      ],
+      "expect_card": "def_standard_poisson",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "sqrt(pi)",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 split-at-zero)",
+      "conditions": [],
+      "top1_card": "def_symmetry_even_odd",
+      "top1_family": "symmetry",
+      "top_hits": [
+        "def_symmetry_even_odd",
+        "def_newton_leibniz",
+        "def_standard_poisson",
+        "def_standard_fresnel"
+      ],
+      "family_hit": false,
+      "card_hit_top1": false,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 1.772453850905516(split-at-zero)",
+      "seconds": 0.65
+    },
+    {
+      "id": "d14",
+      "latex": "\\int_{0}^{\\infty} \\frac{1}{1+x^{2}} dx",
+      "kind": "definite",
+      "expect": "pi/2",
+      "expect_family": [
+        "newton_leibniz",
+        "standard_result"
+      ],
+      "expect_card": "def_infinite_truncation",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "pi/2",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 mapped-to-finite)",
+      "conditions": [],
+      "top1_card": "def_infinite_truncation",
+      "top1_family": "improper_split",
+      "top_hits": [
+        "def_infinite_truncation",
+        "def_convergence_p_test",
+        "def_reciprocal_symmetry",
+        "def_convergence_comparison"
+      ],
+      "family_hit": false,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 1.570796326794897(mapped-to-finite)",
+      "seconds": 0.1
+    },
+    {
+      "id": "d15",
+      "latex": "\\int_{0}^{1} \\frac{1}{1+x^{4}} dx",
+      "kind": "definite",
+      "expect": "pi/(4*sqrt(2)) + asinh(1)/(2*sqrt(2))",
+      "expect_family": [
+        "newton_leibniz"
+      ],
+      "expect_card": null,
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "-sqrt(2)*log(2 - sqrt(2))/8 + sqrt(2)*log(sqrt(2) + 2)/8 + sqrt(2)*pi/8",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_series_expansion",
+      "top1_family": "series_expansion",
+      "top_hits": [
+        "def_series_expansion",
+        "def_newton_leibniz",
+        "def_improper_split",
+        "def_convergence_p_test"
+      ],
+      "family_hit": false,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.866972987339911(tanh-sinh(分段))",
+      "seconds": 0.24
+    },
+    {
+      "id": "d16",
+      "latex": "\\int_{0}^{\\infty} \\frac{x}{e^{x}-1} dx",
+      "kind": "definite",
+      "expect": "pi**2/6",
+      "expect_family": [
+        "newton_leibniz",
+        "standard_result"
+      ],
+      "expect_card": null,
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "pi**2/6",
+      "strategy": "Bose/Fermi 标准结果",
+      "proof": "Bose/Fermi 标准结果:∫_0^∞ x^{s−1}/(e^{ax}−1)dx,s=2,a=1;数值核对通过(相对误差 0.00e+00,方法 mapped-to-finite)",
+      "conditions": [],
+      "top1_card": "def_standard_bose_fermi",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_standard_bose_fermi",
+        "def_param_conditions",
+        "def_newton_leibniz",
+        "def_standard_poisson"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "value_match": false,
+      "numeric": "收敛 ≈ 1.644934066848226(mapped-to-finite)",
+      "seconds": 0.36
+    },
+    {
+      "id": "d17",
+      "latex": "\\int_{0}^{\\infty} \\frac{\\sin x}{x} dx",
+      "kind": "definite",
+      "expect": "pi/2",
+      "expect_family": [
+        "standard_result"
+      ],
+      "expect_card": "def_standard_dirichlet",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "pi/2",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 quadosc)",
+      "conditions": [],
+      "top1_card": "def_convergence_dirichlet_abel",
+      "top1_family": "divergence_test",
+      "top_hits": [
+        "def_convergence_dirichlet_abel",
+        "def_standard_dirichlet",
+        "def_standard_fresnel",
+        "def_param_uniform_convergence"
+      ],
+      "family_hit": false,
+      "card_hit_top1": false,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 1.570796326794897(quadosc)",
+      "seconds": 2.87
+    },
+    {
+      "id": "d18",
+      "latex": "\\int_{0}^{\\infty} \\frac{\\sin(3x)}{x} dx",
+      "kind": "definite",
+      "expect": "pi/2",
+      "expect_family": [
+        "standard_result"
+      ],
+      "expect_card": "def_standard_dirichlet",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "pi/2",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 quadosc)",
+      "conditions": [],
+      "top1_card": "def_convergence_dirichlet_abel",
+      "top1_family": "divergence_test",
+      "top_hits": [
+        "def_convergence_dirichlet_abel",
+        "def_standard_dirichlet",
+        "def_standard_fresnel",
+        "def_param_uniform_convergence"
+      ],
+      "family_hit": false,
+      "card_hit_top1": false,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 1.570796326794897(quadosc)",
+      "seconds": 3.07
+    },
+    {
+      "id": "d19",
+      "latex": "\\int_{0}^{\\infty} \\cos(x^{2}) dx",
+      "kind": "definite",
+      "expect": "sqrt(2*pi)/4",
+      "expect_family": [
+        "standard_result"
+      ],
+      "expect_card": "def_standard_fresnel",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "sqrt(2)*sqrt(pi)/4",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 power-substitution → quadosc)",
+      "conditions": [],
+      "top1_card": "def_standard_fresnel",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_standard_fresnel",
+        "def_standard_dirichlet",
+        "def_convergence_dirichlet_abel",
+        "def_param_uniform_convergence"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.6266570686577502(power-substitution → quadosc)",
+      "seconds": 4.13
+    },
+    {
+      "id": "d20",
+      "latex": "\\int_{0}^{\\infty} \\sin(x^{2}) dx",
+      "kind": "definite",
+      "expect": "sqrt(2*pi)/4",
+      "expect_family": [
+        "standard_result"
+      ],
+      "expect_card": "def_standard_fresnel",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "sqrt(2)*sqrt(pi)/4",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 power-substitution → quadosc)",
+      "conditions": [],
+      "top1_card": "def_standard_fresnel",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_standard_fresnel",
+        "def_standard_dirichlet",
+        "def_convergence_dirichlet_abel",
+        "def_param_uniform_convergence"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.6266570686577502(power-substitution → quadosc)",
+      "seconds": 2.89
+    },
+    {
+      "id": "d21",
+      "latex": "\\int_{0}^{\\infty} e^{-3x^{2}} dx",
+      "kind": "definite",
+      "expect": "sqrt(pi/3)/2",
+      "expect_family": [
+        "standard_result"
+      ],
+      "expect_card": "def_standard_poisson",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "sqrt(3)*sqrt(pi)/6",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 mapped-to-finite)",
+      "conditions": [],
+      "top1_card": "def_standard_poisson",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_standard_poisson",
+        "def_standard_fresnel",
+        "def_newton_leibniz",
+        "def_infinite_truncation"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.5116633539732443(mapped-to-finite)",
+      "seconds": 0.38
+    },
+    {
+      "id": "d22",
+      "latex": "\\int_{0}^{\\infty} \\frac{1}{\\sqrt{x}(1+x)} dx",
+      "kind": "definite",
+      "expect": "pi",
+      "expect_family": [
+        "standard_result",
+        "beta_gamma"
+      ],
+      "expect_card": "def_standard_power_denom",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "pi",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 smooth-endpoint → mapped-to-finite)",
+      "conditions": [],
+      "top1_card": "def_standard_power_denom",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_standard_power_denom",
+        "def_convergence_p_test",
+        "def_convergence_dirichlet_abel",
+        "def_standard_fresnel"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 3.141592653589793(smooth-endpoint → mapped-to-finite)",
+      "seconds": 0.19
+    },
+    {
+      "id": "d23",
+      "latex": "\\int_{0}^{\\infty} \\frac{1}{x^{2/3}(1+x)} dx",
+      "kind": "definite",
+      "expect": "2*pi/sqrt(3)",
+      "expect_family": [
+        "standard_result",
+        "beta_gamma"
+      ],
+      "expect_card": "def_standard_power_denom",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "2*sqrt(3)*pi/3",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 smooth-endpoint → mapped-to-finite)",
+      "conditions": [],
+      "top1_card": "def_standard_power_denom",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_standard_power_denom",
+        "def_convergence_p_test",
+        "def_standard_fresnel",
+        "def_newton_leibniz"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 3.627598728468436(smooth-endpoint → mapped-to-finite)",
+      "seconds": 0.3
+    },
+    {
+      "id": "d24",
+      "latex": "\\int_{0}^{\\pi/2} \\sin^{4}x dx",
+      "kind": "definite",
+      "expect": "3*pi/16",
+      "expect_family": [
+        "wallis_reduction",
+        "beta_gamma"
+      ],
+      "expect_card": "def_wallis",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "beta(5/2, 1/2)/2",
+      "strategy": "Beta 函数形式(π/2 上的三角函数幂)",
+      "proof": "Beta 形式:∫_0^{π/2} sin^4x cos^0x dx = B((4+1)/2, (0+1)/2)/2;数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [
+        "B(5/2, 1/2) 要求参数为正"
+      ],
+      "top1_card": "def_wallis",
+      "top1_family": "wallis_reduction",
+      "top_hits": [
+        "def_wallis",
+        "def_log_sine",
+        "def_beta_gamma",
+        "def_newton_leibniz"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.5890486225480862(tanh-sinh(分段))",
+      "seconds": 0.12
+    },
+    {
+      "id": "d25",
+      "latex": "\\int_{0}^{\\pi/2} \\sin^{5}x dx",
+      "kind": "definite",
+      "expect": "8/15",
+      "expect_family": [
+        "wallis_reduction",
+        "beta_gamma"
+      ],
+      "expect_card": "def_wallis",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "beta(3, 1/2)/2",
+      "strategy": "Beta 函数形式(π/2 上的三角函数幂)",
+      "proof": "Beta 形式:∫_0^{π/2} sin^5x cos^0x dx = B((5+1)/2, (0+1)/2)/2;数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [
+        "B(3, 1/2) 要求参数为正"
+      ],
+      "top1_card": "def_wallis",
+      "top1_family": "wallis_reduction",
+      "top_hits": [
+        "def_wallis",
+        "def_log_sine",
+        "def_beta_gamma",
+        "def_newton_leibniz"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.5333333333333333(tanh-sinh(分段))",
+      "seconds": 0.1
+    },
+    {
+      "id": "d26",
+      "latex": "\\int_{0}^{\\pi/2} \\cos^{6}x dx",
+      "kind": "definite",
+      "expect": "5*pi/32",
+      "expect_family": [
+        "wallis_reduction",
+        "beta_gamma"
+      ],
+      "expect_card": "def_wallis",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "beta(1/2, 7/2)/2",
+      "strategy": "Beta 函数形式(π/2 上的三角函数幂)",
+      "proof": "Beta 形式:∫_0^{π/2} sin^0x cos^6x dx = B((0+1)/2, (6+1)/2)/2;数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [
+        "B(1/2, 7/2) 要求参数为正"
+      ],
+      "top1_card": "def_wallis",
+      "top1_family": "wallis_reduction",
+      "top_hits": [
+        "def_wallis",
+        "def_newton_leibniz",
+        "def_log_sine",
+        "def_beta_gamma"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.4908738521234052(tanh-sinh(分段))",
+      "seconds": 0.11
+    },
+    {
+      "id": "d27",
+      "latex": "\\int_{0}^{1} x^{2}(1-x)^{3} dx",
+      "kind": "definite",
+      "expect": "1/60",
+      "expect_family": [
+        "beta_gamma"
+      ],
+      "expect_card": "def_beta_gamma",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "1/60",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_beta_gamma",
+      "top1_family": "beta_gamma",
+      "top_hits": [
+        "def_beta_gamma",
+        "def_series_expansion",
+        "def_newton_leibniz",
+        "def_king_property"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.01666666666666667(tanh-sinh(分段))",
+      "seconds": 0.1
+    },
+    {
+      "id": "d28",
+      "latex": "\\int_{0}^{\\pi/2} \\sin^{3}x\\cos^{2}x dx",
+      "kind": "definite",
+      "expect": "2/15",
+      "expect_family": [
+        "beta_gamma",
+        "wallis_reduction"
+      ],
+      "expect_card": "def_beta_gamma",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "beta(2, 3/2)/2",
+      "strategy": "Beta 函数形式(π/2 上的三角函数幂)",
+      "proof": "Beta 形式:∫_0^{π/2} sin^3x cos^2x dx = B((3+1)/2, (2+1)/2)/2;数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [
+        "B(2, 3/2) 要求参数为正"
+      ],
+      "top1_card": "def_wallis",
+      "top1_family": "wallis_reduction",
+      "top_hits": [
+        "def_wallis",
+        "def_beta_gamma",
+        "def_log_sine",
+        "def_newton_leibniz"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.1333333333333333(tanh-sinh(分段))",
+      "seconds": 0.16
+    },
+    {
+      "id": "d29",
+      "latex": "\\int_{0}^{\\pi} \\frac{x\\sin x}{1+\\cos^{2}x} dx",
+      "kind": "definite",
+      "expect": "pi**2/4",
+      "expect_family": [
+        "king_property"
+      ],
+      "expect_card": "def_king_property",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "pi**2/4",
+      "strategy": "区间再现公式",
+      "proof": "区间再现公式:I = ½∫[f(x)+f(a+b−x)]dx(化简后为 pi*sin(x)/(cos(x)**2 + 1));数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_king_property",
+      "top1_family": "king_property",
+      "top_hits": [
+        "def_king_property",
+        "def_orthogonality",
+        "def_newton_leibniz",
+        "def_log_sine"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 2.467401100272339(tanh-sinh(分段))",
+      "seconds": 1.57
+    },
+    {
+      "id": "d30",
+      "latex": "\\int_{0}^{\\pi/2} \\frac{\\sin x}{\\sin x+\\cos x} dx",
+      "kind": "definite",
+      "expect": "pi/4",
+      "expect_family": [
+        "king_property"
+      ],
+      "expect_card": "def_king_property",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "pi/4",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_wallis",
+      "top1_family": "wallis_reduction",
+      "top_hits": [
+        "def_wallis",
+        "def_king_property",
+        "def_log_sine",
+        "def_newton_leibniz"
+      ],
+      "family_hit": false,
+      "card_hit_top1": false,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.7853981633974483(tanh-sinh(分段))",
+      "seconds": 0.87
+    },
+    {
+      "id": "d31",
+      "latex": "\\int_{0}^{1} \\frac{\\ln(1+x)}{1+x^{2}} dx",
+      "kind": "definite",
+      "expect": "pi*log(2)/8",
+      "expect_family": [
+        "king_property",
+        "substitution_limits"
+      ],
+      "expect_card": null,
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "pi*log(2)/8",
+      "strategy": "换元链:三角替换 x = tan t(分母含 1+x²) → 区间再现公式",
+      "proof": "区间再现公式:I = ½∫[f(x)+f(a+b−x)]dx(化简后为 log(2));数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_improper_split",
+      "top1_family": "improper_split",
+      "top_hits": [
+        "def_improper_split",
+        "def_king_property",
+        "def_series_expansion",
+        "def_newton_leibniz"
+      ],
+      "family_hit": false,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.2721982612879503(tanh-sinh(分段))",
+      "seconds": 18.23
+    },
+    {
+      "id": "d32",
+      "latex": "\\int_{0}^{2\\pi} \\sin(2x)\\cos(3x) dx",
+      "kind": "definite",
+      "expect": "0",
+      "expect_family": [
+        "orthogonality"
+      ],
+      "expect_card": "def_orthogonality",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "0",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 4.93e-17,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_orthogonality",
+      "top1_family": "orthogonality",
+      "top_hits": [
+        "def_orthogonality",
+        "def_standard_fresnel",
+        "def_newton_leibniz",
+        "def_periodicity"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ -4.928327177138326e-47(tanh-sinh(分段))",
+      "seconds": 0.33
+    },
+    {
+      "id": "d33",
+      "latex": "\\int_{0}^{2\\pi} |\\sin x| dx",
+      "kind": "definite",
+      "expect": "4",
+      "expect_family": [
+        "periodicity",
+        "newton_leibniz"
+      ],
+      "expect_card": "def_periodicity",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "4",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_periodicity",
+      "top1_family": "periodicity",
+      "top_hits": [
+        "def_periodicity",
+        "def_standard_fresnel",
+        "def_newton_leibniz",
+        "def_orthogonality"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 4(tanh-sinh(分段))",
+      "seconds": 0.38
+    },
+    {
+      "id": "d34",
+      "latex": "\\int_{0}^{4\\pi} \\sin^{2}x dx",
+      "kind": "definite",
+      "expect": "2*pi",
+      "expect_family": [
+        "periodicity",
+        "wallis_reduction"
+      ],
+      "expect_card": "def_periodicity",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "2*pi",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_periodicity",
+      "top1_family": "periodicity",
+      "top_hits": [
+        "def_periodicity",
+        "def_series_expansion",
+        "def_newton_leibniz",
+        "def_standard_fresnel"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 6.283185307179586(tanh-sinh(分段))",
+      "seconds": 0.1
+    },
+    {
+      "id": "d35",
+      "latex": "\\int_{0}^{\\pi} \\sin^{3}x dx",
+      "kind": "definite",
+      "expect": "4/3",
+      "expect_family": [
+        "wallis_reduction",
+        "newton_leibniz"
+      ],
+      "expect_card": null,
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "4/3",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_newton_leibniz",
+      "top1_family": "newton_leibniz",
+      "top_hits": [
+        "def_newton_leibniz",
+        "def_log_sine",
+        "def_orthogonality",
+        "def_standard_fresnel"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "value_match": false,
+      "numeric": "收敛 ≈ 1.333333333333333(tanh-sinh(分段))",
+      "seconds": 0.09
+    },
+    {
+      "id": "d36",
+      "latex": "\\int_{0}^{1} \\frac{\\ln(1+x)}{x} dx",
+      "kind": "definite",
+      "expect": "pi**2/12",
+      "expect_family": [
+        "series_expansion",
+        "newton_leibniz"
+      ],
+      "expect_card": "def_series_expansion",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "pi**2/12",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_series_expansion",
+      "top1_family": "series_expansion",
+      "top_hits": [
+        "def_series_expansion",
+        "def_improper_split",
+        "def_newton_leibniz",
+        "def_king_property"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 0.8224670334241132(tanh-sinh(分段))",
+      "seconds": 0.96
+    },
+    {
+      "id": "d37",
+      "latex": "\\int_{0}^{1} \\frac{\\ln(1-x)}{x} dx",
+      "kind": "definite",
+      "expect": "-pi**2/6",
+      "expect_family": [
+        "series_expansion",
+        "newton_leibniz"
+      ],
+      "expect_card": "def_series_expansion",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "-pi**2/6",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_series_expansion",
+      "top1_family": "series_expansion",
+      "top_hits": [
+        "def_series_expansion",
+        "def_improper_split",
+        "def_beta_gamma",
+        "def_newton_leibniz"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ -1.644934066848226(tanh-sinh(分段))",
+      "seconds": 0.89
+    },
+    {
+      "id": "d38",
+      "latex": "\\int_{1}^{\\infty} \\frac{1}{x} dx",
+      "kind": "definite",
+      "expect": "divergent",
+      "expect_family": [
+        "divergence_test",
+        "improper_split"
+      ],
+      "expect_card": "def_convergence_p_test",
+      "note": "",
+      "ok": false,
+      "diverges": true,
+      "result": null,
+      "strategy": "",
+      "proof": "",
+      "conditions": [],
+      "top1_card": "def_convergence_p_test",
+      "top1_family": "divergence_test",
+      "top_hits": [
+        "def_convergence_p_test",
+        "def_reciprocal_symmetry",
+        "def_standard_power_denom",
+        "def_infinite_truncation"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": null,
+      "numeric": "发散(mapped-to-finite)",
+      "seconds": 1.62
+    },
+    {
+      "id": "d39",
+      "latex": "\\int_{0}^{1} \\frac{1}{x} dx",
+      "kind": "definite",
+      "expect": "divergent",
+      "expect_family": [
+        "divergence_test",
+        "improper_split"
+      ],
+      "expect_card": "def_convergence_p_test",
+      "note": "",
+      "ok": false,
+      "diverges": true,
+      "result": null,
+      "strategy": "",
+      "proof": "",
+      "conditions": [],
+      "top1_card": "def_improper_split",
+      "top1_family": "improper_split",
+      "top_hits": [
+        "def_improper_split",
+        "def_series_expansion",
+        "def_convergence_p_test",
+        "def_newton_leibniz"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": true,
+      "value_match": null,
+      "numeric": "发散(smooth-endpoint → epsilon-sequence)",
+      "seconds": 0.38
+    },
+    {
+      "id": "d40",
+      "latex": "\\int_{0}^{\\infty} \\sin x dx",
+      "kind": "definite",
+      "expect": "divergent",
+      "expect_family": [
+        "divergence_test"
+      ],
+      "expect_card": "def_convergence_dirichlet_abel",
+      "note": "",
+      "ok": false,
+      "diverges": true,
+      "result": null,
+      "strategy": "",
+      "proof": "",
+      "conditions": [],
+      "top1_card": "def_standard_fresnel",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_standard_fresnel",
+        "def_standard_dirichlet",
+        "def_convergence_dirichlet_abel",
+        "def_param_uniform_convergence"
+      ],
+      "family_hit": false,
+      "card_hit_top1": false,
+      "card_hit_top3": true,
+      "value_match": null,
+      "numeric": "发散(decay-test)",
+      "seconds": 0.23
+    },
+    {
+      "id": "d41",
+      "latex": "\\int_{1}^{\\infty} \\frac{1}{\\sqrt{x}} dx",
+      "kind": "definite",
+      "expect": "divergent",
+      "expect_family": [
+        "divergence_test"
+      ],
+      "expect_card": "def_convergence_p_test",
+      "note": "",
+      "ok": false,
+      "diverges": true,
+      "result": null,
+      "strategy": "",
+      "proof": "",
+      "conditions": [],
+      "top1_card": "def_convergence_p_test",
+      "top1_family": "divergence_test",
+      "top_hits": [
+        "def_convergence_p_test",
+        "def_standard_power_denom",
+        "def_convergence_comparison",
+        "def_standard_poisson"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": null,
+      "numeric": "发散(mapped-to-finite)",
+      "seconds": 2.01
+    },
+    {
+      "id": "d42",
+      "latex": "\\int_{0}^{\\infty} \\frac{\\arctan x}{x} dx",
+      "kind": "definite",
+      "expect": "divergent",
+      "expect_family": [
+        "divergence_test"
+      ],
+      "expect_card": "def_convergence_comparison",
+      "note": "经典陷阱:看似 π/2,实则发散",
+      "ok": false,
+      "diverges": true,
+      "result": null,
+      "strategy": "",
+      "proof": "",
+      "conditions": [],
+      "top1_card": "def_newton_leibniz",
+      "top1_family": "newton_leibniz",
+      "top_hits": [
+        "def_newton_leibniz",
+        "def_standard_frullani",
+        "def_convergence_dirichlet_abel",
+        "def_standard_dirichlet"
+      ],
+      "family_hit": false,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "value_match": null,
+      "numeric": "发散(mapped-to-finite)",
+      "seconds": 1.99
+    },
+    {
+      "id": "d43",
+      "latex": "\\int_{0}^{\\infty} e^{-tx} dx",
+      "kind": "definite",
+      "expect": "1/t",
+      "expect_family": [
+        "parametric",
+        "newton_leibniz"
+      ],
+      "expect_card": "def_param_conditions",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "1/t",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": "(参数按正数处理);在 3 组参数取值上数值核对通过",
+      "conditions": [
+        "t 必须使积分收敛(t=0 时发散)"
+      ],
+      "top1_card": "def_param_conditions",
+      "top1_family": "parametric",
+      "top_hits": [
+        "def_param_conditions",
+        "def_param_continuity",
+        "def_param_uniform_convergence",
+        "def_param_differentiation"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "无法判定(symbolic-parameters)",
+      "seconds": 1.23
+    },
+    {
+      "id": "d44",
+      "latex": "\\int_{0}^{\\infty} x^{s-1} e^{-x} dx",
+      "kind": "definite",
+      "expect": "gamma(s)",
+      "expect_family": [
+        "beta_gamma",
+        "parametric"
+      ],
+      "expect_card": "def_param_conditions",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "gamma(s)",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";在 3 组参数取值上数值核对通过",
+      "conditions": [
+        "Γ(s) 要求 s > 0",
+        "s 必须使积分收敛(s=-1.5 时发散)"
+      ],
+      "top1_card": "def_param_conditions",
+      "top1_family": "parametric",
+      "top_hits": [
+        "def_param_conditions",
+        "def_standard_poisson",
+        "def_infinite_truncation",
+        "def_param_differentiation"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "无法判定(symbolic-parameters)",
+      "seconds": 2.21
+    },
+    {
+      "id": "d45",
+      "latex": "\\int_{0}^{\\infty} \\frac{x^{s-1}}{1+x} dx",
+      "kind": "definite",
+      "expect": "pi/sin(pi*s)",
+      "expect_family": [
+        "standard_result",
+        "parametric"
+      ],
+      "expect_card": "def_standard_power_denom",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "pi/sin(pi*s)",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";在 3 组参数取值上数值核对通过",
+      "conditions": [
+        "s < 1",
+        "s 必须使积分收敛(s=-1.5 时发散)"
+      ],
+      "top1_card": "def_param_conditions",
+      "top1_family": "parametric",
+      "top_hits": [
+        "def_param_conditions",
+        "def_standard_power_denom",
+        "def_param_uniform_convergence",
+        "def_param_differentiation"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "无法判定(symbolic-parameters)",
+      "seconds": 1.52
+    },
+    {
+      "id": "d46",
+      "latex": "\\int_{0}^{1} x^{s}\\ln x dx",
+      "kind": "definite",
+      "expect": "-1/(s+1)**2",
+      "expect_family": [
+        "parametric",
+        "newton_leibniz"
+      ],
+      "expect_card": "def_param_conditions",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "-1/(s**2 + 2*s + 1)",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";在 3 组参数取值上数值核对通过",
+      "conditions": [
+        "s 必须使积分收敛(s=-1.5 时发散)"
+      ],
+      "top1_card": "def_improper_split",
+      "top1_family": "improper_split",
+      "top_hits": [
+        "def_improper_split",
+        "def_series_expansion",
+        "def_newton_leibniz",
+        "def_param_continuity"
+      ],
+      "family_hit": false,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "value_match": false,
+      "numeric": "无法判定(symbolic-parameters)",
+      "seconds": 0.69
+    },
+    {
+      "id": "d47",
+      "latex": "\\int_{0}^{\\infty} e^{-tx^{2}} dx",
+      "kind": "definite",
+      "expect": "sqrt(pi/t)/2",
+      "expect_family": [
+        "parametric",
+        "standard_result"
+      ],
+      "expect_card": "def_standard_poisson",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "sqrt(pi)/(2*sqrt(t))",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": "(参数按正数处理);在 3 组参数取值上数值核对通过",
+      "conditions": [
+        "t 必须使积分收敛(t=0 时发散)"
+      ],
+      "top1_card": "def_param_conditions",
+      "top1_family": "parametric",
+      "top_hits": [
+        "def_param_conditions",
+        "def_param_uniform_convergence",
+        "def_param_differentiation",
+        "def_standard_poisson"
+      ],
+      "family_hit": true,
+      "card_hit_top1": false,
+      "card_hit_top3": false,
+      "value_match": false,
+      "numeric": "无法判定(symbolic-parameters)",
+      "seconds": 5.53
+    },
+    {
+      "id": "d48",
+      "latex": "\\int_{0}^{\\infty} \\frac{e^{-ax}-e^{-bx}}{x} dx",
+      "kind": "definite",
+      "expect": "log(b/a)",
+      "expect_family": [
+        "standard_result",
+        "parametric"
+      ],
+      "expect_card": "def_standard_frullani",
+      "note": "期望已更新(§6i):该形状现有专属标准结果卡 def_standard_frullani;旧期望 parametric/def_param_differentiation 是当时无此卡的退路,仍算命中",
+      "ok": true,
+      "diverges": false,
+      "result": "log(b/a)",
+      "strategy": "Frullani 标准结果",
+      "proof": "Frullani 标准结果:[f(0) − f(∞)]·ln(b/a);f(0)=1, f(∞)=0, b/a=b/a;在 3 组参数取值上数值核对通过",
+      "conditions": [],
+      "top1_card": "def_standard_frullani",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_standard_frullani",
+        "def_param_differentiation",
+        "def_standard_poisson",
+        "def_infinite_truncation"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "无法判定(symbolic-parameters)",
+      "seconds": 0.91
+    },
+    {
+      "id": "d49",
+      "latex": "\\int_{0}^{\\infty} \\frac{\\arctan(ax)-\\arctan(bx)}{x} dx",
+      "kind": "definite",
+      "expect": "pi*log(a/b)/2",
+      "expect_family": [
+        "standard_result",
+        "parametric"
+      ],
+      "expect_card": "def_standard_frullani",
+      "note": "期望已更新(§6i):Frullani 标准结果卡;原来只能靠费曼技巧,parametric 仍算命中",
+      "ok": true,
+      "diverges": false,
+      "result": "-log((b/a)**(pi/2))",
+      "strategy": "Frullani 标准结果",
+      "proof": "Frullani 标准结果:[f(0) − f(∞)]·ln(b/a);f(0)=0, f(∞)=pi/2, b/a=b/a;在 3 组参数取值上数值核对通过",
+      "conditions": [],
+      "top1_card": "def_standard_frullani",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_standard_frullani",
+        "def_param_uniform_convergence",
+        "def_param_conditions",
+        "def_param_differentiation"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "无法判定(symbolic-parameters)",
+      "seconds": 0.89
+    },
+    {
+      "id": "d50",
+      "latex": "\\int_{0}^{1} x^{t} dx",
+      "kind": "definite",
+      "expect": "1/(t+1)",
+      "expect_family": [
+        "parametric",
+        "newton_leibniz"
+      ],
+      "expect_card": "def_param_continuity",
+      "note": "",
+      "ok": true,
+      "diverges": false,
+      "result": "1/(t + 1)",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": "(参数按正数处理);在 3 组参数取值上数值核对通过",
+      "conditions": [
+        "t 必须使积分收敛(t=-1.5 时发散)"
+      ],
+      "top1_card": "def_param_continuity",
+      "top1_family": "parametric",
+      "top_hits": [
+        "def_param_continuity",
+        "def_param_limit_interchange",
+        "def_improper_split",
+        "def_series_expansion"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "无法判定(symbolic-parameters)",
+      "seconds": 0.13
+    },
+    {
+      "id": "d51",
+      "latex": "\\int_{0}^{\\pi/2} \\ln(\\sin x) dx",
+      "kind": "definite",
+      "expect": "-pi*log(2)/2",
+      "expect_family": [
+        "standard_result"
+      ],
+      "expect_card": "def_log_sine",
+      "note": "覆盖性测试(新增卡片):Euler 对数正弦积分",
+      "ok": true,
+      "diverges": false,
+      "result": "-pi*log(2)/2",
+      "strategy": "对数正弦标准结果",
+      "proof": "对数正弦标准结果:区间再现 x→π/2−x 得 ∫ln(sin)=∫ln(cos),再用倍角 + 半区间对称性;k0=0, a=1, b=0;数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_log_sine",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_log_sine",
+        "def_wallis",
+        "def_standard_fresnel",
+        "def_newton_leibniz"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ -1.088793045151801(tanh-sinh(分段))",
+      "seconds": 0.19
+    },
+    {
+      "id": "d52",
+      "latex": "\\int_{0}^{\\pi} \\ln(\\sin x) dx",
+      "kind": "definite",
+      "expect": "-pi*log(2)",
+      "expect_family": [
+        "standard_result"
+      ],
+      "expect_card": "def_log_sine",
+      "note": "覆盖性测试:同一族的整周期区间",
+      "ok": true,
+      "diverges": false,
+      "result": "-pi*log(2)",
+      "strategy": "对数正弦标准结果",
+      "proof": "对数正弦标准结果:先用 sin 关于 π/2 的对称性拆成两个半区间;k0=0, a=1, b=0;数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_log_sine",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_log_sine",
+        "def_newton_leibniz",
+        "def_standard_fresnel",
+        "def_orthogonality"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ -2.177586090303602(tanh-sinh(分段))",
+      "seconds": 0.16
+    },
+    {
+      "id": "d53",
+      "latex": "\\int_{0}^{\\pi/2} \\ln(\\cos x) dx",
+      "kind": "definite",
+      "expect": "-pi*log(2)/2",
+      "expect_family": [
+        "standard_result",
+        "king_property"
+      ],
+      "expect_card": "def_log_sine",
+      "note": "覆盖性测试:区间再现后与 ln(sin) 同值",
+      "ok": true,
+      "diverges": false,
+      "result": "-pi*log(2)/2",
+      "strategy": "对数正弦标准结果",
+      "proof": "对数正弦标准结果:区间再现 x→π/2−x 得 ∫ln(sin)=∫ln(cos),再用倍角 + 半区间对称性;k0=0, a=0, b=1;数值核对通过(相对误差 0.00e+00,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_log_sine",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_log_sine",
+        "def_wallis",
+        "def_newton_leibniz",
+        "def_standard_fresnel"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ -1.088793045151801(tanh-sinh(分段))",
+      "seconds": 0.14
+    },
+    {
+      "id": "d54",
+      "latex": "\\int_{0}^{\\pi/2} \\ln(\\tan x) dx",
+      "kind": "definite",
+      "expect": "0",
+      "expect_family": [
+        "standard_result",
+        "king_property"
+      ],
+      "expect_card": "def_log_sine",
+      "note": "覆盖性测试:ln(tan) = ln(sin) - ln(cos),两半相消",
+      "ok": true,
+      "diverges": false,
+      "result": "0",
+      "strategy": "区间再现公式",
+      "proof": "区间再现公式:I = ½∫[f(x)+f(a+b−x)]dx(化简后为 0);数值核对通过(相对误差 7.73e-16,方法 tanh-sinh(分段))",
+      "conditions": [],
+      "top1_card": "def_log_sine",
+      "top1_family": "standard_result",
+      "top_hits": [
+        "def_log_sine",
+        "def_wallis",
+        "def_newton_leibniz",
+        "def_improper_split"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 7.731091719810727e-46(tanh-sinh(分段))",
+      "seconds": 4.57
+    },
+    {
+      "id": "d55",
+      "latex": "\\int_{0}^{\\infty} \\frac{x^{2}}{1+x^{4}} dx",
+      "kind": "definite",
+      "expect": "sqrt(2)*pi/4",
+      "expect_family": [
+        "substitution_limits"
+      ],
+      "expect_card": "def_reciprocal_symmetry",
+      "note": "覆盖性测试(新增卡片):倒代换 x→1/t",
+      "ok": true,
+      "diverges": false,
+      "result": "sqrt(2)*pi/4",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 0.00e+00,方法 mapped-to-finite)",
+      "conditions": [],
+      "top1_card": "def_reciprocal_symmetry",
+      "top1_family": "substitution_limits",
+      "top_hits": [
+        "def_reciprocal_symmetry",
+        "def_convergence_p_test",
+        "def_standard_power_denom",
+        "def_infinite_truncation"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 1.110720734539592(mapped-to-finite)",
+      "seconds": 0.72
+    },
+    {
+      "id": "d56",
+      "latex": "\\int_{0}^{\\infty} \\frac{\\ln x}{1+x^{2}} dx",
+      "kind": "definite",
+      "expect": "0",
+      "expect_family": [
+        "substitution_limits"
+      ],
+      "expect_card": "def_reciprocal_symmetry",
+      "note": "覆盖性测试:倒代换把 ln x 变成 -ln t,配对消掉",
+      "ok": true,
+      "diverges": false,
+      "result": "0",
+      "strategy": "直接积分(SymPy 内置定积分)",
+      "proof": ";数值核对通过(相对误差 2.23e-18,方法 mapped-to-finite)",
+      "conditions": [],
+      "top1_card": "def_reciprocal_symmetry",
+      "top1_family": "substitution_limits",
+      "top_hits": [
+        "def_reciprocal_symmetry",
+        "def_newton_leibniz",
+        "def_param_differentiation",
+        "def_convergence_dirichlet_abel"
+      ],
+      "family_hit": true,
+      "card_hit_top1": true,
+      "card_hit_top3": true,
+      "value_match": false,
+      "numeric": "收敛 ≈ 2.233361199194051e-48(mapped-to-finite)",
+      "seconds": 2.57
+    }
+  ]
+}

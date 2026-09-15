@@ -1,0 +1,56 @@
+{"id": "e01", "latex": "x^{3}", "family": ["direct_table"], "card": "basic_table", "note": "幂函数,直接套表"}
+{"id": "e02", "latex": "\\frac{1}{x}", "family": ["direct_table"], "card": "basic_table", "note": "x^{-1} 单独记"}
+{"id": "e03", "latex": "e^{x}", "family": ["direct_table", "substitution_basic"], "note": "指数函数"}
+{"id": "e04", "latex": "\\cos x", "family": ["direct_table", "substitution_basic"], "note": "余弦"}
+{"id": "e05", "latex": "5", "family": ["direct_table"], "note": "常数(检验无 x 输入)"}
+{"id": "e06", "latex": "\\sin(3x+1)", "family": ["substitution_basic"], "card": "linear_substitution", "note": "内层线性"}
+{"id": "e07", "latex": "e^{2x-1}", "family": ["substitution_basic"], "card": "linear_substitution", "note": "内层线性"}
+{"id": "e08", "latex": "\\frac{1}{2x+5}", "family": ["substitution_basic"], "card": "linear_substitution", "note": "内层线性"}
+{"id": "e09", "latex": "(2x+1)^{5}", "family": ["substitution_basic", "direct_table"], "note": "内层线性(展开也行)"}
+{"id": "e10", "latex": "x e^{x^{2}}", "family": ["substitution_basic"], "card": "composite_substitution", "note": "把 2x dx 凑进去"}
+{"id": "e11", "latex": "\\frac{\\cos x}{\\sin x}", "family": ["substitution_basic"], "card": "composite_substitution", "note": "凑 d(sin x)"}
+{"id": "e12", "latex": "\\frac{\\ln x}{x}", "family": ["substitution_basic"], "card": "composite_substitution", "note": "凑 d(ln x)"}
+{"id": "e13", "latex": "2x\\sqrt{1+x^{2}}", "family": ["substitution_basic", "substitution_trig"], "note": "凑微分更快,三角替换也能做"}
+{"id": "e14", "latex": "x\\sqrt{x+1}", "family": ["substitution_algebraic"], "card": "radical_linear_substitution", "note": "一次根式代换"}
+{"id": "e15", "latex": "\\frac{1}{1+\\sqrt{x+1}}", "family": ["substitution_algebraic"], "card": "radical_linear_substitution", "note": "一次根式代换"}
+{"id": "e16", "latex": "\\frac{1}{x^{2}\\sqrt{1+x^{2}}}", "family": ["substitution_algebraic", "substitution_trig"], "note": "倒代换或 x=tan t"}
+{"id": "e17", "latex": "\\frac{1}{1+e^{x}}", "family": ["substitution_algebraic"], "card": "exp_rational_substitution", "note": "t = e^x"}
+{"id": "e18", "latex": "\\frac{e^{x}}{1+e^{x}}", "family": ["substitution_algebraic"], "card": "exp_rational_substitution", "note": "t = e^x"}
+{"id": "e19", "latex": "\\frac{1}{e^{x}+e^{-x}}", "family": ["substitution_algebraic"], "card": "exp_rational_substitution", "note": "t = e^x"}
+{"id": "e20", "latex": "\\sqrt{4-x^{2}}", "family": ["substitution_trig"], "card": "trig_sub_a2_minus_x2", "note": "√(a²−x²)"}
+{"id": "e21", "latex": "x^{2}\\sqrt{1-x^{2}}", "family": ["substitution_trig"], "card": "trig_sub_a2_minus_x2", "note": "√(a²−x²)"}
+{"id": "e22", "latex": "\\frac{x^{2}}{\\sqrt{1-x^{2}}}", "family": ["substitution_trig"], "card": "trig_sub_a2_minus_x2", "note": "√(a²−x²)"}
+{"id": "e23", "latex": "\\frac{1}{\\sqrt{x^{2}+4}}", "family": ["substitution_trig"], "card": "trig_sub_x2_plus_a2", "note": "√(x²+a²)"}
+{"id": "e24", "latex": "\\sqrt{x^{2}+1}", "family": ["substitution_trig", "substitution_algebraic"], "card": "trig_sub_x2_plus_a2", "note": "√(x²+a²)"}
+{"id": "e25", "latex": "\\frac{1}{\\sqrt{x^{2}-4}}", "family": ["substitution_trig"], "card": "trig_sub_x2_minus_a2", "note": "√(x²−a²)"}
+{"id": "e26", "latex": "\\frac{x^{2}}{\\sqrt{x^{2}+a^{2}}}", "family": ["substitution_trig"], "card": "trig_sub_x2_plus_a2", "note": "含参数 a"}
+{"id": "e27", "latex": "x e^{x}", "family": ["parts"], "card": "parts_poly_exp_trig", "note": "多项式×指数"}
+{"id": "e28", "latex": "x^{2}\\sin x", "family": ["parts"], "card": "parts_poly_exp_trig", "note": "多项式×三角"}
+{"id": "e29", "latex": "\\ln x", "family": ["parts"], "card": "parts_poly_log_invtrig", "note": "单独的对数"}
+{"id": "e30", "latex": "x\\ln x", "family": ["parts"], "card": "parts_poly_log_invtrig", "note": "多项式×对数"}
+{"id": "e31", "latex": "\\arctan x", "family": ["parts"], "card": "parts_poly_log_invtrig", "note": "单独的反三角"}
+{"id": "e32", "latex": "x^{2}\\arctan x", "family": ["parts"], "card": "parts_poly_log_invtrig", "note": "多项式×反三角"}
+{"id": "e33", "latex": "e^{x}\\sin x", "family": ["parts"], "card": "parts_cyclic", "note": "循环分部"}
+{"id": "e34", "latex": "x^{3}e^{x}", "family": ["parts"], "note": "需要多次分部"}
+{"id": "e35", "latex": "\\frac{1}{x^{2}-1}", "family": ["partial_fractions"], "card": "rational_distinct_linear", "note": "互异单实根"}
+{"id": "e36", "latex": "\\frac{2x+3}{x^{2}+x-2}", "family": ["partial_fractions"], "card": "rational_distinct_linear", "note": "互异单实根"}
+{"id": "e37", "latex": "\\frac{1}{x(x+1)^{2}}", "family": ["partial_fractions"], "card": "rational_repeated_linear", "note": "重根"}
+{"id": "e38", "latex": "\\frac{x^{3}}{x^{2}+1}", "family": ["partial_fractions"], "card": "rational_improper_division", "note": "假分式先做除法"}
+{"id": "e39", "latex": "\\frac{1}{x^{2}+x+1}", "family": ["partial_fractions"], "card": "rational_irreducible_quadratic", "note": "不可约二次因子(配方)"}
+{"id": "e40", "latex": "\\frac{3x-1}{x^{2}+4}", "family": ["partial_fractions"], "card": "rational_irreducible_quadratic", "note": "不可约二次因子"}
+{"id": "e41", "latex": "\\frac{1}{x(x+1)}", "family": ["partial_fractions"], "card": "rational_distinct_linear", "note": "互异单实根"}
+{"id": "e42", "latex": "\\sin^{3}x\\cos^{2}x", "family": ["rational_trig"], "card": "sin_cos_odd_power", "note": "sin 奇次"}
+{"id": "e43", "latex": "\\cos^{3}x", "family": ["rational_trig"], "card": "sin_cos_odd_power", "note": "cos 奇次"}
+{"id": "e44", "latex": "\\sin^{2}x\\cos^{2}x", "family": ["rational_trig", "reduction_formula"], "card": "sin_cos_even_power", "note": "均为偶次,降幂"}
+{"id": "e45", "latex": "\\sin 3x\\cos 5x", "family": ["rational_trig"], "card": "trig_product_to_sum", "note": "乘积化和差"}
+{"id": "e46", "latex": "\\tan^{3}x", "family": ["rational_trig"], "card": "tan_sec_powers", "note": "tan 的幂"}
+{"id": "e47", "latex": "\\sec^{4}x", "family": ["rational_trig"], "card": "tan_sec_powers", "note": "sec 的偶次幂"}
+{"id": "e48", "latex": "\\sin^{4}x", "family": ["rational_trig", "reduction_formula"], "note": "偶次幂"}
+{"id": "e49", "latex": "\\frac{1}{2+\\cos x}", "family": ["weierstrass", "rational_trig"], "card": "weierstrass_substitution", "note": "三角有理式"}
+{"id": "e50", "latex": "\\frac{1}{1+\\sin x}", "family": ["weierstrass", "rational_trig"], "card": "denom_a_plus_b_trig", "note": "分母 a+b·sin x"}
+{"id": "e51", "latex": "\\frac{\\sin x}{1+\\cos x}", "family": ["substitution_basic", "weierstrass"], "note": "凑微分更快"}
+{"id": "e52", "latex": "\\frac{1}{1+x^{4}}", "family": ["special_trick", "substitution_algebraic", "partial_fractions"], "card": "conjugate_pairing", "note": "配对技巧"}
+{"id": "e53", "latex": "\\frac{x^{2}}{1+x^{4}}", "family": ["special_trick", "substitution_algebraic", "partial_fractions"], "card": "conjugate_pairing", "note": "配对技巧"}
+{"id": "e54", "latex": "\\frac{1}{(x^{2}+1)^{2}}", "family": ["reduction_formula", "substitution_trig"], "card": "reduction_quadratic_power", "note": "递推公式"}
+{"id": "e55", "latex": "\\sqrt{x^{2}+x+1}", "family": ["euler_substitution", "substitution_trig", "substitution_algebraic"], "note": "一般二次根式"}
+{"id": "e56", "latex": "\\frac{1}{x\\sqrt{x^{2}+1}}", "family": ["substitution_trig", "substitution_algebraic"], "note": "x=tan t 或倒代换"}

@@ -1,0 +1,56 @@
+{"id": "d01", "latex": "\\int_{0}^{1} x^{2} dx", "expect": "1/3", "family": ["newton_leibniz"], "card": "def_newton_leibniz", "note": "最基础"}
+{"id": "d02", "latex": "\\int_{0}^{\\pi} \\sin x dx", "expect": "2", "family": ["newton_leibniz"], "card": "def_newton_leibniz"}
+{"id": "d03", "latex": "\\int_{-1}^{1} x^{3} dx", "expect": "0", "family": ["symmetry", "newton_leibniz"], "card": "def_symmetry_even_odd"}
+{"id": "d04", "latex": "\\int_{-a}^{a} x^{2} dx", "expect": "2*a**3/3", "family": ["symmetry", "newton_leibniz"], "card": "def_symmetry_even_odd", "note": "符号上限"}
+{"id": "d05", "latex": "\\int_{-1}^{2} |x| dx", "expect": "5/2", "family": ["newton_leibniz", "improper_split"], "note": "含折点"}
+{"id": "d06", "latex": "\\int_{0}^{\\pi/4} \\tan x dx", "expect": "log(2)/2", "family": ["newton_leibniz"]}
+{"id": "d07", "latex": "\\int_{1}^{e} \\frac{1}{x} dx", "expect": "1", "family": ["newton_leibniz"], "card": "def_newton_leibniz"}
+{"id": "d08", "latex": "\\int_{0}^{1} \\frac{1}{\\sqrt{x}} dx", "expect": "2", "family": ["improper_split"], "card": "def_improper_split"}
+{"id": "d09", "latex": "\\int_{0}^{1} \\ln x dx", "expect": "-1", "family": ["improper_split"], "card": "def_improper_split"}
+{"id": "d10", "latex": "\\int_{-1}^{1} \\frac{1}{\\sqrt{1-x^{2}}} dx", "expect": "pi", "family": ["improper_split"]}
+{"id": "d11", "latex": "\\int_{1}^{\\infty} \\frac{1}{x^{2}} dx", "expect": "1", "family": ["improper_split", "newton_leibniz"], "card": "def_infinite_truncation"}
+{"id": "d12", "latex": "\\int_{0}^{\\infty} e^{-x} dx", "expect": "1", "family": ["improper_split", "newton_leibniz"], "card": "def_infinite_truncation"}
+{"id": "d13", "latex": "\\int_{-\\infty}^{\\infty} e^{-x^{2}} dx", "expect": "sqrt(pi)", "family": ["standard_result", "newton_leibniz"], "card": "def_standard_poisson"}
+{"id": "d14", "latex": "\\int_{0}^{\\infty} \\frac{1}{1+x^{2}} dx", "expect": "pi/2", "family": ["newton_leibniz", "standard_result"], "card": "def_infinite_truncation"}
+{"id": "d15", "latex": "\\int_{0}^{1} \\frac{1}{1+x^{4}} dx", "expect": "pi/(4*sqrt(2)) + asinh(1)/(2*sqrt(2))", "family": ["newton_leibniz"]}
+{"id": "d16", "latex": "\\int_{0}^{\\infty} \\frac{x}{e^{x}-1} dx", "expect": "pi**2/6", "family": ["newton_leibniz", "standard_result"]}
+{"id": "d17", "latex": "\\int_{0}^{\\infty} \\frac{\\sin x}{x} dx", "expect": "pi/2", "family": ["standard_result"], "card": "def_standard_dirichlet"}
+{"id": "d18", "latex": "\\int_{0}^{\\infty} \\frac{\\sin(3x)}{x} dx", "expect": "pi/2", "family": ["standard_result"], "card": "def_standard_dirichlet"}
+{"id": "d19", "latex": "\\int_{0}^{\\infty} \\cos(x^{2}) dx", "expect": "sqrt(2*pi)/4", "family": ["standard_result"], "card": "def_standard_fresnel"}
+{"id": "d20", "latex": "\\int_{0}^{\\infty} \\sin(x^{2}) dx", "expect": "sqrt(2*pi)/4", "family": ["standard_result"], "card": "def_standard_fresnel"}
+{"id": "d21", "latex": "\\int_{0}^{\\infty} e^{-3x^{2}} dx", "expect": "sqrt(pi/3)/2", "family": ["standard_result"], "card": "def_standard_poisson"}
+{"id": "d22", "latex": "\\int_{0}^{\\infty} \\frac{1}{\\sqrt{x}(1+x)} dx", "expect": "pi", "family": ["standard_result", "beta_gamma"], "card": "def_standard_power_denom"}
+{"id": "d23", "latex": "\\int_{0}^{\\infty} \\frac{1}{x^{2/3}(1+x)} dx", "expect": "2*pi/sqrt(3)", "family": ["standard_result", "beta_gamma"], "card": "def_standard_power_denom"}
+{"id": "d24", "latex": "\\int_{0}^{\\pi/2} \\sin^{4}x dx", "expect": "3*pi/16", "family": ["wallis_reduction", "beta_gamma"], "card": "def_wallis"}
+{"id": "d25", "latex": "\\int_{0}^{\\pi/2} \\sin^{5}x dx", "expect": "8/15", "family": ["wallis_reduction", "beta_gamma"], "card": "def_wallis"}
+{"id": "d26", "latex": "\\int_{0}^{\\pi/2} \\cos^{6}x dx", "expect": "5*pi/32", "family": ["wallis_reduction", "beta_gamma"], "card": "def_wallis"}
+{"id": "d27", "latex": "\\int_{0}^{1} x^{2}(1-x)^{3} dx", "expect": "1/60", "family": ["beta_gamma"], "card": "def_beta_gamma"}
+{"id": "d28", "latex": "\\int_{0}^{\\pi/2} \\sin^{3}x\\cos^{2}x dx", "expect": "2/15", "family": ["beta_gamma", "wallis_reduction"], "card": "def_beta_gamma"}
+{"id": "d29", "latex": "\\int_{0}^{\\pi} \\frac{x\\sin x}{1+\\cos^{2}x} dx", "expect": "pi**2/4", "family": ["king_property"], "card": "def_king_property"}
+{"id": "d30", "latex": "\\int_{0}^{\\pi/2} \\frac{\\sin x}{\\sin x+\\cos x} dx", "expect": "pi/4", "family": ["king_property"], "card": "def_king_property"}
+{"id": "d31", "latex": "\\int_{0}^{1} \\frac{\\ln(1+x)}{1+x^{2}} dx", "expect": "pi*log(2)/8", "family": ["king_property", "substitution_limits"]}
+{"id": "d32", "latex": "\\int_{0}^{2\\pi} \\sin(2x)\\cos(3x) dx", "expect": "0", "family": ["orthogonality"], "card": "def_orthogonality"}
+{"id": "d33", "latex": "\\int_{0}^{2\\pi} |\\sin x| dx", "expect": "4", "family": ["periodicity", "newton_leibniz"], "card": "def_periodicity"}
+{"id": "d34", "latex": "\\int_{0}^{4\\pi} \\sin^{2}x dx", "expect": "2*pi", "family": ["periodicity", "wallis_reduction"], "card": "def_periodicity"}
+{"id": "d35", "latex": "\\int_{0}^{\\pi} \\sin^{3}x dx", "expect": "4/3", "family": ["wallis_reduction", "newton_leibniz"]}
+{"id": "d36", "latex": "\\int_{0}^{1} \\frac{\\ln(1+x)}{x} dx", "expect": "pi**2/12", "family": ["series_expansion", "newton_leibniz"], "card": "def_series_expansion"}
+{"id": "d37", "latex": "\\int_{0}^{1} \\frac{\\ln(1-x)}{x} dx", "expect": "-pi**2/6", "family": ["series_expansion", "newton_leibniz"], "card": "def_series_expansion"}
+{"id": "d38", "latex": "\\int_{1}^{\\infty} \\frac{1}{x} dx", "expect": "divergent", "family": ["divergence_test", "improper_split"], "card": "def_convergence_p_test"}
+{"id": "d39", "latex": "\\int_{0}^{1} \\frac{1}{x} dx", "expect": "divergent", "family": ["divergence_test", "improper_split"], "card": "def_convergence_p_test"}
+{"id": "d40", "latex": "\\int_{0}^{\\infty} \\sin x dx", "expect": "divergent", "family": ["divergence_test"], "card": "def_convergence_dirichlet_abel"}
+{"id": "d41", "latex": "\\int_{1}^{\\infty} \\frac{1}{\\sqrt{x}} dx", "expect": "divergent", "family": ["divergence_test"], "card": "def_convergence_p_test"}
+{"id": "d42", "latex": "\\int_{0}^{\\infty} \\frac{\\arctan x}{x} dx", "expect": "divergent", "family": ["divergence_test"], "card": "def_convergence_comparison", "note": "经典陷阱:看似 π/2,实则发散"}
+{"id": "d43", "latex": "\\int_{0}^{\\infty} e^{-tx} dx", "expect": "1/t", "family": ["parametric", "newton_leibniz"], "card": "def_param_conditions"}
+{"id": "d44", "latex": "\\int_{0}^{\\infty} x^{s-1} e^{-x} dx", "expect": "gamma(s)", "family": ["beta_gamma", "parametric"], "card": "def_param_conditions"}
+{"id": "d45", "latex": "\\int_{0}^{\\infty} \\frac{x^{s-1}}{1+x} dx", "expect": "pi/sin(pi*s)", "family": ["standard_result", "parametric"], "card": "def_standard_power_denom"}
+{"id": "d46", "latex": "\\int_{0}^{1} x^{s}\\ln x dx", "expect": "-1/(s+1)**2", "family": ["parametric", "newton_leibniz"], "card": "def_param_conditions"}
+{"id": "d47", "latex": "\\int_{0}^{\\infty} e^{-tx^{2}} dx", "expect": "sqrt(pi/t)/2", "family": ["parametric", "standard_result"], "card": "def_standard_poisson"}
+{"id": "d48", "latex": "\\int_{0}^{\\infty} \\frac{e^{-ax}-e^{-bx}}{x} dx", "expect": "log(b/a)", "family": ["standard_result", "parametric"], "card": "def_standard_frullani", "note": "期望已更新(§6i):该形状现有专属标准结果卡 def_standard_frullani;旧期望 parametric/def_param_differentiation 是当时无此卡的退路,仍算命中"}
+{"id": "d49", "latex": "\\int_{0}^{\\infty} \\frac{\\arctan(ax)-\\arctan(bx)}{x} dx", "expect": "pi*log(a/b)/2", "family": ["standard_result", "parametric"], "card": "def_standard_frullani", "note": "期望已更新(§6i):Frullani 标准结果卡;原来只能靠费曼技巧,parametric 仍算命中"}
+{"id": "d50", "latex": "\\int_{0}^{1} x^{t} dx", "expect": "1/(t+1)", "family": ["parametric", "newton_leibniz"], "card": "def_param_continuity"}
+{"id": "d51", "latex": "\\int_{0}^{\\pi/2} \\ln(\\sin x) dx", "expect": "-pi*log(2)/2", "family": ["standard_result"], "card": "def_log_sine", "note": "覆盖性测试(新增卡片):Euler 对数正弦积分"}
+{"id": "d52", "latex": "\\int_{0}^{\\pi} \\ln(\\sin x) dx", "expect": "-pi*log(2)", "family": ["standard_result"], "card": "def_log_sine", "note": "覆盖性测试:同一族的整周期区间"}
+{"id": "d53", "latex": "\\int_{0}^{\\pi/2} \\ln(\\cos x) dx", "expect": "-pi*log(2)/2", "family": ["standard_result", "king_property"], "card": "def_log_sine", "note": "覆盖性测试:区间再现后与 ln(sin) 同值"}
+{"id": "d54", "latex": "\\int_{0}^{\\pi/2} \\ln(\\tan x) dx", "expect": "0", "family": ["standard_result", "king_property"], "card": "def_log_sine", "note": "覆盖性测试:ln(tan) = ln(sin) - ln(cos),两半相消"}
+{"id": "d55", "latex": "\\int_{0}^{\\infty} \\frac{x^{2}}{1+x^{4}} dx", "expect": "sqrt(2)*pi/4", "family": ["substitution_limits"], "card": "def_reciprocal_symmetry", "note": "覆盖性测试(新增卡片):倒代换 x→1/t"}
+{"id": "d56", "latex": "\\int_{0}^{\\infty} \\frac{\\ln x}{1+x^{2}} dx", "expect": "0", "family": ["substitution_limits"], "card": "def_reciprocal_symmetry", "note": "覆盖性测试:倒代换把 ln x 变成 -ln t,配对消掉"}
