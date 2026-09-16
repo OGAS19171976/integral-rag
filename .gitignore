@@ -10,3 +10,8 @@ build/
 # 评估实验的中间产物:用 `lev view` 从 eval/report*.json 一条命令即可重新生成,
 # 不留进仓库(eval/report*.json 本身是留的 —— 它们是可比对的基线)。
 eval/runs/
+
+# 环境变量与密钥:任何 .env 都不许进仓库(密钥只放本地环境变量或未跟踪的 .env)
+.env
+.env.*
+!.env.example
