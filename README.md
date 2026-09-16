@@ -180,6 +180,16 @@ C 层循环),它是 daemon 不会阻止进程退出。
 依赖:Python 3.10+、`sympy`、`mpmath`。本机验证环境是 Python 3.14 + SymPy 1.14。
 
 ```bash
+pip install -r requirements.txt        # 运行时:sympy + mpmath
+pip install -r requirements-dev.txt    # 开发:再加 pytest 与 llm-eval-toolkit
+```
+
+> 统计与评估协议(配对检验、置信区间、多重比较校正)已经抽成独立的
+> [llm-eval-toolkit](https://github.com/OGAS19171976/llm-eval-toolkit),
+> 本仓库通过 `evallib/` 这一层 shim 使用它。**只跑求解与 demo 的话,
+> 装 `requirements.txt` 就够了**,不需要那个工具包。
+
+```bash
 cd integral-rag
 
 python demo.py                                    # 不定积分展示题库
