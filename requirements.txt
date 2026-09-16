@@ -1,0 +1,3 @@
+# 运行时依赖。这个仓库本体不需要 numpy/scipy。
+sympy>=1.12
+mpmath>=1.3

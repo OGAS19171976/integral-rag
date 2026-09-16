@@ -4,6 +4,9 @@ __pycache__/
 .pytest-tmp/
 .pytest-work-*/
 .venv/
-# 评估实验的中间产物:由 eval/metric_view.py 一条命令即可从
-# eval/report*.json 重新生成,不留进仓库。
+dist/
+build/
+*.egg-info/
+# 评估实验的中间产物:用 `lev view` 从 eval/report*.json 一条命令即可重新生成,
+# 不留进仓库(eval/report*.json 本身是留的 —— 它们是可比对的基线)。
 eval/runs/

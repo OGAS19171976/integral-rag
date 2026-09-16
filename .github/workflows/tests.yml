@@ -1,0 +1,40 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / py${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # 只跑 Linux 与 Windows:这个项目涉及控制台编码与线程中断,
+        # 而这两件事在两类平台上的行为差别最大。macOS 属于 POSIX,
+        # 与 ubuntu 的差别远小于 ubuntu 与 windows 的差别,加进来只是烧时长。
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.10", "3.12", "3.14"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+
+      # 20 项:tests/test_all.py 的 8 个引擎级用例(解析 / 验证 / 流水线 /
+      # 定积分 / 数值 / 含参 / CAS 熔断 / 超时杀线程)+ test_report_integrity.py
+      # 的报告一致性自检。pytest 会把它们全收走,所以只需一条命令。
+      #
+      # 本地还可以跑 `python tests/test_all.py` —— 那是给人看的 A~H 分组
+      # 健康报告,和 pytest 的汇总表是两种东西,CI 里就不重复跑那 100 秒了。
+      - name: 测试
+        run: pytest tests/ -q

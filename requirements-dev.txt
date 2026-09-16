@@ -1,0 +1,10 @@
+# 开发与测试依赖。
+-r requirements.txt
+pytest>=7.0
+
+# 统计与评估协议已经抽成独立仓库(见 eval/FINDINGS.md 与 evallib/__init__.py)。
+# 本仓库是它的第一个使用者:`evallib` 只是解析 shim,实现只有一份在那边。
+#
+# 本地开发期建议用可编辑安装,这样改工具包能立刻生效:
+#     pip install -e ../llm-eval-toolkit
+git+https://github.com/OGAS19171976/llm-eval-toolkit.git
